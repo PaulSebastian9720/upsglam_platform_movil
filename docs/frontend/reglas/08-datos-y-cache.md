@@ -27,7 +27,7 @@ El cursor es opaco: la app lo guarda y lo devuelve, nunca lo interpreta. Rutas y
 | Publicaciones de un usuario | `/usuarios/{id}/publicaciones` | 18 | Cuadrícula de 3 |
 | Comentarios | `/publicaciones/{id}/comentarios` | 20 | Más antiguos arriba |
 | Historial | `/historial` | 15 | Solo el propio |
-| Seguidos (opcional) | `/usuarios/{id}/seguidos` | 20 | |
+| Seguidores (solo los propios) | `/usuarios/{id}/seguidores` | 20 | |
 
 **Reglas de la lista**
 - No se pide una página si ya hay una pedida o si `hayMas` es falso.
@@ -37,7 +37,7 @@ El cursor es opaco: la app lo guarda y lo devuelve, nunca lo interpreta. Rutas y
 - Biblioteca: `infinite_scroll_pagination` ([fuente](https://pub.dev/documentation/infinite_scroll_pagination/latest/)), que no impone una estrategia y por tanto admite cursores. El componente propio es `ListaPaginada`; ninguna página la usa directo.
 
 ## Esquemas
-Viven en `lib/modelos/<modelo>/`. Fechas en ISO 8601 UTC; ids como texto.
+Viven en `lib/modelos/`, un archivo por modelo. Fechas en ISO 8601 UTC; ids como texto.
 
 ```json
 { "publicacion": {

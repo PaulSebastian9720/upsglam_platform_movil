@@ -11,9 +11,9 @@ lib/
   config/                direcciones y claves públicas del entorno
   tema/                  app_theme.dart, único
   rutas/                 navegación
-  modelos/<modelo>/      usuario, publicacion, comentario, procesamiento, filtro, pagina
+  modelos/               un archivo por modelo: perfil, autor, publicacion, comentario, procesamiento, filtro, foto
   servicios/             un archivo por servicio: camara, galeria (luego sesion, api, cache)
-  repositorios/<dato>/   publicaciones, comentarios, perfil, procesamiento, seguidos, fotos
+  repositorios/          un archivo por dato: publicaciones, comentarios, perfil, procesamiento, seguidos, fotos
   componentes/           un archivo por pieza reutilizable en dos o más páginas
   paginas/<pagina>/      la página, su controlador y sus piezas propias
   utilidades/            validadores y formatos
@@ -29,7 +29,8 @@ assets/  logo/ iconos/ iconos_aplicacion/ imagenes/filtros/ imagenes/login/ fuen
 | Servicio | `api_service.dart` | Envuelve una sola cosa externa, sin estado de pantalla | Decidir qué se muestra |
 | Modelo | `publicacion.dart` | Datos inmutables | Llamar a nada |
 
-- Una clase pública por archivo. `componentes/` y `servicios/` llevan los archivos sueltos; modelos, repositorios y páginas, en carpeta con su nombre; archivos en `snake_case`, clases en `PascalCase`.
+- Una clase pública por archivo. `componentes/`, `servicios/`, `modelos/` y `repositorios/` llevan los archivos sueltos; solo las páginas van en carpeta con su nombre; archivos en `snake_case`, clases en `PascalCase`.
+- Imports siempre absolutos desde la raíz del paquete: `import 'package:upsglam_movil/tema/app_theme.dart';`. Nunca rutas relativas (`../`). Lo exige el analizador (`always_use_package_imports`).
 - Dependencias por `provider` (lo recomienda la guía). Sin variables globales ni singletons sueltos.
 - La dependencia va en un sentido: página → controlador → repositorio → servicio.
 
@@ -47,7 +48,7 @@ assets/  logo/ iconos/ iconos_aplicacion/ imagenes/filtros/ imagenes/login/ fuen
 | Login | `/login` | login | No |
 | Crear cuenta | `/registro` | registro | No |
 | Inicio | `/inicio` | inicio | Sí |
-| Comentarios | hoja sobre Inicio | inicio/componentes | No |
+| Comentarios | `/publicacion/:id/comentarios`, hoja sobre Inicio o Ver publicación | comentarios | No |
 | Cámara y Filtros | `/camara` | camara | No |
 | Aplicando, Media, UPS | `/editar` | editar | No |
 | Publicar | `/publicar` | publicar | No |
@@ -59,8 +60,8 @@ assets/  logo/ iconos/ iconos_aplicacion/ imagenes/filtros/ imagenes/login/ fuen
 | Mis publicaciones | `/configuracion/publicaciones` | mis_publicaciones | No |
 | Editar publicación | `/publicacion/:id/editar` | editar_publicacion | No |
 | Perfil de otra persona | `/usuario/:id` | otro_perfil | Sí |
-| Seguidos (opcional) | `/perfil/seguidos` | seguidos | No |
-| Ver publicación (opcional) | `/publicacion/:id` | publicacion | Sí |
+| Seguidores | `/perfil/seguidores` y `/perfil/seguidores/:id` (perfil de cada uno), solo desde el perfil propio | seguidores | Sí |
+| Ver publicación | `/publicacion/:id`, encima, como el detalle del historial | publicacion | No |
 
 ## Agregar una página
 1. Carpeta en `paginas/`. 2. Página y controlador. 3. Repositorio, si el dato es nuevo. 4. Ruta en `rutas/`. 5. Revisar con la lista del [README](README.md).

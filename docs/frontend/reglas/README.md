@@ -21,7 +21,7 @@ Las láminas usan padding 24 en formularios y radios mayores; manda lo de aquí:
 
 ## Diez reglas que no se negocian
 1. Un color, medida o letra se escribe **solo** en `lib/tema/app_theme.dart`.
-2. Una clase por archivo. Componentes y servicios son archivos sueltos; el resto, en su carpeta.
+2. Una clase por archivo. Componentes, servicios, modelos y repositorios son archivos sueltos; cada página, en su carpeta. Imports desde `package:upsglam_movil/`, nunca relativos.
 3. La página no llama a Supabase, a la API ni al caché: pasa por su controlador y un repositorio.
 4. El token se lee solo en `servicios/sesion` y se envía solo desde `servicios/api`.
 5. Un solo menú inferior, en la raíz. Ninguna página crea otro.
