@@ -3,12 +3,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/estado_vacio.dart';
-import '../../componentes/tarjeta_publicacion.dart';
-import '../../modelos/publicacion.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import 'inicio_controller.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/componentes/tarjeta_publicacion.dart';
+import 'package:upsglam_movil/modelos/publicacion.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/inicio/inicio_controller.dart';
 
 class InicioPage extends StatelessWidget {
   const InicioPage({super.key});

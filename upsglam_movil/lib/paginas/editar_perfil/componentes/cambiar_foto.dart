@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../componentes/app_icono.dart';
-import '../../../componentes/avatar_usuario.dart';
-import '../../../tema/app_theme.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/componentes/avatar_usuario.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
 
 /// Avatar grande con la marca de cámara y el texto "Cambiar foto".
 class CambiarFoto extends StatelessWidget {

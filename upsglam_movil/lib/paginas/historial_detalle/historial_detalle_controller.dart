@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../modelos/procesamiento.dart';
-import '../../repositorios/procesamiento_repositorio.dart';
+import 'package:upsglam_movil/modelos/procesamiento.dart';
+import 'package:upsglam_movil/repositorios/procesamiento_repositorio.dart';
 
 class HistorialDetalleController extends ChangeNotifier {
   HistorialDetalleController(this._procesamientos, this.id) {

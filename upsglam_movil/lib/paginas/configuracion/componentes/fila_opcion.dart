@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../componentes/app_icono.dart';
-import '../../../tema/app_theme.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
 
 /// Opción de la lista de configuración: icono y texto, sin bordes.
 class FilaOpcion extends StatelessWidget {

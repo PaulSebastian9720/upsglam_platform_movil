@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../modelos/filtro.dart';
-import '../modelos/publicacion.dart';
-import '../tema/app_theme.dart';
-import '../utilidades/formatos.dart';
-import 'app_icono.dart';
-import 'avatar_usuario.dart';
-import 'imagen_app.dart';
-import 'zoom_en_sitio.dart';
+import 'package:upsglam_movil/modelos/filtro.dart';
+import 'package:upsglam_movil/modelos/publicacion.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/utilidades/formatos.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/componentes/avatar_usuario.dart';
+import 'package:upsglam_movil/componentes/imagen_app.dart';
+import 'package:upsglam_movil/componentes/zoom_en_sitio.dart';
 
 /// Publicación completa: autor, foto con su filtro, me gusta, comentarios y
 /// texto. Se usa en Inicio y en Ver publicación.

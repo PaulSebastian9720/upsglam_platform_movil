@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../componentes/pagina_vacia.dart';
+import 'package:upsglam_movil/componentes/pagina_vacia.dart';
 
 class PublicarPage extends StatelessWidget {
   const PublicarPage({super.key});

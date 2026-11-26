@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../modelos/perfil.dart';
-import '../../repositorios/perfil_repositorio.dart';
+import 'package:upsglam_movil/modelos/perfil.dart';
+import 'package:upsglam_movil/repositorios/perfil_repositorio.dart';
 
 class EditarPerfilController extends ChangeNotifier {
   EditarPerfilController(this._perfiles) {

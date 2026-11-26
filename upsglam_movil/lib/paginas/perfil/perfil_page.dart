@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/cabecera_perfil.dart';
-import '../../modelos/procesamiento.dart';
-import '../../componentes/cuadricula_publicaciones.dart';
-import '../../componentes/estado_vacio.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import 'componentes/cabecera_cargando.dart';
-import 'componentes/fila_historial.dart';
-import 'componentes/fila_historial_cargando.dart';
-import 'componentes/insignia_privada.dart';
-import 'componentes/barra_pestanas.dart';
-import 'componentes/titulo_perfil.dart';
-import 'historial_controller.dart';
-import 'perfil_controller.dart';
+import 'package:upsglam_movil/componentes/cabecera_perfil.dart';
+import 'package:upsglam_movil/modelos/procesamiento.dart';
+import 'package:upsglam_movil/componentes/cuadricula_publicaciones.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/perfil/componentes/cabecera_cargando.dart';
+import 'package:upsglam_movil/paginas/perfil/componentes/fila_historial.dart';
+import 'package:upsglam_movil/paginas/perfil/componentes/fila_historial_cargando.dart';
+import 'package:upsglam_movil/paginas/perfil/componentes/insignia_privada.dart';
+import 'package:upsglam_movil/paginas/perfil/componentes/barra_pestanas.dart';
+import 'package:upsglam_movil/paginas/perfil/componentes/titulo_perfil.dart';
+import 'package:upsglam_movil/paginas/perfil/historial_controller.dart';
+import 'package:upsglam_movil/paginas/perfil/perfil_controller.dart';
 
 class PerfilPage extends StatelessWidget {
   const PerfilPage({super.key});

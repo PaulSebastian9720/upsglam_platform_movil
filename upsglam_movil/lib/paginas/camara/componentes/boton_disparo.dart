@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../tema/app_theme.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
 
 class BotonDisparo extends StatelessWidget {
   const BotonDisparo({super.key, required this.ocupado, this.alPulsar});

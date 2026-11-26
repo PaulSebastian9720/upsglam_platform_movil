@@ -3,17 +3,17 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/boton_principal.dart';
-import '../../componentes/campo_texto.dart';
-import '../../componentes/encabezado_pagina.dart';
-import '../../componentes/estado_vacio.dart';
-import '../../modelos/perfil.dart';
-import '../../repositorios/perfil_repositorio.dart';
-import '../../tema/app_theme.dart';
-import '../../utilidades/validadores.dart';
-import 'componentes/cambiar_foto.dart';
-import 'componentes/formulario_carga.dart';
-import 'editar_perfil_controller.dart';
+import 'package:upsglam_movil/componentes/boton_principal.dart';
+import 'package:upsglam_movil/componentes/campo_texto.dart';
+import 'package:upsglam_movil/componentes/encabezado_pagina.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/modelos/perfil.dart';
+import 'package:upsglam_movil/repositorios/perfil_repositorio.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/utilidades/validadores.dart';
+import 'package:upsglam_movil/paginas/editar_perfil/componentes/cambiar_foto.dart';
+import 'package:upsglam_movil/paginas/editar_perfil/componentes/formulario_carga.dart';
+import 'package:upsglam_movil/paginas/editar_perfil/editar_perfil_controller.dart';
 
 class EditarPerfilPage extends StatelessWidget {
   const EditarPerfilPage({super.key});

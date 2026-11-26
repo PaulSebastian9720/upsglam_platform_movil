@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/estado_vacio.dart';
-import '../../tema/app_theme.dart';
-import 'comentarios_controller.dart';
-import 'componentes/cabecera_hoja.dart';
-import 'componentes/campo_comentario.dart';
-import 'componentes/fila_comentario.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/comentarios/comentarios_controller.dart';
+import 'package:upsglam_movil/paginas/comentarios/componentes/cabecera_hoja.dart';
+import 'package:upsglam_movil/paginas/comentarios/componentes/campo_comentario.dart';
+import 'package:upsglam_movil/paginas/comentarios/componentes/fila_comentario.dart';
 
 /// Hoja de comentarios de una publicación. Se abre desde Inicio y desde Ver
 /// publicación.

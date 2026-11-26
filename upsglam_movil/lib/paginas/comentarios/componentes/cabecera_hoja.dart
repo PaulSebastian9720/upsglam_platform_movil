@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../componentes/app_icono.dart';
-import '../../../tema/app_theme.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
 
 /// Agarradera, título y cerrar. Queda fija arriba y, al arrastrarla, la hoja
 /// sube hasta llenar la pantalla o baja hasta cerrarse.

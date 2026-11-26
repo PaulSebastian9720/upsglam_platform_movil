@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../modelos/procesamiento.dart';
-import '../../repositorios/procesamiento_repositorio.dart';
+import 'package:upsglam_movil/modelos/procesamiento.dart';
+import 'package:upsglam_movil/repositorios/procesamiento_repositorio.dart';
 
 /// La lista de la pestaña Historial del perfil. Se carga al abrir la pestaña.
 class HistorialController extends ChangeNotifier {

@@ -3,19 +3,19 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/app_alerta.dart';
-import '../../componentes/app_icono.dart';
-import '../../componentes/boton_redondo.dart';
-import '../../componentes/estado_vacio.dart';
-import '../../modelos/archivo_no_valido.dart';
-import '../../modelos/foto.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import 'camara_controller.dart';
-import 'componentes/boton_disparo.dart';
-import 'componentes/control_camara.dart';
-import 'componentes/rejilla_camara.dart';
-import 'componentes/visor_camara.dart';
+import 'package:upsglam_movil/componentes/app_alerta.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/componentes/boton_redondo.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/modelos/archivo_no_valido.dart';
+import 'package:upsglam_movil/modelos/foto.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/camara/camara_controller.dart';
+import 'package:upsglam_movil/paginas/camara/componentes/boton_disparo.dart';
+import 'package:upsglam_movil/paginas/camara/componentes/control_camara.dart';
+import 'package:upsglam_movil/paginas/camara/componentes/rejilla_camara.dart';
+import 'package:upsglam_movil/paginas/camara/componentes/visor_camara.dart';
 
 class CamaraPage extends StatelessWidget {
   const CamaraPage({super.key});

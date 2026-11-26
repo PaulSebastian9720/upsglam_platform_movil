@@ -3,13 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/boton_principal.dart';
-import '../../componentes/campo_texto.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import '../../utilidades/validadores.dart';
-import '../../componentes/portada_acceso.dart';
-import 'login_controller.dart';
+import 'package:upsglam_movil/componentes/boton_principal.dart';
+import 'package:upsglam_movil/componentes/campo_texto.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/utilidades/validadores.dart';
+import 'package:upsglam_movil/componentes/portada_acceso.dart';
+import 'package:upsglam_movil/paginas/login/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

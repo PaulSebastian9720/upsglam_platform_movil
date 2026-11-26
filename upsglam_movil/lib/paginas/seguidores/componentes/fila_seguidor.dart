@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../componentes/avatar_usuario.dart';
-import '../../../modelos/perfil.dart';
-import '../../../tema/app_theme.dart';
+import 'package:upsglam_movil/componentes/avatar_usuario.dart';
+import 'package:upsglam_movil/modelos/perfil.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
 
 /// Una persona que sigo: foto, usuario y el botón para seguir o dejar de
 /// seguir. Tocar la fila abre su perfil.

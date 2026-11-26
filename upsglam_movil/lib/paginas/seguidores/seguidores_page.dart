@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/encabezado_pagina.dart';
-import '../../componentes/estado_vacio.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import 'componentes/fila_seguidor.dart';
-import 'seguidores_controller.dart';
+import 'package:upsglam_movil/componentes/encabezado_pagina.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/seguidores/componentes/fila_seguidor.dart';
+import 'package:upsglam_movil/paginas/seguidores/seguidores_controller.dart';
 
 class SeguidoresPage extends StatelessWidget {
   const SeguidoresPage({super.key});

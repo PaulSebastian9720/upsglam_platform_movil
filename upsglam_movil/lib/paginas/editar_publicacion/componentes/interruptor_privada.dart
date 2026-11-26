@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../tema/app_theme.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
 
 /// Fila con el interruptor "Publicación privada".
 class InterruptorPrivada extends StatelessWidget {

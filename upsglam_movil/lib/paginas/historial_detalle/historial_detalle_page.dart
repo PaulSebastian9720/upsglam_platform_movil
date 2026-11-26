@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/zoom_en_sitio.dart';
-import '../../componentes/app_icono.dart';
-import '../../componentes/boton_principal.dart';
-import '../../componentes/boton_secundario.dart';
-import '../../componentes/encabezado_pagina.dart';
-import '../../componentes/estado_vacio.dart';
-import '../../componentes/imagen_app.dart';
-import '../../componentes/rueda_filtro.dart';
-import '../../modelos/filtro.dart';
-import '../../modelos/procesamiento.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import '../../utilidades/formatos.dart';
-import 'componentes/rueda_pendiente.dart';
-import 'historial_detalle_controller.dart';
+import 'package:upsglam_movil/componentes/zoom_en_sitio.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/componentes/boton_principal.dart';
+import 'package:upsglam_movil/componentes/boton_secundario.dart';
+import 'package:upsglam_movil/componentes/encabezado_pagina.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/componentes/imagen_app.dart';
+import 'package:upsglam_movil/componentes/rueda_filtro.dart';
+import 'package:upsglam_movil/modelos/filtro.dart';
+import 'package:upsglam_movil/modelos/procesamiento.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/utilidades/formatos.dart';
+import 'package:upsglam_movil/paginas/historial_detalle/componentes/rueda_pendiente.dart';
+import 'package:upsglam_movil/paginas/historial_detalle/historial_detalle_controller.dart';
 
 class HistorialDetallePage extends StatelessWidget {
   const HistorialDetallePage({super.key, required this.id});

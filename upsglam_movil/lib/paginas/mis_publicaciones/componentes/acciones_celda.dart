@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../componentes/app_icono.dart';
-import '../../../modelos/publicacion.dart';
-import '../../../tema/app_theme.dart';
-import 'boton_celda.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/modelos/publicacion.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/mis_publicaciones/componentes/boton_celda.dart';
 
 /// Lo que va sobre cada foto: velo si es privada, editar y privacidad.
 class AccionesCelda extends StatelessWidget {

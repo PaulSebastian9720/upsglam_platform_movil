@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../componentes/app_icono.dart';
-import '../../componentes/encabezado_pagina.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import 'componentes/fila_opcion.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/componentes/encabezado_pagina.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/configuracion/componentes/fila_opcion.dart';
 
 class ConfiguracionPage extends StatelessWidget {
   const ConfiguracionPage({super.key});

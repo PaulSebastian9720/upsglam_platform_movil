@@ -1,4 +1,4 @@
-import 'filtro.dart';
+import 'package:upsglam_movil/modelos/filtro.dart';
 
 /// Foto tomada o elegida, con el filtro que se aplicará después.
 class Foto {

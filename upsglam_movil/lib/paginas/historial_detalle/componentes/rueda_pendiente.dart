@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../componentes/app_icono.dart';
-import '../../../modelos/filtro.dart';
-import '../../../tema/app_theme.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/modelos/filtro.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
 
 /// Rueda de un filtro sin resultado: girando si aún se aplica, con la alerta
 /// en rojo si falló. No se puede elegir.

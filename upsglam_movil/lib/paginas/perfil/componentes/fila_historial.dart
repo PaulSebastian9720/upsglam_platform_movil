@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../componentes/app_icono.dart';
-import '../../../componentes/imagen_app.dart';
-import '../../../modelos/procesamiento.dart';
-import '../../../tema/app_theme.dart';
-import '../../../utilidades/formatos.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/componentes/imagen_app.dart';
+import 'package:upsglam_movil/modelos/procesamiento.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/utilidades/formatos.dart';
 
 /// Original → resultado, filtro, cuándo y en qué estado va.
 class FilaHistorial extends StatelessWidget {

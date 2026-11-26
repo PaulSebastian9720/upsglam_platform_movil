@@ -1,4 +1,4 @@
-import 'filtro.dart';
+import 'package:upsglam_movil/modelos/filtro.dart';
 
 enum EstadoProcesamiento { aplicando, lista, fallo }
 

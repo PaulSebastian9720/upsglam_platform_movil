@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../tema/app_theme.dart';
-import 'app_icono.dart';
-import 'imagen_app.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/componentes/imagen_app.dart';
 
 /// Foto de perfil redonda; sin foto, el icono de perfil.
 class AvatarUsuario extends StatelessWidget {

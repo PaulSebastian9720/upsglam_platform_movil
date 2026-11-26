@@ -3,19 +3,19 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/app_alerta.dart';
-import '../../componentes/boton_principal.dart';
-import '../../componentes/campo_texto.dart';
-import '../../componentes/encabezado_pagina.dart';
-import '../../componentes/estado_vacio.dart';
-import '../../componentes/imagen_app.dart';
-import '../../modelos/publicacion.dart';
-import '../../repositorios/publicaciones_repositorio.dart';
-import '../../tema/app_theme.dart';
-import '../../utilidades/validadores.dart';
-import 'componentes/editor_carga.dart';
-import 'componentes/interruptor_privada.dart';
-import 'editar_publicacion_controller.dart';
+import 'package:upsglam_movil/componentes/app_alerta.dart';
+import 'package:upsglam_movil/componentes/boton_principal.dart';
+import 'package:upsglam_movil/componentes/campo_texto.dart';
+import 'package:upsglam_movil/componentes/encabezado_pagina.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/componentes/imagen_app.dart';
+import 'package:upsglam_movil/modelos/publicacion.dart';
+import 'package:upsglam_movil/repositorios/publicaciones_repositorio.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/utilidades/validadores.dart';
+import 'package:upsglam_movil/paginas/editar_publicacion/componentes/editor_carga.dart';
+import 'package:upsglam_movil/paginas/editar_publicacion/componentes/interruptor_privada.dart';
+import 'package:upsglam_movil/paginas/editar_publicacion/editar_publicacion_controller.dart';
 
 class EditarPublicacionPage extends StatelessWidget {
   const EditarPublicacionPage({super.key, required this.id});

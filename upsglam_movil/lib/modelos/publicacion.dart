@@ -1,5 +1,5 @@
-import 'filtro.dart';
-import 'autor.dart';
+import 'package:upsglam_movil/modelos/filtro.dart';
+import 'package:upsglam_movil/modelos/autor.dart';
 
 class Publicacion {
   const Publicacion({

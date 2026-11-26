@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'repositorios/comentarios_repositorio.dart';
-import 'repositorios/fotos_repositorio.dart';
-import 'repositorios/perfil_repositorio.dart';
-import 'repositorios/procesamiento_repositorio.dart';
-import 'repositorios/publicaciones_repositorio.dart';
-import 'repositorios/seguidos_repositorio.dart';
-import 'rutas/app_router.dart';
-import 'servicios/camara_service.dart';
-import 'servicios/datos_prueba_service.dart';
-import 'servicios/galeria_service.dart';
-import 'tema/app_theme.dart';
+import 'package:upsglam_movil/repositorios/comentarios_repositorio.dart';
+import 'package:upsglam_movil/repositorios/fotos_repositorio.dart';
+import 'package:upsglam_movil/repositorios/perfil_repositorio.dart';
+import 'package:upsglam_movil/repositorios/procesamiento_repositorio.dart';
+import 'package:upsglam_movil/repositorios/publicaciones_repositorio.dart';
+import 'package:upsglam_movil/repositorios/seguidos_repositorio.dart';
+import 'package:upsglam_movil/rutas/app_router.dart';
+import 'package:upsglam_movil/servicios/camara_service.dart';
+import 'package:upsglam_movil/servicios/datos_prueba_service.dart';
+import 'package:upsglam_movil/servicios/galeria_service.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
 
 class UpsGlamApp extends StatefulWidget {
   const UpsGlamApp({super.key, this.fotos});

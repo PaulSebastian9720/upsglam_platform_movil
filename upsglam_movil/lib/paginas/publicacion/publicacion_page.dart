@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/encabezado_pagina.dart';
-import '../../componentes/estado_vacio.dart';
-import '../../componentes/tarjeta_publicacion.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import 'publicacion_controller.dart';
+import 'package:upsglam_movil/componentes/encabezado_pagina.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/componentes/tarjeta_publicacion.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/publicacion/publicacion_controller.dart';
 
 class PublicacionPage extends StatelessWidget {
   const PublicacionPage({super.key, required this.id});

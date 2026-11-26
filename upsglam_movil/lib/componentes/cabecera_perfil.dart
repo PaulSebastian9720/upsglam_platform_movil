@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../modelos/perfil.dart';
-import '../tema/app_theme.dart';
-import 'avatar_usuario.dart';
-import 'visor_imagen.dart';
+import 'package:upsglam_movil/modelos/perfil.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/componentes/avatar_usuario.dart';
+import 'package:upsglam_movil/componentes/visor_imagen.dart';
 
 /// Foto, cifras y descripción de un perfil, propio o de otra persona.
 class CabeceraPerfil extends StatelessWidget {

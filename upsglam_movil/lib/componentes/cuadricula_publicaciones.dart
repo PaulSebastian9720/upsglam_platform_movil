@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../modelos/publicacion.dart';
-import '../tema/app_theme.dart';
-import 'imagen_app.dart';
+import 'package:upsglam_movil/modelos/publicacion.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/componentes/imagen_app.dart';
 
 /// Cuadrícula de 3 columnas para un `CustomScrollView`: perfil, perfil de
 /// otra persona y mis publicaciones.

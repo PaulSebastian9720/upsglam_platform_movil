@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../tema/app_theme.dart';
-import 'app_icono.dart';
-import 'boton_redondo.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/componentes/boton_redondo.dart';
 
 /// Zoom estándar: la foto completa a pantalla negra. Pellizcar amplía de 1 a
 /// 4, doble toque alterna entre 1 y 2 y, sin zoom, deslizar hacia abajo

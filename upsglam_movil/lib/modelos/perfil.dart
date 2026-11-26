@@ -1,4 +1,4 @@
-import 'autor.dart';
+import 'package:upsglam_movil/modelos/autor.dart';
 
 class Perfil {
   const Perfil({

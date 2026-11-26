@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../tema/app_theme.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
 
 /// Celdas grises con la forma de la cuadrícula mientras llegan las fotos.
 class CuadriculaCarga extends StatelessWidget {

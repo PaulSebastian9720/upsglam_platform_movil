@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../componentes/armazon_principal.dart';
-import '../modelos/foto.dart';
-import '../paginas/camara/camara_page.dart';
-import '../paginas/comentarios/comentarios_page.dart';
-import '../paginas/configuracion/configuracion_page.dart';
-import '../paginas/editar/editar_page.dart';
-import '../paginas/editar_perfil/editar_perfil_page.dart';
-import '../paginas/editar_publicacion/editar_publicacion_page.dart';
-import '../paginas/historial_detalle/historial_detalle_page.dart';
-import '../paginas/inicio/inicio_page.dart';
-import '../paginas/login/login_page.dart';
-import '../paginas/mis_publicaciones/mis_publicaciones_page.dart';
-import '../paginas/otro_perfil/otro_perfil_page.dart';
-import '../paginas/perfil/perfil_page.dart';
-import '../paginas/publicacion/publicacion_page.dart';
-import '../paginas/publicar/publicar_page.dart';
-import '../paginas/registro/registro_page.dart';
-import '../paginas/seguidores/seguidores_page.dart';
-import 'pagina_hoja.dart';
-import 'rutas.dart';
+import 'package:upsglam_movil/componentes/armazon_principal.dart';
+import 'package:upsglam_movil/modelos/foto.dart';
+import 'package:upsglam_movil/paginas/camara/camara_page.dart';
+import 'package:upsglam_movil/paginas/comentarios/comentarios_page.dart';
+import 'package:upsglam_movil/paginas/configuracion/configuracion_page.dart';
+import 'package:upsglam_movil/paginas/editar/editar_page.dart';
+import 'package:upsglam_movil/paginas/editar_perfil/editar_perfil_page.dart';
+import 'package:upsglam_movil/paginas/editar_publicacion/editar_publicacion_page.dart';
+import 'package:upsglam_movil/paginas/historial_detalle/historial_detalle_page.dart';
+import 'package:upsglam_movil/paginas/inicio/inicio_page.dart';
+import 'package:upsglam_movil/paginas/login/login_page.dart';
+import 'package:upsglam_movil/paginas/mis_publicaciones/mis_publicaciones_page.dart';
+import 'package:upsglam_movil/paginas/otro_perfil/otro_perfil_page.dart';
+import 'package:upsglam_movil/paginas/perfil/perfil_page.dart';
+import 'package:upsglam_movil/paginas/publicacion/publicacion_page.dart';
+import 'package:upsglam_movil/paginas/publicar/publicar_page.dart';
+import 'package:upsglam_movil/paginas/registro/registro_page.dart';
+import 'package:upsglam_movil/paginas/seguidores/seguidores_page.dart';
+import 'package:upsglam_movil/rutas/pagina_hoja.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
 
 /// Crea las rutas. Las pestañas viven dentro del armazón, con menú; el resto
 /// se abre en el navegador raíz, por encima y sin menú.

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../tema/app_theme.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
 
 /// Zoom sobre la misma foto: con dos dedos crece ahí mismo, por encima de
 /// todo, y al soltar vuelve a su lugar. Con un dedo la lista se desplaza

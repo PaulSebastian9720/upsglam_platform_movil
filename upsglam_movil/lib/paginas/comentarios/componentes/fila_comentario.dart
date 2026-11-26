@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../componentes/avatar_usuario.dart';
-import '../../../modelos/comentario.dart';
-import '../../../tema/app_theme.dart';
-import '../../../utilidades/formatos.dart';
+import 'package:upsglam_movil/componentes/avatar_usuario.dart';
+import 'package:upsglam_movil/modelos/comentario.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/utilidades/formatos.dart';
 
 /// Un comentario: foto, usuario, cuándo y el texto completo debajo.
 class FilaComentario extends StatelessWidget {

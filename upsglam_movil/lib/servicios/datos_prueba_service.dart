@@ -1,8 +1,8 @@
-import '../modelos/comentario.dart';
-import '../modelos/filtro.dart';
-import '../modelos/procesamiento.dart';
-import '../modelos/publicacion.dart';
-import '../modelos/perfil.dart';
+import 'package:upsglam_movil/modelos/comentario.dart';
+import 'package:upsglam_movil/modelos/filtro.dart';
+import 'package:upsglam_movil/modelos/procesamiento.dart';
+import 'package:upsglam_movil/modelos/publicacion.dart';
+import 'package:upsglam_movil/modelos/perfil.dart';
 
 /// Datos de prueba en memoria, mientras no hay backend. Los repositorios lo
 /// usan como si fuera la API; se reemplaza sin tocar páginas ni controladores.

@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/boton_principal.dart';
-import '../../componentes/boton_secundario.dart';
-import '../../componentes/cabecera_perfil.dart';
-import '../../componentes/cuadricula_publicaciones.dart';
-import '../../componentes/encabezado_pagina.dart';
-import '../../componentes/estado_vacio.dart';
-import '../../modelos/publicacion.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import 'componentes/perfil_cargando.dart';
-import 'otro_perfil_controller.dart';
+import 'package:upsglam_movil/componentes/boton_principal.dart';
+import 'package:upsglam_movil/componentes/boton_secundario.dart';
+import 'package:upsglam_movil/componentes/cabecera_perfil.dart';
+import 'package:upsglam_movil/componentes/cuadricula_publicaciones.dart';
+import 'package:upsglam_movil/componentes/encabezado_pagina.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/modelos/publicacion.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/otro_perfil/componentes/perfil_cargando.dart';
+import 'package:upsglam_movil/paginas/otro_perfil/otro_perfil_controller.dart';
 
 class OtroPerfilPage extends StatelessWidget {
   const OtroPerfilPage({super.key, required this.id});

@@ -1,4 +1,4 @@
-import 'autor.dart';
+import 'package:upsglam_movil/modelos/autor.dart';
 
 class Comentario {
   const Comentario({

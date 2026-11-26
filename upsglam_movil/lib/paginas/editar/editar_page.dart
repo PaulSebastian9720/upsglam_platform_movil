@@ -3,16 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/zoom_en_sitio.dart';
-import '../../componentes/app_icono.dart';
-import '../../componentes/boton_principal.dart';
-import '../../componentes/boton_redondo.dart';
-import '../../componentes/imagen_app.dart';
-import '../../componentes/selector_filtro.dart';
-import '../../modelos/foto.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import 'editar_controller.dart';
+import 'package:upsglam_movil/componentes/zoom_en_sitio.dart';
+import 'package:upsglam_movil/componentes/app_icono.dart';
+import 'package:upsglam_movil/componentes/boton_principal.dart';
+import 'package:upsglam_movil/componentes/boton_redondo.dart';
+import 'package:upsglam_movil/componentes/imagen_app.dart';
+import 'package:upsglam_movil/componentes/selector_filtro.dart';
+import 'package:upsglam_movil/modelos/foto.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/editar/editar_controller.dart';
 
 class EditarPage extends StatelessWidget {
   const EditarPage({super.key, required this.foto});

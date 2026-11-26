@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../modelos/filtro.dart';
-import '../../modelos/foto.dart';
+import 'package:upsglam_movil/modelos/filtro.dart';
+import 'package:upsglam_movil/modelos/foto.dart';
 
 class EditarController extends ChangeNotifier {
   EditarController(this._foto);

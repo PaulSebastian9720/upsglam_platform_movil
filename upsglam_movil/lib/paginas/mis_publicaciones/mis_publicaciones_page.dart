@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/cuadricula_publicaciones.dart';
-import '../../componentes/encabezado_pagina.dart';
-import '../../componentes/estado_vacio.dart';
-import '../../modelos/publicacion.dart';
-import '../../repositorios/perfil_repositorio.dart';
-import '../../repositorios/publicaciones_repositorio.dart';
-import '../../rutas/rutas.dart';
-import '../../tema/app_theme.dart';
-import 'componentes/acciones_celda.dart';
-import 'componentes/cuadricula_carga.dart';
-import 'componentes/leyenda_privacidad.dart';
-import 'mis_publicaciones_controller.dart';
+import 'package:upsglam_movil/componentes/cuadricula_publicaciones.dart';
+import 'package:upsglam_movil/componentes/encabezado_pagina.dart';
+import 'package:upsglam_movil/componentes/estado_vacio.dart';
+import 'package:upsglam_movil/modelos/publicacion.dart';
+import 'package:upsglam_movil/repositorios/perfil_repositorio.dart';
+import 'package:upsglam_movil/repositorios/publicaciones_repositorio.dart';
+import 'package:upsglam_movil/rutas/rutas.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/paginas/mis_publicaciones/componentes/acciones_celda.dart';
+import 'package:upsglam_movil/paginas/mis_publicaciones/componentes/cuadricula_carga.dart';
+import 'package:upsglam_movil/paginas/mis_publicaciones/componentes/leyenda_privacidad.dart';
+import 'package:upsglam_movil/paginas/mis_publicaciones/mis_publicaciones_controller.dart';
 
 class MisPublicacionesPage extends StatelessWidget {
   const MisPublicacionesPage({super.key});

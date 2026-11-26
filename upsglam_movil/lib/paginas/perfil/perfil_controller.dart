@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 
-import '../../modelos/publicacion.dart';
-import '../../modelos/perfil.dart';
-import '../../repositorios/perfil_repositorio.dart';
-import '../../repositorios/publicaciones_repositorio.dart';
+import 'package:upsglam_movil/modelos/publicacion.dart';
+import 'package:upsglam_movil/modelos/perfil.dart';
+import 'package:upsglam_movil/repositorios/perfil_repositorio.dart';
+import 'package:upsglam_movil/repositorios/publicaciones_repositorio.dart';
 
 class PerfilController extends ChangeNotifier {
   PerfilController(this._perfiles, this._publicaciones) {

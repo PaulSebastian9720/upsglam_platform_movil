@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../tema/app_theme.dart';
-import 'encabezado_pagina.dart';
+import 'package:upsglam_movil/tema/app_theme.dart';
+import 'package:upsglam_movil/componentes/encabezado_pagina.dart';
 
 /// Pantalla aún sin construir: solo permite saber dónde estás y volver.
 /// Se borra cuando todas las páginas tengan su contenido.
