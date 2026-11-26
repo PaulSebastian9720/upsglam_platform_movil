@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:upsglam_movil/app.dart';
-import 'package:upsglam_movil/componentes/app_alerta/app_alerta.dart';
+import 'package:upsglam_movil/componentes/app_alerta.dart';
 import 'package:upsglam_movil/modelos/fallo_camara/fallo_camara.dart';
 import 'package:upsglam_movil/modelos/filtro/filtro.dart';
 import 'package:upsglam_movil/modelos/foto/archivo_no_valido.dart';
 import 'package:upsglam_movil/modelos/foto/foto.dart';
 import 'package:upsglam_movil/paginas/editar/editar_page.dart';
-import 'package:upsglam_movil/componentes/rueda_filtro/rueda_filtro.dart';
+import 'package:upsglam_movil/componentes/rueda_filtro.dart';
 
 import 'fotos_falsas.dart';
-import 'package:upsglam_movil/componentes/barra_principal/barra_principal.dart';
-import 'package:upsglam_movil/componentes/campo_texto/campo_texto.dart';
+import 'package:upsglam_movil/componentes/barra_principal.dart';
+import 'package:upsglam_movil/componentes/campo_texto.dart';
 import 'package:upsglam_movil/paginas/camara/camara_page.dart';
 import 'package:upsglam_movil/paginas/inicio/inicio_page.dart';
 import 'package:upsglam_movil/paginas/login/login_page.dart';

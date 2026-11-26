@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../componentes/app_icono/app_icono.dart';
+import '../../../componentes/app_icono.dart';
 import '../../../tema/app_theme.dart';
 
 /// Círculo con icono y nombre debajo: galería, filtros y girar.

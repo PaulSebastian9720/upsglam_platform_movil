@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/app_alerta/app_alerta.dart';
-import '../../componentes/app_icono/app_icono.dart';
-import '../../componentes/boton_redondo/boton_redondo.dart';
-import '../../componentes/estado_vacio/estado_vacio.dart';
+import '../../componentes/app_alerta.dart';
+import '../../componentes/app_icono.dart';
+import '../../componentes/boton_redondo.dart';
+import '../../componentes/estado_vacio.dart';
 import '../../modelos/filtro/filtro.dart';
 import '../../modelos/foto/archivo_no_valido.dart';
 import '../../modelos/foto/foto.dart';

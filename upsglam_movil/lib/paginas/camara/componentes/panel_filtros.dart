@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../componentes/app_icono/app_icono.dart';
-import '../../../componentes/selector_filtro/selector_filtro.dart';
+import '../../../componentes/app_icono.dart';
+import '../../../componentes/selector_filtro.dart';
 import '../../../modelos/filtro/filtro.dart';
 import '../../../tema/app_theme.dart';
 

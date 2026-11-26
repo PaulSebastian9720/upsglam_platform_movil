@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../modelos/filtro/filtro.dart';
-import '../../tema/app_theme.dart';
+import '../modelos/filtro/filtro.dart';
+import '../tema/app_theme.dart';
 
 class RuedaFiltro extends StatelessWidget {
   const RuedaFiltro({

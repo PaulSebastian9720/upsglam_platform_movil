@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../tema/app_theme.dart';
-import '../app_icono/app_icono.dart';
+import '../tema/app_theme.dart';
+import 'app_icono.dart';
 
 /// Menú inferior. Existe una sola vez, en el armazón de las rutas.
 ///

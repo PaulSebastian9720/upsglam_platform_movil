@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../tema/app_theme.dart';
+import '../tema/app_theme.dart';
 
 /// Únicos iconos permitidos; los archivos están en assets/iconos.
 enum Iconos {

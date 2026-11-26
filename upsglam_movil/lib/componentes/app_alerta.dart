@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../tema/app_theme.dart';
-import '../app_icono/app_icono.dart';
-import '../boton_principal/boton_principal.dart';
+import '../tema/app_theme.dart';
+import 'app_icono.dart';
+import 'boton_principal.dart';
 
 enum TipoAlerta {
   archivoNoValido(

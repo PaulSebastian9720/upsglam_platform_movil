@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../tema/app_theme.dart';
+import '../tema/app_theme.dart';
 
 /// Acción amarilla de la pantalla. Solo una por pantalla.
 class BotonPrincipal extends StatelessWidget {

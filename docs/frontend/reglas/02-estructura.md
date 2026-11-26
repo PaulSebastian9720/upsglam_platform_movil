@@ -12,9 +12,9 @@ lib/
   tema/                  app_theme.dart, único
   rutas/                 navegación
   modelos/<modelo>/      usuario, publicacion, comentario, procesamiento, filtro, pagina
-  servicios/<servicio>/  sesion, api, cache, guardado, camara, galeria
+  servicios/             un archivo por servicio: camara, galeria (luego sesion, api, cache)
   repositorios/<dato>/   publicaciones, comentarios, perfil, procesamiento, seguidos, fotos
-  componentes/<pieza>/   reutilizables en dos o más páginas
+  componentes/           un archivo por pieza reutilizable en dos o más páginas
   paginas/<pagina>/      la página, su controlador y sus piezas propias
   utilidades/            validadores y formatos
 assets/  logo/ iconos/ iconos_aplicacion/ imagenes/filtros/ imagenes/login/ fuentes/
@@ -29,7 +29,7 @@ assets/  logo/ iconos/ iconos_aplicacion/ imagenes/filtros/ imagenes/login/ fuen
 | Servicio | `api_service.dart` | Envuelve una sola cosa externa, sin estado de pantalla | Decidir qué se muestra |
 | Modelo | `publicacion.dart` | Datos inmutables | Llamar a nada |
 
-- Una clase pública por archivo; carpeta con el mismo nombre; archivos en `snake_case`, clases en `PascalCase`.
+- Una clase pública por archivo. `componentes/` y `servicios/` llevan los archivos sueltos; modelos, repositorios y páginas, en carpeta con su nombre; archivos en `snake_case`, clases en `PascalCase`.
 - Dependencias por `provider` (lo recomienda la guía). Sin variables globales ni singletons sueltos.
 - La dependencia va en un sentido: página → controlador → repositorio → servicio.
 

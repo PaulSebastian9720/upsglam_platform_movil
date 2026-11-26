@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../tema/app_theme.dart';
+import '../tema/app_theme.dart';
 
 class EstadoVacio extends StatelessWidget {
   const EstadoVacio({

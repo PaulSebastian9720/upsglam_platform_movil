@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../tema/app_theme.dart';
-import '../app_icono/app_icono.dart';
+import '../tema/app_theme.dart';
+import 'app_icono.dart';
 
 class EncabezadoPagina extends StatelessWidget {
   const EncabezadoPagina({super.key, required this.titulo});

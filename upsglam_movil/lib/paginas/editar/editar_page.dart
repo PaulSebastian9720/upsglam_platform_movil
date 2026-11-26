@@ -3,11 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/app_icono/app_icono.dart';
-import '../../componentes/boton_principal/boton_principal.dart';
-import '../../componentes/boton_redondo/boton_redondo.dart';
-import '../../componentes/imagen_app/imagen_app.dart';
-import '../../componentes/selector_filtro/selector_filtro.dart';
+import '../../componentes/app_icono.dart';
+import '../../componentes/boton_principal.dart';
+import '../../componentes/boton_redondo.dart';
+import '../../componentes/imagen_app.dart';
+import '../../componentes/selector_filtro.dart';
 import '../../modelos/foto/foto.dart';
 import '../../rutas/rutas.dart';
 import '../../tema/app_theme.dart';

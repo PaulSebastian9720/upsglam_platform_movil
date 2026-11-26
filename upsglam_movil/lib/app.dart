@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import 'repositorios/fotos/fotos_repositorio.dart';
 import 'rutas/app_router.dart';
-import 'servicios/camara/camara_service.dart';
-import 'servicios/galeria/galeria_service.dart';
+import 'servicios/camara_service.dart';
+import 'servicios/galeria_service.dart';
 import 'tema/app_theme.dart';
 
 class UpsGlamApp extends StatefulWidget {

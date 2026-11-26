@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/app_icono/app_icono.dart';
-import '../../componentes/boton_principal/boton_principal.dart';
-import '../../componentes/boton_secundario/boton_secundario.dart';
-import '../../componentes/campo_texto/campo_texto.dart';
+import '../../componentes/app_icono.dart';
+import '../../componentes/boton_principal.dart';
+import '../../componentes/boton_secundario.dart';
+import '../../componentes/campo_texto.dart';
 import '../../rutas/rutas.dart';
 import '../../tema/app_theme.dart';
 import '../../utilidades/validadores.dart';

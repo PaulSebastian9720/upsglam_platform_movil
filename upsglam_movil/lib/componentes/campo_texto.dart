@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../tema/app_theme.dart';
-import '../app_icono/app_icono.dart';
+import '../tema/app_theme.dart';
+import 'app_icono.dart';
 
 /// Campo con etiqueta arriba. Se valida al salir y la línea del error está
 /// siempre reservada, para que nada se mueva cuando aparece.

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../modelos/filtro/filtro.dart';
-import '../../tema/app_theme.dart';
-import '../rueda_filtro/rueda_filtro.dart';
+import '../modelos/filtro/filtro.dart';
+import '../tema/app_theme.dart';
+import 'rueda_filtro.dart';
 
 /// Fila de ruedas con todos los filtros; "Original" va primero.
 class SelectorFiltro extends StatelessWidget {

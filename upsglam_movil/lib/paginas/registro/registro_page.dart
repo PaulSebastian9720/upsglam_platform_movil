@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../componentes/pagina_vacia/pagina_vacia.dart';
+import '../../componentes/pagina_vacia.dart';
 
 class RegistroPage extends StatelessWidget {
   const RegistroPage({super.key});

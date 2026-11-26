@@ -4,8 +4,8 @@ import 'package:camera/camera.dart';
 
 import '../../modelos/foto/archivo_no_valido.dart';
 import '../../modelos/foto/foto.dart';
-import '../../servicios/camara/camara_service.dart';
-import '../../servicios/galeria/galeria_service.dart';
+import '../../servicios/camara_service.dart';
+import '../../servicios/galeria_service.dart';
 
 /// Única fuente de fotos nuevas: la cámara y la galería.
 class FotosRepositorio {

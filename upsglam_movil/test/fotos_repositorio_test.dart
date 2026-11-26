@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:upsglam_movil/modelos/foto/archivo_no_valido.dart';
 import 'package:upsglam_movil/repositorios/fotos/fotos_repositorio.dart';
-import 'package:upsglam_movil/servicios/camara/camara_service.dart';
-import 'package:upsglam_movil/servicios/galeria/galeria_service.dart';
+import 'package:upsglam_movil/servicios/camara_service.dart';
+import 'package:upsglam_movil/servicios/galeria_service.dart';
 
 class _Galeria implements GaleriaService {
   _Galeria(this.ruta);

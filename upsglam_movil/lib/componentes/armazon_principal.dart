@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../rutas/rutas.dart';
-import '../barra_principal/barra_principal.dart';
+import '../rutas/rutas.dart';
+import 'barra_principal.dart';
 
 /// Contenedor global de las pestañas: dibuja el menú por encima de ellas.
 class ArmazonPrincipal extends StatefulWidget {

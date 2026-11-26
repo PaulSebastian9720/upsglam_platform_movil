@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../componentes/armazon_principal/armazon_principal.dart';
+import '../componentes/armazon_principal.dart';
 import '../modelos/foto/foto.dart';
 import '../paginas/camara/camara_page.dart';
 import '../paginas/configuracion/configuracion_page.dart';
