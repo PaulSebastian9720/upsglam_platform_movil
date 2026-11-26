@@ -4,7 +4,7 @@
 
 | Pieza | Regla |
 |---|---|
-| Filtro | Se **elige** en la cámara y se aplica **después** de la foto, en Editar. El visor nunca muestra un filtro |
+| Filtro | No aparece en la cámara. Se elige **después** de la foto, en Editar, y empieza en Original |
 | Foto | Queda en un archivo temporal; se borra al volver a la cámara |
 | Galería | Selector del sistema, sin permiso de fotos. El tipo se comprueba por el contenido: JPG, PNG o WEBP; si no, alerta `archivoNoValido` |
 | Permiso | Solo cámara, al abrirla. Nunca micrófono |

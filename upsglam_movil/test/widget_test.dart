@@ -162,18 +162,15 @@ void main() {
     find.byWidgetPredicate((w) => w is RuedaFiltro && w.filtro == filtro),
   );
 
-  testWidgets('tomar foto abre Editar con el filtro elegido', (tester) async {
+  testWidgets('los filtros aparecen solo después de tomar la foto', (
+    tester,
+  ) async {
     await camara(tester);
-    await tester.tap(find.text('Filtros'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('UPS'));
-    await tester.pumpAndSettle();
-    expect(find.text('UPS, al tomar la foto'), findsOneWidget);
-    expect(fotos.tomadas, 0);
+    expect(find.byType(RuedaFiltro), findsNothing);
     await tester.tap(find.bySemanticsLabel('Tomar foto'));
     await tester.pumpAndSettle();
     expect(find.byType(EditarPage), findsOneWidget);
-    expect(rueda(tester, Filtro.ups).seleccionada, isTrue);
+    expect(rueda(tester, Filtro.original).seleccionada, isTrue);
     expect(fotos.abierta, isFalse);
     await tester.tap(find.text('Nitidez'));
     await tester.pumpAndSettle();
@@ -279,16 +276,8 @@ void main() {
     expect(fotos.abierta, isTrue);
   });
 
-  testWidgets('salir suelta la cámara; atrás cierra antes los filtros', (
-    tester,
-  ) async {
+  testWidgets('salir suelta la cámara', (tester) async {
     await camara(tester);
-    await tester.tap(find.text('Filtros'));
-    await tester.pumpAndSettle();
-    await tester.binding.handlePopRoute();
-    await tester.pumpAndSettle();
-    expect(find.byType(CamaraPage), findsOneWidget);
-    expect(find.byType(RuedaFiltro), findsNothing);
     await tester.binding.handlePopRoute();
     await tester.pumpAndSettle();
     expect(find.byType(CamaraPage), findsNothing);

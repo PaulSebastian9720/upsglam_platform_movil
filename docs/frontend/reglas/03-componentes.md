@@ -14,12 +14,12 @@ Se extrae un componente cuando se usa en **dos o más páginas**. Si es de una s
 | VisorImagen | Zoom a pantalla completa | imagen |
 | AvatarUsuario | Foto de perfil | imagen, tamaño |
 | TarjetaPublicacion | Publicación en Inicio y Ver publicación | publicación, acciones |
-| RuedaFiltro | Filtros en cámara, editar e historial | filtro, seleccionada, cargando, falló |
+| RuedaFiltro | Filtros en editar e historial | filtro, seleccionada, cargando, falló |
 | ListaPaginada | Toda lista o cuadrícula con páginas | controlador, elemento |
 | HojaApp | Hojas inferiores (comentarios) | título, contenido |
 | EncabezadoPagina | Flecha y título | título, acción |
 | BotonRedondo | Icono sobre una foto | icono, descripción, acción |
-| SelectorFiltro | Fila de ruedas, en cámara y editar | filtro elegido, acción |
+| SelectorFiltro | Fila de ruedas, en editar | filtro elegido, acción |
 | EstadoVacio | Sin datos o error con reintento | mensaje, acción |
 
 ## Botones

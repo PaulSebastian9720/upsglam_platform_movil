@@ -7,7 +7,6 @@ import '../../componentes/app_alerta.dart';
 import '../../componentes/app_icono.dart';
 import '../../componentes/boton_redondo.dart';
 import '../../componentes/estado_vacio.dart';
-import '../../modelos/filtro/filtro.dart';
 import '../../modelos/foto/archivo_no_valido.dart';
 import '../../modelos/foto/foto.dart';
 import '../../rutas/rutas.dart';
@@ -15,7 +14,6 @@ import '../../tema/app_theme.dart';
 import 'camara_controller.dart';
 import 'componentes/boton_disparo.dart';
 import 'componentes/control_camara.dart';
-import 'componentes/panel_filtros.dart';
 import 'componentes/rejilla_camara.dart';
 import 'componentes/visor_camara.dart';
 
@@ -101,30 +99,18 @@ class _CamaraVistaState extends State<_CamaraVista> {
     final camara = context.watch<CamaraController>();
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
-      child: PopScope(
-        canPop: !camara.verFiltros, // atrás cierra primero los filtros
-        onPopInvokedWithResult: (salio, _) {
-          if (!salio) camara.mostrarFiltros(false);
-        },
-        child: Scaffold(
-          body: Stack(
-            fit: StackFit.expand,
-            children: [
-              _fondo(camara),
-              SafeArea(
-                minimum: const EdgeInsets.all(AppEspacio.base),
-                child: Column(
-                  children: [
-                    _arriba(camara),
-                    const Spacer(),
-                    _filtros(camara),
-                    const SizedBox(height: AppEspacio.base),
-                    _abajo(camara),
-                  ],
-                ),
+      child: Scaffold(
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            _fondo(camara),
+            SafeArea(
+              minimum: const EdgeInsets.all(AppEspacio.base),
+              child: Column(
+                children: [_arriba(camara), const Spacer(), _abajo(camara)],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -159,65 +145,22 @@ class _CamaraVistaState extends State<_CamaraVista> {
     ),
   };
 
-  Widget _arriba(CamaraController camara) {
-    final tema = Theme.of(context);
-    final sinFiltro = camara.filtro == Filtro.original;
-    return Row(
-      children: [
-        BotonRedondo(
-          icono: Iconos.cerrar,
-          descripcion: 'Cerrar cámara',
-          alPulsar: () => context.pop(),
-        ),
-        Expanded(
-          child: Center(
-            child: Container(
-              constraints: const BoxConstraints(minHeight: AppMedida.toque),
-              padding: const EdgeInsets.symmetric(horizontal: AppEspacio.base),
-              decoration: ShapeDecoration(
-                color: tema.scaffoldBackgroundColor,
-                shape: const StadiumBorder(),
-              ),
-              child: Center(
-                widthFactor: 1,
-                heightFactor: 1,
-                child: Text(
-                  sinFiltro
-                      ? 'Sin filtro'
-                      : '${camara.filtro.nombre}, al tomar la foto',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: tema.textTheme.labelMedium?.copyWith(
-                    color: sinFiltro ? null : tema.colorScheme.primary,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-        BotonRedondo(
-          icono: camara.flash ? Iconos.flash : Iconos.flashApagado,
-          descripcion: camara.flash ? 'Flash encendido' : 'Flash apagado',
-          alPulsar: camara.puedeFlash ? camara.alternarFlash : null,
-        ),
-      ],
-    );
-  }
-
-  Widget _filtros(CamaraController camara) => camara.verFiltros
-      ? PanelFiltros(
-          elegido: camara.filtro,
-          alElegir: camara.elegirFiltro,
-          alCerrar: () => camara.mostrarFiltros(false),
-        )
-      : Align(
-          alignment: Alignment.bottomRight,
-          child: ControlCamara(
-            icono: Iconos.filtros,
-            texto: 'Filtros',
-            alPulsar: () => camara.mostrarFiltros(true),
-          ),
-        );
+  // Los filtros se eligen después de tomar la foto, en Editar.
+  Widget _arriba(CamaraController camara) => Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      BotonRedondo(
+        icono: Iconos.cerrar,
+        descripcion: 'Cerrar cámara',
+        alPulsar: () => context.pop(),
+      ),
+      BotonRedondo(
+        icono: camara.flash ? Iconos.flash : Iconos.flashApagado,
+        descripcion: camara.flash ? 'Flash encendido' : 'Flash apagado',
+        alPulsar: camara.puedeFlash ? camara.alternarFlash : null,
+      ),
+    ],
+  );
 
   Widget _abajo(CamaraController camara) => Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,

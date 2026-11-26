@@ -2,7 +2,6 @@ import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../modelos/fallo_camara/fallo_camara.dart';
-import '../../modelos/filtro/filtro.dart';
 import '../../modelos/foto/foto.dart';
 import '../../repositorios/fotos/fotos_repositorio.dart';
 
@@ -26,15 +25,11 @@ class CamaraController extends ChangeNotifier {
   bool _frontal = false;
   bool _flash = false;
   bool _ocupada = false;
-  bool _verFiltros = false;
-  Filtro _filtro = Filtro.original;
 
   EstadoCamara get estado => _estado;
   bool get lista => _estado == EstadoCamara.lista;
   bool get ocupada => _ocupada;
   bool get flash => _flash;
-  bool get verFiltros => _verFiltros;
-  Filtro get filtro => _filtro;
   bool get puedeTomar => lista && !_ocupada;
   bool get puedeGirar => puedeTomar && _fotos.tieneVarias;
   bool get puedeFlash => puedeTomar && !_frontal;
@@ -94,17 +89,13 @@ class CamaraController extends ChangeNotifier {
     if (await _fotos.ponerFlash(nuevo)) _cambiar(() => _flash = nuevo);
   }
 
-  void mostrarFiltros(bool ver) => _cambiar(() => _verFiltros = ver);
-
-  void elegirFiltro(Filtro filtro) => _cambiar(() => _filtro = filtro);
-
   Future<Foto?> tomar() async {
     if (!puedeTomar) return null;
     _cambiar(() => _ocupada = true);
     try {
       return await _enFila(() async {
         if (!_viva || !lista) return null;
-        return (await _fotos.tomar()).conFiltro(_filtro);
+        return await _fotos.tomar();
       });
     } on FalloCamara {
       if (lista) _cambiar(() => _estado = EstadoCamara.fallo);
@@ -118,7 +109,7 @@ class CamaraController extends ChangeNotifier {
     if (_ocupada) return null;
     _cambiar(() => _ocupada = true);
     try {
-      return (await _fotos.elegir())?.conFiltro(_filtro);
+      return await _fotos.elegir();
     } finally {
       _cambiar(() => _ocupada = false);
     }
