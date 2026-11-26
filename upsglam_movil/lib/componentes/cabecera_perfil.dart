@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../modelos/usuario/perfil.dart';
 import '../tema/app_theme.dart';
 import 'avatar_usuario.dart';
+import 'visor_imagen.dart';
 
 /// Foto, cifras y descripción de un perfil, propio o de otra persona.
 class CabeceraPerfil extends StatelessWidget {
@@ -11,13 +12,19 @@ class CabeceraPerfil extends StatelessWidget {
     required this.perfil,
     this.mostrarUsuario = true,
     this.alPulsarSeguidores,
+    this.alPulsarSeguidos,
   });
 
   final Perfil perfil;
 
   /// En el perfil de otra persona el nombre ya va en el título.
   final bool mostrarUsuario;
+
+  /// Solo en el perfil propio: abre la lista de seguidores.
   final VoidCallback? alPulsarSeguidores;
+
+  /// Solo en el perfil propio: muestra la cifra de seguidos y abre la lista.
+  final VoidCallback? alPulsarSeguidos;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +34,24 @@ class CabeceraPerfil extends StatelessWidget {
       children: [
         Row(
           children: [
-            AvatarUsuario(
-              imagen: perfil.avatar,
-              usuario: perfil.usuario,
-              tamano: AppMedida.avatarPerfil,
+            // Tocar la foto de perfil la abre a pantalla completa.
+            Semantics(
+              button: perfil.avatar != null,
+              label: 'Ver foto de perfil',
+              child: GestureDetector(
+                onTap: perfil.avatar == null
+                    ? null
+                    : () => VisorImagen.abrir(
+                        context,
+                        ruta: perfil.avatar!,
+                        descripcion: 'Foto de ${perfil.usuario}',
+                      ),
+                child: AvatarUsuario(
+                  imagen: perfil.avatar,
+                  usuario: perfil.usuario,
+                  tamano: AppMedida.avatarPerfil,
+                ),
+              ),
             ),
             const SizedBox(width: AppEspacio.base),
             Expanded(

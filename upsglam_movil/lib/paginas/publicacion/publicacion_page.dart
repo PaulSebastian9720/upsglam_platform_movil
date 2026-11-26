@@ -16,8 +16,7 @@ class PublicacionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
-    create: (_) =>
-        PublicacionController(context.read(), context.read(), id)..cargar(),
+    create: (_) => PublicacionController(context.read(), id)..cargar(),
     child: const _PublicacionVista(),
   );
 }
@@ -31,20 +30,11 @@ class _PublicacionVista extends StatefulWidget {
 
 class _PublicacionVistaState extends State<_PublicacionVista> {
   late final _control = context.read<PublicacionController>();
-  bool _editando = false;
-
-  Future<void> _editar() async {
-    if (_editando) return; // un doble toque no la abre dos veces
-    _editando = true;
-    await context.push(Rutas.editarPublicacion(_control.id));
-    _editando = false;
-    if (mounted) await _control.cargar();
-  }
-
   void _verAutor(String autorId) => context.push(Rutas.usuario(autorId));
 
-  void _verComentarios() {
-    // Pendiente: abrir la hoja de comentarios cuando exista.
+  Future<void> _verComentarios() async {
+    await context.push(Rutas.comentarios(_control.id));
+    if (mounted) await _control.cargar(); // el número de comentarios cambió
   }
 
   @override
@@ -103,7 +93,6 @@ class _PublicacionVistaState extends State<_PublicacionVista> {
           TarjetaPublicacion(
             publicacion: p,
             alPulsarAutor: () => _verAutor(p.autor.id),
-            alPulsarOpciones: control.esMia ? _editar : null,
             alPulsarMeGusta: control.alternarMeGusta,
             alPulsarComentarios: _verComentarios,
           ),

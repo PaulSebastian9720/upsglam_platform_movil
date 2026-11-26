@@ -15,4 +15,5 @@ abstract final class Rutas {
   static String usuario(String id) => '/usuario/$id';
   static String publicacion(String id) => '/publicacion/$id';
   static String editarPublicacion(String id) => '/publicacion/$id/editar';
+  static String comentarios(String id) => '/publicacion/$id/comentarios';
 }

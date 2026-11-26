@@ -7,6 +7,7 @@ import '../utilidades/formatos.dart';
 import 'app_icono.dart';
 import 'avatar_usuario.dart';
 import 'imagen_app.dart';
+import 'zoom_en_sitio.dart';
 
 /// Publicación completa: autor, foto con su filtro, me gusta, comentarios y
 /// texto. Se usa en Inicio y en Ver publicación.
@@ -15,29 +16,29 @@ class TarjetaPublicacion extends StatelessWidget {
     super.key,
     required Publicacion this.publicacion,
     this.alPulsarAutor,
-    this.alPulsarOpciones,
-    this.alPulsarFoto,
     this.alPulsarMeGusta,
     this.alPulsarComentarios,
+    this.loSigo,
+    this.alPulsarSeguir,
   });
 
   /// Bloques grises con la forma final, mientras llega la publicación.
   const TarjetaPublicacion.cargando({super.key})
     : publicacion = null,
       alPulsarAutor = null,
-      alPulsarOpciones = null,
-      alPulsarFoto = null,
       alPulsarMeGusta = null,
-      alPulsarComentarios = null;
+      alPulsarComentarios = null,
+      loSigo = null,
+      alPulsarSeguir = null;
 
   final Publicacion? publicacion;
   final VoidCallback? alPulsarAutor;
-
-  /// Solo en las publicaciones propias; sin él no se muestra el botón.
-  final VoidCallback? alPulsarOpciones;
-  final VoidCallback? alPulsarFoto;
   final VoidCallback? alPulsarMeGusta;
   final VoidCallback? alPulsarComentarios;
+
+  /// Si sigo al autor. Nulo en mis publicaciones: no se muestra nada.
+  final bool? loSigo;
+  final VoidCallback? alPulsarSeguir;
 
   /// Marco de la foto de una publicación: todo el ancho, 5:6.
 
@@ -70,11 +71,20 @@ class TarjetaPublicacion extends StatelessWidget {
                     child: _Autor(publicacion: p, alPulsar: alPulsarAutor),
                   ),
                 ),
-                if (alPulsarOpciones != null)
-                  IconButton(
-                    tooltip: 'Opciones de tu publicación',
-                    onPressed: alPulsarOpciones,
-                    icon: const AppIcono(Iconos.mas),
+                if (loSigo == false)
+                  TextButton(
+                    onPressed: alPulsarSeguir,
+                    child: const Text('Seguir'),
+                  )
+                else if (loSigo == true)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppEspacio.m,
+                    ),
+                    child: Text(
+                      'Siguiendo',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
               ],
             ),
@@ -85,8 +95,8 @@ class TarjetaPublicacion extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              GestureDetector(
-                onTap: alPulsarFoto,
+              // Pellizcar amplía la foto ahí mismo.
+              ZoomEnSitio(
                 child: ImagenApp.recurso(
                   p.imagen,
                   descripcion: p.texto.isEmpty

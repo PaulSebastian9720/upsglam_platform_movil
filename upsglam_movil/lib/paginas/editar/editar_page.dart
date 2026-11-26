@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../../componentes/zoom_en_sitio.dart';
 import '../../componentes/app_icono.dart';
 import '../../componentes/boton_principal.dart';
 import '../../componentes/boton_redondo.dart';
@@ -41,7 +42,12 @@ class _EditarVista extends StatelessWidget {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  ImagenApp.archivo(editar.foto.ruta, descripcion: 'Tu foto'),
+                  ZoomEnSitio(
+                    child: ImagenApp.archivo(
+                      editar.foto.ruta,
+                      descripcion: 'Tu foto',
+                    ),
+                  ),
                   SafeArea(
                     minimum: const EdgeInsets.all(AppEspacio.base),
                     child: Align(

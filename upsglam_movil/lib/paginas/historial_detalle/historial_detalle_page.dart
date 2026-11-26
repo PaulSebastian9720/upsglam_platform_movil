@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../../componentes/zoom_en_sitio.dart';
 import '../../componentes/app_icono.dart';
 import '../../componentes/boton_principal.dart';
 import '../../componentes/boton_secundario.dart';
@@ -119,11 +120,13 @@ class _Cuerpo extends StatelessWidget {
             aspectRatio: AppMedida.proporcionPublicacion,
             child: foto == null
                 ? ColoredBox(color: tema.colorScheme.surfaceContainerHighest)
-                : ImagenApp.recurso(
-                    foto,
-                    descripcion: detalle.viendoOriginal
-                        ? 'Foto original'
-                        : 'Resultado con ${p!.filtro.nombre}',
+                : ZoomEnSitio(
+                    child: ImagenApp.recurso(
+                      foto,
+                      descripcion: detalle.viendoOriginal
+                          ? 'Foto original'
+                          : 'Resultado con ${p!.filtro.nombre}',
+                    ),
                   ),
           ),
         ),

@@ -1,14 +1,12 @@
 import 'package:flutter/foundation.dart';
 
 import '../../modelos/publicacion/publicacion.dart';
-import '../../repositorios/perfil/perfil_repositorio.dart';
 import '../../repositorios/publicaciones/publicaciones_repositorio.dart';
 
 class PublicacionController extends ChangeNotifier {
-  PublicacionController(this._publicaciones, this._perfil, this.id);
+  PublicacionController(this._publicaciones, this.id);
 
   final PublicacionesRepositorio _publicaciones;
-  final PerfilRepositorio _perfil;
   final String id;
 
   Publicacion? _publicacion;
@@ -24,7 +22,6 @@ class PublicacionController extends ChangeNotifier {
 
   /// Se borró, por ejemplo desde Editar publicación.
   bool get noExiste => _noExiste;
-  bool get esMia => _publicacion?.autor.id == _perfil.miId;
 
   /// Al recargar se mantiene lo que había mientras llega lo nuevo.
   Future<void> cargar() async {
@@ -52,25 +49,22 @@ class PublicacionController extends ChangeNotifier {
     }
   }
 
-  /// Cambia al instante. Aún no hay servidor al que avisar.
-  void alternarMeGusta() {
-    final p = _publicacion;
-    if (p == null) return;
-    final mio = !p.meGustaMio;
+  /// Se ve al instante; si no se guarda, vuelve a como estaba.
+  Future<void> alternarMeGusta() async {
+    final antes = _publicacion;
+    if (antes == null) return;
     _cambiar(
-      () => _publicacion = Publicacion(
-        id: p.id,
-        autor: p.autor,
-        imagen: p.imagen,
-        filtro: p.filtro,
-        creada: p.creada,
-        texto: p.texto,
-        meGusta: p.meGusta + (mio ? 1 : -1),
-        meGustaMio: mio,
-        comentarios: p.comentarios,
-        privada: p.privada,
+      () => _publicacion = antes.copyWith(
+        meGustaMio: !antes.meGustaMio,
+        meGusta: antes.meGusta + (antes.meGustaMio ? -1 : 1),
       ),
     );
+    try {
+      final guardada = await _publicaciones.alternarMeGusta(antes.id);
+      _cambiar(() => _publicacion = guardada);
+    } catch (_) {
+      _cambiar(() => _publicacion = antes);
+    }
   }
 
   void _cambiar(VoidCallback cambio) {
