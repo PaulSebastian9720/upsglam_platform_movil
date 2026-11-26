@@ -17,12 +17,16 @@ Todas las fotos pasan por `ImagenApp`. El hueco se reserva **antes** de cargar, 
 
 El recorte es solo visual: el archivo enviado y el resultado conservan su tamaño.
 
-## Zoom estándar
-- Se abre al tocar una foto en Inicio, Ver publicación, Editar e Historial. No en cuadrículas, ruedas ni avatares.
-- `VisorImagen` a pantalla completa, fondo negro, sobre `InteractiveViewer` de Flutter.
-- Escala de **1 a 4**. Pellizcar amplía; doble toque alterna entre 1 y 2; deslizar hacia abajo cierra, solo en escala 1.
-- Se ve la foto **completa**, sin recorte, y con más resolución que en el marco.
-- Al cerrar vuelve a escala 1. El gesto no compite con el desplazamiento de la lista, porque ocurre en otra pantalla.
+## Zoom
+**En la misma foto** (publicaciones en Inicio y Ver publicación, Editar e Historial): `ZoomEnSitio`.
+- Con dos dedos la foto crece ahí mismo, por encima de todo y con el fondo oscurecido; escala de **1 a 4**.
+- Al soltar vuelve a su lugar. Con un dedo la lista se desplaza como siempre; mientras se amplía, la lista no se mueve.
+
+**En ventana nueva** (solo la foto de perfil): `VisorImagen`.
+- Se abre al tocar la foto de perfil. Fondo negro, foto **completa** sin recorte, sobre `InteractiveViewer`.
+- Escala de 1 a 4; doble toque alterna entre 1 y 2; deslizar hacia abajo cierra, solo en escala 1.
+
+No hay zoom en cuadrículas, ruedas ni avatares de listas.
 
 ## Peso
 - Decodificar al tamaño del marco, no al del archivo.

@@ -11,7 +11,8 @@ Se extrae un componente cuando se usa en **dos o más páginas**. Si es de una s
 | CampoTexto | Todos los campos | etiqueta, validador, tipo, líneas |
 | AppIcono | Todos los iconos | nombre, tamaño, color, descripción |
 | ImagenApp | Todas las fotos | origen, marco |
-| VisorImagen | Zoom a pantalla completa | imagen |
+| VisorImagen | Zoom en ventana nueva: solo la foto de perfil | imagen |
+| ZoomEnSitio | Zoom con dos dedos sobre la misma foto de una publicación | foto |
 | AvatarUsuario | Foto de perfil | imagen, tamaño |
 | TarjetaPublicacion | Publicación en Inicio y Ver publicación | publicación, acciones |
 | RuedaFiltro | Filtros en editar e historial | filtro, seleccionada, cargando, falló |
