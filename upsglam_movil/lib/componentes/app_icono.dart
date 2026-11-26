@@ -30,6 +30,7 @@ enum Iconos {
   flecha,
   mas,
   comentario,
+  enviar,
   meGusta('me_gusta'),
   meGustaActivo('me_gusta_activo'),
   verClave('ver_clave'),

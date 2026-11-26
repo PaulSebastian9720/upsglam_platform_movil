@@ -16,6 +16,7 @@ abstract final class AppColors {
   static const meGusta = Color(0xFFFF5A66);
   static const verde = Color(0xFF6FE3B2);
   static const velo = Color(0xB808090B);
+  static const visor = Color(0xFF000000); // fondo del zoom de fotos
 }
 
 abstract final class AppEspacio {
@@ -45,6 +46,13 @@ abstract final class AppMedida {
   static const barraAncho = 292.0;
   static const bola = 80.0; // cámara del menú
   static const logoBola = 55.0;
+  static const logoInicio = 34.0;
+  static const agarraderaAncho = 40.0; // barra para arrastrar una hoja
+  static const agarraderaAlto = 4.0;
+  static const zoomMaximo = 4.0;
+  static const zoomDobleToque = 2.0;
+  static const cerrarZoom = 120.0; // cuánto bajar la foto para cerrarla
+  static const lineasComentario = 5; // el campo crece hasta aquí
   static const disparo = 90.0; // tomar foto
   static const control = 60.0; // galería, filtros y girar
   static const rueda = 64.0;
@@ -218,6 +226,17 @@ abstract final class AppTheme {
         textStyle: _texto(16, 22, FontWeight.w600),
         shape: _forma,
       ),
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: AppColors.superficie,
+      modalBackgroundColor: AppColors.superficie,
+      modalBarrierColor: AppColors.velo,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(AppRadio.hoja),
+        ),
+      ),
+      clipBehavior: Clip.antiAlias,
     ),
     dialogTheme: DialogThemeData(
       backgroundColor: AppColors.superficie,
