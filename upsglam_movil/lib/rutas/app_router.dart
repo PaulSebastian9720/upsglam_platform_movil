@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../componentes/armazon_principal.dart';
 import '../modelos/foto/foto.dart';
 import '../paginas/camara/camara_page.dart';
+import '../paginas/comentarios/comentarios_page.dart';
 import '../paginas/configuracion/configuracion_page.dart';
 import '../paginas/editar/editar_page.dart';
 import '../paginas/editar_perfil/editar_perfil_page.dart';
@@ -17,7 +18,8 @@ import '../paginas/perfil/perfil_page.dart';
 import '../paginas/publicacion/publicacion_page.dart';
 import '../paginas/publicar/publicar_page.dart';
 import '../paginas/registro/registro_page.dart';
-import '../paginas/seguidos/seguidos_page.dart';
+import '../paginas/seguidores/seguidores_page.dart';
+import 'pagina_hoja.dart';
 import 'rutas.dart';
 
 /// Crea las rutas. Las pestañas viven dentro del armazón, con menú; el resto
@@ -44,11 +46,25 @@ GoRouter crearRouter() {
     routes: [
       sobre(Rutas.login, const LoginPage()),
       sobre(Rutas.registro, const RegistroPage()),
-      // Antes del armazón, para que gane a /publicacion/:id.
+      // Comentarios y editar van sueltos y antes, para que ganen a
+      // /publicacion/:id y no apilen la publicación debajo.
+      GoRoute(
+        path: '/publicacion/:id/comentarios',
+        parentNavigatorKey: raiz,
+        pageBuilder: (_, estado) =>
+            PaginaHoja(child: ComentariosPage(id: id(estado))),
+      ),
       GoRoute(
         path: '/publicacion/:id/editar',
         parentNavigatorKey: raiz,
         builder: (_, estado) => EditarPublicacionPage(id: id(estado)),
+      ),
+      // Ver publicación se abre encima, como el detalle del historial, desde
+      // cualquier pestaña y sin cambiarla.
+      GoRoute(
+        path: '/publicacion/:id',
+        parentNavigatorKey: raiz,
+        builder: (_, estado) => PublicacionPage(id: id(estado)),
       ),
       StatefulShellRoute.indexedStack(
         parentNavigatorKey: raiz,
@@ -63,10 +79,6 @@ GoRouter crearRouter() {
               GoRoute(
                 path: '/usuario/:id',
                 builder: (_, estado) => OtroPerfilPage(id: id(estado)),
-              ),
-              GoRoute(
-                path: '/publicacion/:id',
-                builder: (_, estado) => PublicacionPage(id: id(estado)),
               ),
             ],
           ),
@@ -85,7 +97,18 @@ GoRouter crearRouter() {
                     builder: (_, estado) =>
                         HistorialDetallePage(id: id(estado)),
                   ),
-                  sobre('seguidos', const SeguidosPage()),
+                  // Dentro de la pestaña: la lista y el perfil de cada
+                  // seguidor se abren con el menú y Atrás vuelve a la lista.
+                  GoRoute(
+                    path: 'seguidores',
+                    builder: (_, _) => const SeguidoresPage(),
+                    routes: [
+                      GoRoute(
+                        path: ':id',
+                        builder: (_, estado) => OtroPerfilPage(id: id(estado)),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ],

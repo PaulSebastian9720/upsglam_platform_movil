@@ -6,34 +6,34 @@ import '../../componentes/encabezado_pagina.dart';
 import '../../componentes/estado_vacio.dart';
 import '../../rutas/rutas.dart';
 import '../../tema/app_theme.dart';
-import 'componentes/fila_seguido.dart';
-import 'seguidos_controller.dart';
+import 'componentes/fila_seguidor.dart';
+import 'seguidores_controller.dart';
 
-class SeguidosPage extends StatelessWidget {
-  const SeguidosPage({super.key});
+class SeguidoresPage extends StatelessWidget {
+  const SeguidoresPage({super.key});
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
-    create: (_) => SeguidosController(context.read())..cargar(),
-    child: const _SeguidosVista(),
+    create: (_) => SeguidoresController(context.read())..cargar(),
+    child: const _SeguidoresVista(),
   );
 }
 
-class _SeguidosVista extends StatefulWidget {
-  const _SeguidosVista();
+class _SeguidoresVista extends StatefulWidget {
+  const _SeguidoresVista();
 
   @override
-  State<_SeguidosVista> createState() => _SeguidosVistaState();
+  State<_SeguidoresVista> createState() => _SeguidoresVistaState();
 }
 
-class _SeguidosVistaState extends State<_SeguidosVista> {
-  late final _control = context.read<SeguidosController>();
+class _SeguidoresVistaState extends State<_SeguidoresVista> {
+  late final _control = context.read<SeguidoresController>();
   bool _abriendo = false;
 
   Future<void> _abrir(String id) async {
     if (_abriendo) return; // un doble toque no lo abre dos veces
     _abriendo = true;
-    await context.push(Rutas.usuario(id));
+    await context.push(Rutas.seguidor(id));
     _abriendo = false;
     // Pudo seguir o dejar de seguir desde su perfil.
     if (mounted) await _control.cargar();
@@ -41,7 +41,7 @@ class _SeguidosVistaState extends State<_SeguidosVista> {
 
   @override
   Widget build(BuildContext context) {
-    final control = context.watch<SeguidosController>();
+    final control = context.watch<SeguidoresController>();
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -54,7 +54,7 @@ class _SeguidosVistaState extends State<_SeguidosVista> {
                 AppEspacio.base,
                 AppEspacio.s,
               ),
-              child: EncabezadoPagina(titulo: 'Seguidos'),
+              child: EncabezadoPagina(titulo: 'Seguidores'),
             ),
             Expanded(child: _contenido(control)),
           ],
@@ -63,34 +63,32 @@ class _SeguidosVistaState extends State<_SeguidosVista> {
     );
   }
 
-  Widget _contenido(SeguidosController control) {
+  Widget _contenido(SeguidoresController control) {
     final personas = control.personas;
     if (personas == null && control.fallo) {
       return EstadoVacio(
-        mensaje: 'No se pudo cargar a quién sigues',
+        mensaje: 'No se pudo cargar a tus seguidores',
         accion: 'Reintentar',
         alPulsar: control.cargar,
       );
     }
     if (personas == null) return const _ListaCargando();
     if (personas.isEmpty) {
-      return const EstadoVacio(mensaje: 'Aún no sigues a nadie');
+      return const EstadoVacio(mensaje: 'Aún no te sigue nadie');
     }
-    return RefreshIndicator(
-      onRefresh: control.cargar,
-      child: ListView.builder(
-        physics: const AlwaysScrollableScrollPhysics(),
-        itemCount: personas.length,
-        itemBuilder: (_, i) {
-          final perfil = personas[i];
-          return FilaSeguido(
-            key: ValueKey(perfil.id),
-            perfil: perfil,
-            alAbrir: () => _abrir(perfil.id),
-            alAlternar: () => control.alternar(perfil.id),
-          );
-        },
-      ),
+    return ListView.builder(
+      // Para que el menú flotante no tape lo último.
+      padding: EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom),
+      itemCount: personas.length,
+      itemBuilder: (_, i) {
+        final perfil = personas[i];
+        return FilaSeguidor(
+          key: ValueKey(perfil.id),
+          perfil: perfil,
+          alAbrir: () => _abrir(perfil.id),
+          alAlternar: () => control.alternar(perfil.id),
+        );
+      },
     );
   }
 }

@@ -6,8 +6,8 @@ import '../../../tema/app_theme.dart';
 
 /// Una persona que sigo: foto, usuario y el botón para seguir o dejar de
 /// seguir. Tocar la fila abre su perfil.
-class FilaSeguido extends StatelessWidget {
-  const FilaSeguido({
+class FilaSeguidor extends StatelessWidget {
+  const FilaSeguidor({
     super.key,
     required this.perfil,
     required this.alAbrir,

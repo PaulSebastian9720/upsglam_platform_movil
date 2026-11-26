@@ -117,7 +117,7 @@ class _PerfilVistaState extends State<_PerfilVista>
                                 perfil: datos,
                                 mostrarUsuario: false,
                                 alPulsarSeguidores: () =>
-                                    context.push(Rutas.seguidos),
+                                    _abrir(Rutas.seguidores),
                               ),
                       ),
                     ),

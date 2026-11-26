@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 import '../../modelos/usuario/perfil.dart';
 import '../../repositorios/seguidos/seguidos_repositorio.dart';
 
-class SeguidosController extends ChangeNotifier {
-  SeguidosController(this._seguidos);
+class SeguidoresController extends ChangeNotifier {
+  SeguidoresController(this._seguidos);
 
   final SeguidosRepositorio _seguidos;
 
@@ -14,8 +14,8 @@ class SeguidosController extends ChangeNotifier {
   final _enviando = <String>{};
   bool _viva = true;
 
-  /// Las personas que sigo; nula mientras llega por primera vez. Quien deja
-  /// de ser seguido sigue en la lista, con "Seguir", hasta recargar.
+  /// Las personas que me siguen; nula mientras llega por primera vez. A cada
+  /// una la puedo seguir o dejar de seguir desde aquí.
   List<Perfil>? get personas => _personas;
   bool get cargando => _cargando;
   bool get fallo => _fallo;
@@ -28,7 +28,7 @@ class SeguidosController extends ChangeNotifier {
       _fallo = false;
     });
     try {
-      final lista = await _seguidos.seguidos();
+      final lista = await _seguidos.seguidores();
       _cambiar(() => _personas = lista);
     } catch (_) {
       _cambiar(() => _fallo = true);
