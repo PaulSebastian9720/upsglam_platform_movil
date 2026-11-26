@@ -54,7 +54,7 @@ void main() {
     await tester.tap(find.text('Crear cuenta'));
     await tester.pumpAndSettle();
     expect(find.byType(RegistroPage), findsOneWidget);
-    await tester.tap(find.byTooltip('Volver'));
+    await tester.tap(find.byTooltip('Volver a iniciar sesión'));
     await tester.pumpAndSettle();
     expect(find.byType(LoginPage), findsOneWidget);
   });

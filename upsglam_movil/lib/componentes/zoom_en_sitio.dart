@@ -44,7 +44,7 @@ class _ZoomEnSitioState extends State<ZoomEnSitio>
 
   @override
   void dispose() {
-    _terminar();
+    _limpiar(); // al cerrar no se redibuja: solo se suelta lo tomado
     _vuelta.dispose();
     super.dispose();
   }
@@ -94,11 +94,15 @@ class _ZoomEnSitioState extends State<ZoomEnSitio>
   }
 
   void _terminar() {
+    _limpiar();
+    if (mounted) setState(() {});
+  }
+
+  void _limpiar() {
     _capa?.remove();
     _capa = null;
     _freno?.cancel();
     _freno = null;
-    if (mounted) setState(() {});
   }
 
   Widget _dibujarCapa(BuildContext context) {
