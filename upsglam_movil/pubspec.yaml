@@ -70,6 +70,8 @@ flutter:
     - assets/iconos/
     - assets/imagenes/filtros/
     - assets/imagenes/login/
+    # Datos de prueba: se borran cuando llegue el backend.
+    - assets/mock/
 
   fonts:
     - family: Bricolage Grotesque
