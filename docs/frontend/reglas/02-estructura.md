@@ -52,7 +52,7 @@ assets/  logo/ iconos/ iconos_aplicacion/ imagenes/filtros/ imagenes/login/ fuen
 | Aplicando, Media, UPS | `/editar` | editar | No |
 | Publicar | `/publicar` | publicar | No |
 | Perfil | `/perfil` | perfil | Sí |
-| Historial (pestaña) | `/perfil/historial` | historial | Sí |
+| Historial (pestaña) | Pestaña dentro de `/perfil`, sin ruta propia | perfil | Sí |
 | Historial, lista o falló | `/perfil/historial/:id` | historial_detalle | No |
 | Configuración y actividad | `/configuracion` | configuracion | No |
 | Editar perfil | `/configuracion/perfil` | editar_perfil | No |

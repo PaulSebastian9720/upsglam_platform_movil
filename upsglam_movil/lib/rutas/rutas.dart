@@ -3,7 +3,6 @@ abstract final class Rutas {
   static const registro = '/registro';
   static const inicio = '/inicio';
   static const perfil = '/perfil';
-  static const historial = '/perfil/historial';
   static const seguidos = '/perfil/seguidos';
   static const camara = '/camara';
   static const editar = '/editar';

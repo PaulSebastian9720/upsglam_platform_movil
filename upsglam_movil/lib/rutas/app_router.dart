@@ -8,7 +8,6 @@ import '../paginas/configuracion/configuracion_page.dart';
 import '../paginas/editar/editar_page.dart';
 import '../paginas/editar_perfil/editar_perfil_page.dart';
 import '../paginas/editar_publicacion/editar_publicacion_page.dart';
-import '../paginas/historial/historial_page.dart';
 import '../paginas/historial_detalle/historial_detalle_page.dart';
 import '../paginas/inicio/inicio_page.dart';
 import '../paginas/login/login_page.dart';
@@ -37,12 +36,20 @@ GoRouter crearRouter() {
     routes: hijas,
   );
 
+  String id(GoRouterState estado) => estado.pathParameters['id']!;
+
   return GoRouter(
     navigatorKey: raiz,
     initialLocation: Rutas.login,
     routes: [
       sobre(Rutas.login, const LoginPage()),
       sobre(Rutas.registro, const RegistroPage()),
+      // Antes del armazón, para que gane a /publicacion/:id.
+      GoRoute(
+        path: '/publicacion/:id/editar',
+        parentNavigatorKey: raiz,
+        builder: (_, estado) => EditarPublicacionPage(id: id(estado)),
+      ),
       StatefulShellRoute.indexedStack(
         parentNavigatorKey: raiz,
         builder: (_, _, pestanas) => ArmazonPrincipal(pestanas: pestanas),
@@ -55,12 +62,11 @@ GoRouter crearRouter() {
               ),
               GoRoute(
                 path: '/usuario/:id',
-                builder: (_, _) => const OtroPerfilPage(),
+                builder: (_, estado) => OtroPerfilPage(id: id(estado)),
               ),
               GoRoute(
                 path: '/publicacion/:id',
-                builder: (_, _) => const PublicacionPage(),
-                routes: [sobre('editar', const EditarPublicacionPage())],
+                builder: (_, estado) => PublicacionPage(id: id(estado)),
               ),
             ],
           ),
@@ -68,12 +74,16 @@ GoRouter crearRouter() {
             routes: [
               GoRoute(
                 path: Rutas.perfil,
-                builder: (_, _) => const PerfilPage(),
+                pageBuilder: (_, _) =>
+                    const NoTransitionPage(child: PerfilPage()),
                 routes: [
+                  // Historial es una pestaña dentro de Perfil; solo su
+                  // detalle tiene ruta propia, encima y sin menú.
                   GoRoute(
-                    path: 'historial',
-                    builder: (_, _) => const HistorialPage(),
-                    routes: [sobre(':id', const HistorialDetallePage())],
+                    path: 'historial/:id',
+                    parentNavigatorKey: raiz,
+                    builder: (_, estado) =>
+                        HistorialDetallePage(id: id(estado)),
                   ),
                   sobre('seguidos', const SeguidosPage()),
                 ],
