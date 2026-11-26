@@ -19,8 +19,8 @@ class BotonDisparo extends StatelessWidget {
       child: GestureDetector(
         onTap: alPulsar,
         child: Container(
-          width: AppMedida.bola,
-          height: AppMedida.bola,
+          width: AppMedida.disparo,
+          height: AppMedida.disparo,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: alPulsar != null || ocupado

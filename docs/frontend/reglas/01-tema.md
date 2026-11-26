@@ -40,14 +40,14 @@ Son pesos fijos, no variables: así `FontWeight` basta. Están recortadas a cara
 
 | Estilo del tema | Letra | Tamaño / línea | Uso |
 |---|---|---|---|
-| headlineLarge | Bricolage 800 | 34 / 38 | Login, Crear cuenta |
-| headlineMedium | Bricolage 800 | 30 / 34 | Inicio, Perfil |
-| headlineSmall | Bricolage 800 | 28 / 34 | Pantallas con flecha |
-| titleLarge | Bricolage 800 | 22 / 28 | Hojas, alertas, cifras |
-| titleMedium | Figtree 600 | 16 / 22 | Nombres y opciones |
-| bodyLarge | Figtree 400 | 16 / 23 | Campos, texto de publicación |
-| bodyMedium | Figtree 400 | 15 / 21 | Texto general |
-| bodySmall | Figtree 400 | 14 / 19 | Fechas |
+| headlineLarge | Bricolage 800 | 30 / 34 | Login, Crear cuenta |
+| headlineMedium | Bricolage 800 | 26 / 30 | Inicio, Perfil |
+| headlineSmall | Bricolage 800 | 24 / 30 | Pantallas con flecha |
+| titleLarge | Bricolage 800 | 20 / 26 | Hojas, alertas, cifras |
+| titleMedium | Figtree 600 | 15 / 21 | Nombres y opciones |
+| bodyLarge | Figtree 400 | 15 / 21 | Campos, texto de publicación |
+| bodyMedium | Figtree 400 | 14 / 20 | Texto general |
+| bodySmall | Figtree 400 | 13 / 18 | Fechas |
 | labelLarge | Figtree 600 | 16 / 22 | Botones |
 | labelMedium | Figtree 600 | 14 / 18 | Etiquetas y estados |
 | labelSmall | Figtree 600 | 13 / 16 | Ruedas de filtro, error de campo |

@@ -154,7 +154,7 @@ class _Bola extends StatelessWidget {
           ),
           child: SvgPicture.asset(
             'assets/logo/logo_amarillo.svg',
-            width: 62,
+            width: AppMedida.logoBola,
             excludeFromSemantics: true,
           ),
         ),

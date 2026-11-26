@@ -43,7 +43,9 @@ abstract final class AppMedida {
   static const borde = 5.0; // anillo que separa del fondo
   static const barra = 72.0;
   static const barraAncho = 292.0;
-  static const bola = 90.0;
+  static const bola = 80.0; // cámara del menú
+  static const logoBola = 55.0;
+  static const disparo = 90.0; // tomar foto
   static const control = 60.0; // galería, filtros y girar
   static const rueda = 64.0;
   static const bordeRueda = 3.0;
@@ -164,14 +166,14 @@ abstract final class AppTheme {
     ),
     extensions: const [AppEstados.oscuro],
     textTheme: TextTheme(
-      headlineLarge: _titulo(34, 38), // Login y Crear cuenta
-      headlineMedium: _titulo(30, 34), // Inicio y Perfil
-      headlineSmall: _titulo(28, 34), // pantallas con flecha
-      titleLarge: _titulo(22, 28), // hojas, alertas y cifras
-      titleMedium: _texto(16, 22, FontWeight.w600), // nombres y opciones
-      bodyLarge: _texto(16, 23), // campos y texto de publicación
-      bodyMedium: _texto(15, 21),
-      bodySmall: _texto(14, 19).copyWith(color: AppColors.texto2),
+      headlineLarge: _titulo(30, 34), // Login y Crear cuenta
+      headlineMedium: _titulo(26, 30), // Inicio y Perfil
+      headlineSmall: _titulo(24, 30), // pantallas con flecha
+      titleLarge: _titulo(20, 26), // hojas, alertas y cifras
+      titleMedium: _texto(15, 21, FontWeight.w600), // nombres y opciones
+      bodyLarge: _texto(15, 21), // campos y texto de publicación
+      bodyMedium: _texto(14, 20),
+      bodySmall: _texto(13, 18).copyWith(color: AppColors.texto2),
       labelLarge: _texto(16, 22, FontWeight.w600), // botones
       labelMedium: _texto(14, 18, FontWeight.w600), // etiquetas y estados
       labelSmall: _texto(13, 16, FontWeight.w600), // ruedas y errores
@@ -179,7 +181,7 @@ abstract final class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColors.campo,
-      hintStyle: _texto(16, 23).copyWith(color: AppColors.texto2),
+      hintStyle: _texto(15, 21).copyWith(color: AppColors.texto2),
       helperStyle: _texto(13, 16, FontWeight.w600),
       errorStyle: _texto(
         13,
@@ -190,7 +192,7 @@ abstract final class AppTheme {
       errorMaxLines: 1,
       contentPadding: const EdgeInsets.symmetric(
         horizontal: AppEspacio.base,
-        vertical: 14, // con la línea de 23 da 52 de alto
+        vertical: 15, // con la línea de 21 da 52 de alto
       ),
       enabledBorder: _campo(AppColors.campo),
       focusedBorder: _campo(AppColors.amarillo),
