@@ -20,7 +20,6 @@ enum Iconos {
   flashApagado('flash_apagado'),
   alerta,
   alertaArchivo('alerta_archivo'),
-  google,
   ajustes,
   publicaciones,
   publica,
@@ -42,8 +41,8 @@ enum Iconos {
 
   String get ruta => 'assets/iconos/${_archivo ?? name}.svg';
 
-  /// Google y filtros conservan sus colores.
-  bool get conservaColor => this == google || this == filtros;
+  /// Filtros conserva sus colores.
+  bool get conservaColor => this == filtros;
 }
 
 class AppIcono extends StatelessWidget {

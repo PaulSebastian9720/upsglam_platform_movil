@@ -3,9 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../componentes/app_icono.dart';
 import '../../componentes/boton_principal.dart';
-import '../../componentes/boton_secundario.dart';
 import '../../componentes/campo_texto.dart';
 import '../../rutas/rutas.dart';
 import '../../tema/app_theme.dart';
@@ -111,12 +109,6 @@ class _LoginVistaState extends State<_LoginVista> {
                               texto: 'Iniciar sesión',
                               cargando: cargando,
                               alPulsar: _entrar,
-                            ),
-                            const SizedBox(height: AppEspacio.m),
-                            BotonSecundario(
-                              texto: 'Continuar con Google',
-                              icono: Iconos.google,
-                              alPulsar: cargando ? null : _entrar,
                             ),
                             const Spacer(),
                             const SizedBox(height: AppEspacio.l),

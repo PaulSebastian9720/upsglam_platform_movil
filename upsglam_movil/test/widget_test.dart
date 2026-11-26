@@ -47,13 +47,6 @@ void main() {
     expect(find.byType(BarraPrincipal), findsOneWidget);
   });
 
-  testWidgets('Continuar con Google también deja pasar', (tester) async {
-    await abrir(tester);
-    await tester.tap(find.text('Continuar con Google'));
-    await tester.pumpAndSettle();
-    expect(find.byType(InicioPage), findsOneWidget);
-  });
-
   testWidgets('Crear cuenta abre el registro y se puede volver', (
     tester,
   ) async {

@@ -5,7 +5,7 @@
 | Necesito… | Uso |
 |---|---|
 | Saber si hay sesión o quién es | `SesionService` (`lib/servicios/sesion/`) |
-| Iniciar sesión, crear cuenta, Google, salir | `SesionService` |
+| Iniciar sesión, crear cuenta, salir | `SesionService` |
 | Llamar al backend | Un repositorio; él usa `ApiService` (`lib/servicios/api/`) |
 | El token a mano | No lo necesitas |
 | Reaccionar a entrar o salir | Las rutas ya redirigen solas |
@@ -21,7 +21,6 @@
 3. **Petición:** `ApiService` agrega `Authorization: Bearer`.
 4. **401:** renovar una vez y repetir una vez. Si vuelve a fallar, cerrar sesión.
 5. **Salir:** se borra el token, **todo el caché** y el estado de los repositorios, y se va a login.
-6. **Google:** la primera vez se crea el usuario; el perfil lo completa el backend.
 
 ## Prohibido
 - Guardar la contraseña, o el token en Shared Preferences, en el caché, en modelos o en registros.

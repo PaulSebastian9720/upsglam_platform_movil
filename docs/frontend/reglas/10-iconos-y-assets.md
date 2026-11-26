@@ -13,10 +13,10 @@ Están en `upsglam_movil/assets/` y, completos, en [docs/frontend/assets](../ass
 | Navegación | atras, cerrar, flecha |
 | Acciones | guardar, enviar, editar, eliminar, ajustes |
 | Perfil | publicaciones, publica, privada |
-| Acceso | google, ver_clave, ocultar_clave |
+| Acceso | ver_clave, ocultar_clave |
 | Alertas | alerta, alerta_archivo, alerta_tamano, alerta_espera |
 
-`google` y `filtros` conservan sus colores. `flash` y `ocultar_clave` son el otro estado de un icono ya aprobado. Todo icono que se toca lleva descripción.
+`filtros` conserva sus colores. `flash` y `ocultar_clave` son el otro estado de un icono ya aprobado. Todo icono que se toca lleva descripción.
 
 ## Logo
 | Archivo | Uso |
