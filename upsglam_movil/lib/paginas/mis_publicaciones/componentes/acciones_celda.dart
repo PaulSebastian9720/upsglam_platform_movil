@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../componentes/app_icono.dart';
-import '../../../modelos/publicacion/publicacion.dart';
+import '../../../modelos/publicacion.dart';
 import '../../../tema/app_theme.dart';
 import 'boton_celda.dart';
 

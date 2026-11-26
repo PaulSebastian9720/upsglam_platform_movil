@@ -1,5 +1,5 @@
-import '../filtro/filtro.dart';
-import '../usuario/autor.dart';
+import 'filtro.dart';
+import 'autor.dart';
 
 class Publicacion {
   const Publicacion({

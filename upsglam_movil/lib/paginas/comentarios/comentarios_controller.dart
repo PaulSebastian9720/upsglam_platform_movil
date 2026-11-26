@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../modelos/comentario/comentario.dart';
-import '../../repositorios/comentarios/comentarios_repositorio.dart';
+import '../../modelos/comentario.dart';
+import '../../repositorios/comentarios_repositorio.dart';
 
 class ComentariosController extends ChangeNotifier {
   ComentariosController(this._comentarios, this.publicacionId) {

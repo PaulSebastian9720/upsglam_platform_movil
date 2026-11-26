@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../modelos/publicacion/publicacion.dart';
+import '../modelos/publicacion.dart';
 import '../tema/app_theme.dart';
 import 'imagen_app.dart';
 

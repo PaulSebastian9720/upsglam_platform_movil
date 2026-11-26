@@ -1,4 +1,4 @@
-import '../filtro/filtro.dart';
+import 'filtro.dart';
 
 /// Foto tomada o elegida, con el filtro que se aplicará después.
 class Foto {

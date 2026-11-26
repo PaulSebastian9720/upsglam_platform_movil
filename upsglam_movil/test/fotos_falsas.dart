@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
-import 'package:upsglam_movil/modelos/fallo_camara/fallo_camara.dart';
-import 'package:upsglam_movil/modelos/foto/foto.dart';
-import 'package:upsglam_movil/repositorios/fotos/fotos_repositorio.dart';
+import 'package:upsglam_movil/modelos/fallo_camara.dart';
+import 'package:upsglam_movil/modelos/foto.dart';
+import 'package:upsglam_movil/repositorios/fotos_repositorio.dart';
 
 class FotosFalsas implements FotosRepositorio {
   bool abierta = false;

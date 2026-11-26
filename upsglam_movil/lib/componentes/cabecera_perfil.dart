@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../modelos/usuario/perfil.dart';
+import '../modelos/perfil.dart';
 import '../tema/app_theme.dart';
 import 'avatar_usuario.dart';
 import 'visor_imagen.dart';

@@ -8,7 +8,7 @@ import '../../componentes/cabecera_perfil.dart';
 import '../../componentes/cuadricula_publicaciones.dart';
 import '../../componentes/encabezado_pagina.dart';
 import '../../componentes/estado_vacio.dart';
-import '../../modelos/publicacion/publicacion.dart';
+import '../../modelos/publicacion.dart';
 import '../../rutas/rutas.dart';
 import '../../tema/app_theme.dart';
 import 'componentes/perfil_cargando.dart';

@@ -9,7 +9,7 @@ import '../../componentes/boton_principal.dart';
 import '../../componentes/boton_redondo.dart';
 import '../../componentes/imagen_app.dart';
 import '../../componentes/selector_filtro.dart';
-import '../../modelos/foto/foto.dart';
+import '../../modelos/foto.dart';
 import '../../rutas/rutas.dart';
 import '../../tema/app_theme.dart';
 import 'editar_controller.dart';

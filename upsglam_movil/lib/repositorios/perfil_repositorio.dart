@@ -1,5 +1,5 @@
-import '../../modelos/usuario/perfil.dart';
-import '../../servicios/datos_prueba_service.dart';
+import '../modelos/perfil.dart';
+import '../servicios/datos_prueba_service.dart';
 
 /// Única fuente de los perfiles. Hoy lee datos de prueba.
 class PerfilRepositorio {

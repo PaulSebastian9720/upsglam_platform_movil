@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../modelos/filtro/filtro.dart';
+import '../modelos/filtro.dart';
 import '../tema/app_theme.dart';
 import 'rueda_filtro.dart';
 

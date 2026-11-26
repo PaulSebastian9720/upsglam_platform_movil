@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../componentes/avatar_usuario.dart';
-import '../../../modelos/usuario/perfil.dart';
+import '../../../modelos/perfil.dart';
 import '../../../tema/app_theme.dart';
 
 /// Una persona que sigo: foto, usuario y el botón para seguir o dejar de

@@ -1,9 +1,9 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../modelos/fallo_camara/fallo_camara.dart';
-import '../../modelos/foto/foto.dart';
-import '../../repositorios/fotos/fotos_repositorio.dart';
+import '../../modelos/fallo_camara.dart';
+import '../../modelos/foto.dart';
+import '../../repositorios/fotos_repositorio.dart';
 
 enum EstadoCamara {
   cerrada,

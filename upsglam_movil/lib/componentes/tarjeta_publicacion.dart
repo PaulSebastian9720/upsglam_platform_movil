@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../modelos/filtro/filtro.dart';
-import '../modelos/publicacion/publicacion.dart';
+import '../modelos/filtro.dart';
+import '../modelos/publicacion.dart';
 import '../tema/app_theme.dart';
 import '../utilidades/formatos.dart';
 import 'app_icono.dart';

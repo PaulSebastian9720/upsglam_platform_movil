@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 
-import '../../modelos/publicacion/publicacion.dart';
-import '../../repositorios/perfil/perfil_repositorio.dart';
-import '../../repositorios/publicaciones/publicaciones_repositorio.dart';
-import '../../repositorios/seguidos/seguidos_repositorio.dart';
+import '../../modelos/publicacion.dart';
+import '../../repositorios/perfil_repositorio.dart';
+import '../../repositorios/publicaciones_repositorio.dart';
+import '../../repositorios/seguidos_repositorio.dart';
 
 class InicioController extends ChangeNotifier {
   InicioController(this._publicaciones, this._perfil, this._seguidos) {

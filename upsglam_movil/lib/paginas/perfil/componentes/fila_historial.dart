@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../componentes/app_icono.dart';
 import '../../../componentes/imagen_app.dart';
-import '../../../modelos/procesamiento/procesamiento.dart';
+import '../../../modelos/procesamiento.dart';
 import '../../../tema/app_theme.dart';
 import '../../../utilidades/formatos.dart';
 

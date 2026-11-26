@@ -1,4 +1,4 @@
-import '../usuario/autor.dart';
+import 'autor.dart';
 
 class Comentario {
   const Comentario({

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../modelos/usuario/perfil.dart';
-import '../../repositorios/seguidos/seguidos_repositorio.dart';
+import '../../modelos/perfil.dart';
+import '../../repositorios/seguidos_repositorio.dart';
 
 class SeguidoresController extends ChangeNotifier {
   SeguidoresController(this._seguidos);

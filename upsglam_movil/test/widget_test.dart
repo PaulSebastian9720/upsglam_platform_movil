@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:upsglam_movil/app.dart';
 import 'package:upsglam_movil/componentes/app_alerta.dart';
-import 'package:upsglam_movil/modelos/fallo_camara/fallo_camara.dart';
-import 'package:upsglam_movil/modelos/filtro/filtro.dart';
-import 'package:upsglam_movil/modelos/foto/archivo_no_valido.dart';
-import 'package:upsglam_movil/modelos/foto/foto.dart';
+import 'package:upsglam_movil/modelos/fallo_camara.dart';
+import 'package:upsglam_movil/modelos/filtro.dart';
+import 'package:upsglam_movil/modelos/archivo_no_valido.dart';
+import 'package:upsglam_movil/modelos/foto.dart';
 import 'package:upsglam_movil/paginas/editar/editar_page.dart';
 import 'package:upsglam_movil/componentes/rueda_filtro.dart';
 

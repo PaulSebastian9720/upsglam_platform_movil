@@ -1,4 +1,4 @@
-import '../filtro/filtro.dart';
+import 'filtro.dart';
 
 enum EstadoProcesamiento { aplicando, lista, fallo }
 

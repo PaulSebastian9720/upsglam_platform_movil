@@ -1,5 +1,5 @@
-import '../../modelos/procesamiento/procesamiento.dart';
-import '../../servicios/datos_prueba_service.dart';
+import '../modelos/procesamiento.dart';
+import '../servicios/datos_prueba_service.dart';
 
 /// Única fuente del historial de filtros. Hoy lee datos de prueba.
 class ProcesamientoRepositorio {

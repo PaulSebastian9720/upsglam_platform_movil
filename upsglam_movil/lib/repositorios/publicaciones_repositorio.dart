@@ -1,5 +1,5 @@
-import '../../modelos/publicacion/publicacion.dart';
-import '../../servicios/datos_prueba_service.dart';
+import '../modelos/publicacion.dart';
+import '../servicios/datos_prueba_service.dart';
 
 /// Única fuente de las publicaciones. Hoy lee datos de prueba.
 class PublicacionesRepositorio {

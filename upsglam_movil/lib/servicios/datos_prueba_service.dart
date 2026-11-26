@@ -1,8 +1,8 @@
-import '../modelos/comentario/comentario.dart';
-import '../modelos/filtro/filtro.dart';
-import '../modelos/procesamiento/procesamiento.dart';
-import '../modelos/publicacion/publicacion.dart';
-import '../modelos/usuario/perfil.dart';
+import '../modelos/comentario.dart';
+import '../modelos/filtro.dart';
+import '../modelos/procesamiento.dart';
+import '../modelos/publicacion.dart';
+import '../modelos/perfil.dart';
 
 /// Datos de prueba en memoria, mientras no hay backend. Los repositorios lo
 /// usan como si fuera la API; se reemplaza sin tocar páginas ni controladores.

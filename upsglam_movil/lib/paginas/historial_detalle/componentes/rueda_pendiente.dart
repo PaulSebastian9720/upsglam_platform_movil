@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../componentes/app_icono.dart';
-import '../../../modelos/filtro/filtro.dart';
+import '../../../modelos/filtro.dart';
 import '../../../tema/app_theme.dart';
 
 /// Rueda de un filtro sin resultado: girando si aún se aplica, con la alerta

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../componentes/cabecera_perfil.dart';
-import '../../modelos/procesamiento/procesamiento.dart';
+import '../../modelos/procesamiento.dart';
 import '../../componentes/cuadricula_publicaciones.dart';
 import '../../componentes/estado_vacio.dart';
 import '../../rutas/rutas.dart';

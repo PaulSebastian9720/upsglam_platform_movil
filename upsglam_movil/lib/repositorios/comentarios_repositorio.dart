@@ -1,5 +1,5 @@
-import '../../modelos/comentario/comentario.dart';
-import '../../servicios/datos_prueba_service.dart';
+import '../modelos/comentario.dart';
+import '../servicios/datos_prueba_service.dart';
 
 /// Única fuente de los comentarios. Hoy lee datos de prueba.
 class ComentariosRepositorio {

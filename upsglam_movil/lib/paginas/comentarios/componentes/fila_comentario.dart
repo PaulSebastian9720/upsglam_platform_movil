@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../componentes/avatar_usuario.dart';
-import '../../../modelos/comentario/comentario.dart';
+import '../../../modelos/comentario.dart';
 import '../../../tema/app_theme.dart';
 import '../../../utilidades/formatos.dart';
 

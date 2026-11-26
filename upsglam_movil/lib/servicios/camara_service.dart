@@ -4,7 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../modelos/fallo_camara/fallo_camara.dart';
+import '../modelos/fallo_camara.dart';
 
 /// Envuelve la cámara del teléfono y su permiso.
 class CamaraService {

@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../componentes/estado_vacio.dart';
 import '../../componentes/tarjeta_publicacion.dart';
-import '../../modelos/publicacion/publicacion.dart';
+import '../../modelos/publicacion.dart';
 import '../../rutas/rutas.dart';
 import '../../tema/app_theme.dart';
 import 'inicio_controller.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../modelos/publicacion/publicacion.dart';
-import '../../repositorios/publicaciones/publicaciones_repositorio.dart';
+import '../../modelos/publicacion.dart';
+import '../../repositorios/publicaciones_repositorio.dart';
 
 class EditarPublicacionController extends ChangeNotifier {
   EditarPublicacionController(this._publicaciones, this.id) {

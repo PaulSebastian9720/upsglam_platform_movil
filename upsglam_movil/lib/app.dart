@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'repositorios/comentarios/comentarios_repositorio.dart';
-import 'repositorios/fotos/fotos_repositorio.dart';
-import 'repositorios/perfil/perfil_repositorio.dart';
-import 'repositorios/procesamiento/procesamiento_repositorio.dart';
-import 'repositorios/publicaciones/publicaciones_repositorio.dart';
-import 'repositorios/seguidos/seguidos_repositorio.dart';
+import 'repositorios/comentarios_repositorio.dart';
+import 'repositorios/fotos_repositorio.dart';
+import 'repositorios/perfil_repositorio.dart';
+import 'repositorios/procesamiento_repositorio.dart';
+import 'repositorios/publicaciones_repositorio.dart';
+import 'repositorios/seguidos_repositorio.dart';
 import 'rutas/app_router.dart';
 import 'servicios/camara_service.dart';
 import 'servicios/datos_prueba_service.dart';
