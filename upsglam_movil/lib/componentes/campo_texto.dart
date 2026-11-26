@@ -17,6 +17,8 @@ class CampoTexto extends StatefulWidget {
     this.autocompletar,
     this.esClave = false,
     this.alEnviar,
+    this.lineas = 1,
+    this.foco,
   });
 
   final String etiqueta;
@@ -28,6 +30,11 @@ class CampoTexto extends StatefulWidget {
   final Iterable<String>? autocompletar;
   final bool esClave;
   final VoidCallback? alEnviar;
+
+  /// Más de una para textos largos, como la descripción. El campo crece hacia
+  /// abajo y la línea del error sigue reservada debajo.
+  final int lineas;
+  final FocusNode? foco;
 
   @override
   State<CampoTexto> createState() => _CampoTextoState();
@@ -53,13 +60,18 @@ class _CampoTextoState extends State<CampoTexto> {
           label: widget.etiqueta,
           child: TextFormField(
             controller: widget.controlador,
+            focusNode: widget.foco,
+            minLines: widget.lineas,
+            maxLines: widget.lineas,
             validator: widget.validador,
             autovalidateMode: AutovalidateMode.onUnfocus,
-            keyboardType: widget.teclado,
+            keyboardType:
+                widget.teclado ??
+                (widget.lineas > 1 ? TextInputType.multiline : null),
             textInputAction: widget.accion,
             autofillHints: widget.autocompletar,
             obscureText: _oculta,
-            autocorrect: false,
+            autocorrect: widget.lineas > 1,
             enableSuggestions: !widget.esClave,
             style: tema.textTheme.bodyLarge,
             scrollPadding: EdgeInsets.all(

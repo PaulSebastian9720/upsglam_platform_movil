@@ -9,13 +9,27 @@ enum TipoAlerta {
     'Ese archivo no es una foto JPG, PNG o WEBP',
     Iconos.alertaArchivo,
     'Elegir otra',
+  ),
+  eliminarPublicacion(
+    '¿Eliminar esta publicación?',
+    Iconos.eliminar,
+    'Eliminar',
+    destructiva: true,
   );
 
-  const TipoAlerta(this.mensaje, this.icono, this.accion);
+  const TipoAlerta(
+    this.mensaje,
+    this.icono,
+    this.accion, {
+    this.destructiva = false,
+  });
 
   final String mensaje;
   final Iconos icono;
   final String accion;
+
+  /// La acción va en rojo en vez de amarillo.
+  final bool destructiva;
 }
 
 /// Única alerta de la app. Nadie más abre diálogos.
@@ -54,10 +68,20 @@ class AppAlerta extends StatelessWidget {
               style: tema.textTheme.titleLarge,
             ),
             const SizedBox(height: AppEspacio.base),
-            BotonPrincipal(
-              texto: tipo.accion,
-              alPulsar: () => Navigator.pop(context, true),
-            ),
+            if (tipo.destructiva)
+              FilledButton(
+                style: FilledButton.styleFrom(
+                  backgroundColor: tema.colorScheme.errorContainer,
+                  foregroundColor: tema.colorScheme.onErrorContainer,
+                ),
+                onPressed: () => Navigator.pop(context, true),
+                child: Text(tipo.accion),
+              )
+            else
+              BotonPrincipal(
+                texto: tipo.accion,
+                alPulsar: () => Navigator.pop(context, true),
+              ),
             const SizedBox(height: AppEspacio.xs),
             TextButton(
               onPressed: () => Navigator.pop(context, false),

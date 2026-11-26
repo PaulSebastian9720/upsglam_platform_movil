@@ -48,6 +48,18 @@ abstract final class AppMedida {
   static const rueda = 64.0;
   static const bordeRueda = 3.0;
   static const iconoAlerta = 40.0;
+  static const avatarFeed = 36.0;
+  static const avatarComentario = 38.0;
+  static const avatarLista = 54.0;
+  static const avatarPerfil = 88.0;
+  static const avatarEditar = 132.0;
+  static const miniatura = 64.0; // historial
+  static const celdaAlto = 150.0; // cuadrícula de perfil, 3 columnas
+  static const separacionCelda = 2.0;
+  static const insignia = 26.0; // círculo sobre una foto de la cuadrícula
+  static const proporcionPublicacion = 5 / 6; // ancho entre alto
+  static const pestana = 48.0;
+  static const lineaPestana = 3.0;
   static const bolaSube = 5.0; // cuánto se eleva sobre el centro de la barra
 }
 
@@ -211,6 +223,23 @@ abstract final class AppTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppRadio.hoja),
       ),
+    ),
+    // Pestañas del perfil: línea amarilla que se desliza sobre una gris.
+    tabBarTheme: TabBarThemeData(
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicator: const UnderlineTabIndicator(
+        borderSide: BorderSide(
+          color: AppColors.amarillo,
+          width: AppMedida.lineaPestana,
+        ),
+      ),
+      dividerColor: AppColors.campo,
+      dividerHeight: AppMedida.lineaPestana,
+      labelColor: AppColors.texto,
+      unselectedLabelColor: AppColors.texto2,
+      labelStyle: _texto(16, 22, FontWeight.w600),
+      unselectedLabelStyle: _texto(16, 22, FontWeight.w600),
+      overlayColor: WidgetStateProperty.all(AppColors.campo),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(

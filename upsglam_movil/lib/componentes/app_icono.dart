@@ -21,6 +21,18 @@ enum Iconos {
   alerta,
   alertaArchivo('alerta_archivo'),
   google,
+  ajustes,
+  publicaciones,
+  publica,
+  privada,
+  editar,
+  eliminar,
+  guardar,
+  flecha,
+  mas,
+  comentario,
+  meGusta('me_gusta'),
+  meGustaActivo('me_gusta_activo'),
   verClave('ver_clave'),
   ocultarClave('ocultar_clave');
 
