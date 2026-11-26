@@ -28,16 +28,22 @@ class Publicacion {
   final int comentarios;
   final bool privada;
 
-  Publicacion copyWith({String? texto, bool? privada}) => Publicacion(
+  Publicacion copyWith({
+    String? texto,
+    bool? privada,
+    int? meGusta,
+    bool? meGustaMio,
+    int? comentarios,
+  }) => Publicacion(
     id: id,
     autor: autor,
     imagen: imagen,
     filtro: filtro,
     creada: creada,
     texto: texto ?? this.texto,
-    meGusta: meGusta,
-    meGustaMio: meGustaMio,
-    comentarios: comentarios,
+    meGusta: meGusta ?? this.meGusta,
+    meGustaMio: meGustaMio ?? this.meGustaMio,
+    comentarios: comentarios ?? this.comentarios,
     privada: privada ?? this.privada,
   );
 }

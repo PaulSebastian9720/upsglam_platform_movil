@@ -12,6 +12,11 @@ class SeguidosRepositorio {
       _datos.perfiles.values.where((p) => p.loSigo).toList()
         ..sort((a, b) => a.usuario.compareTo(b.usuario));
 
+  /// Las personas que me siguen, por nombre de usuario.
+  Future<List<Perfil>> seguidores() async =>
+      [for (final id in _datos.meSiguen) ?_datos.perfiles[id]]
+        ..sort((a, b) => a.usuario.compareTo(b.usuario));
+
   Future<Perfil> seguir(String id) => _cambiar(id, seguir: true);
 
   Future<Perfil> dejarDeSeguir(String id) => _cambiar(id, seguir: false);

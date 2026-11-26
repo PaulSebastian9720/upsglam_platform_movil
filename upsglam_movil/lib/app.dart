@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'repositorios/comentarios/comentarios_repositorio.dart';
 import 'repositorios/fotos/fotos_repositorio.dart';
 import 'repositorios/perfil/perfil_repositorio.dart';
 import 'repositorios/procesamiento/procesamiento_repositorio.dart';
@@ -45,6 +46,7 @@ class _UpsGlamAppState extends State<UpsGlamApp> {
       Provider(create: (_) => PublicacionesRepositorio(_datos)),
       Provider(create: (_) => ProcesamientoRepositorio(_datos)),
       Provider(create: (_) => SeguidosRepositorio(_datos)),
+      Provider(create: (_) => ComentariosRepositorio(_datos)),
     ],
     child: MaterialApp.router(
       title: 'UPSGlam',

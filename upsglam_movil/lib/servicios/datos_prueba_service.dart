@@ -1,3 +1,4 @@
+import '../modelos/comentario/comentario.dart';
 import '../modelos/filtro/filtro.dart';
 import '../modelos/procesamiento/procesamiento.dart';
 import '../modelos/publicacion/publicacion.dart';
@@ -170,7 +171,76 @@ class DatosPruebaService {
         meGusta: 17,
         comentarios: 1,
       ),
+      // Otras personas: unas las sigo y otras no, para ver la diferencia.
+      pub(
+        's1',
+        perfiles['u3']!,
+        'feed_arquitectura',
+        Filtro.nitidez,
+        const Duration(minutes: 40),
+        texto: 'Las ondas de la fachada en blanco y negro.',
+        meGusta: 34,
+        comentarios: 3,
+      ),
+      pub(
+        's2',
+        perfiles['u3']!,
+        'feed_campus',
+        Filtro.ups,
+        const Duration(days: 2),
+        texto: 'El patio central.',
+        meGusta: 21,
+      ),
+      pub(
+        'n1',
+        perfiles['u4']!,
+        'resultado_media',
+        Filtro.media,
+        const Duration(hours: 5),
+        texto: 'Media en nivel fuerte.',
+        meGusta: 8,
+        comentarios: 1,
+      ),
+      pub(
+        'v1',
+        perfiles['u5']!,
+        'galeria_chameleon',
+        Filtro.original,
+        const Duration(hours: 9),
+        texto: 'Sin filtro, así salió.',
+        meGusta: 14,
+      ),
+      pub(
+        'm1',
+        perfiles['u6']!,
+        'historial_libros',
+        Filtro.relieve,
+        const Duration(hours: 1),
+        texto: 'Relieve sobre los libros.',
+        meGusta: 6,
+        comentarios: 2,
+      ),
+      pub(
+        'm2',
+        perfiles['u6']!,
+        'galeria_air_balloon',
+        Filtro.sobel,
+        const Duration(days: 3),
+        meGusta: 11,
+      ),
+      pub(
+        't1',
+        perfiles['u7']!,
+        'resultado_ups',
+        Filtro.ups,
+        const Duration(hours: 4),
+        texto: 'Primera prueba con UPS.',
+        meGusta: 29,
+        comentarios: 2,
+      ),
     ]);
+
+    _sembrarComentarios(ahora);
 
     _historial.addAll([
       Procesamiento(
@@ -289,9 +359,43 @@ class DatosPruebaService {
     ),
   };
 
+  /// Quiénes me siguen. Solo se conocen mis seguidores.
+  final Set<String> meSiguen = {'u2', 'u3', 'u4', 'u6', 'u7'};
+
   final List<Publicacion> _publicaciones = [];
   final List<Procesamiento> _historial = [];
+  final List<Comentario> _comentarios = [];
 
   List<Publicacion> get publicaciones => _publicaciones;
   List<Procesamiento> get historial => _historial;
+  List<Comentario> get comentarios => _comentarios;
+
+  int _siguiente = 0;
+  String nuevoId(String prefijo) => '$prefijo${++_siguiente}';
+
+  /// Tantos comentarios como dice cada publicación, del más antiguo al último.
+  void _sembrarComentarios(DateTime ahora) {
+    const textos = [
+      '¿Ese es el filtro UPS? Quedó increíble.',
+      'Sí, con la intensidad al máximo.',
+      'El ojo se ve clarísimo con los bordes amarillos.',
+      'Voy a probarlo con la foto del campus.',
+      'Pásala cuando la tengas.',
+      'Ya me apunto también.',
+    ];
+    const autores = ['u3', 'u2', 'u1', 'u3', 'u5', 'u1'];
+    for (final p in _publicaciones) {
+      for (var i = 0; i < p.comentarios; i++) {
+        _comentarios.add(
+          Comentario(
+            id: nuevoId('c'),
+            publicacionId: p.id,
+            autor: perfiles[autores[i % autores.length]]!.autor,
+            texto: textos[i % textos.length],
+            creado: p.creada.add(Duration(minutes: i + 1)),
+          ),
+        );
+      }
+    }
+  }
 }

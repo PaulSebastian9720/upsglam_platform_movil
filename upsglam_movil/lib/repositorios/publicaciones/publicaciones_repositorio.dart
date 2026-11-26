@@ -16,6 +16,23 @@ class PublicacionesRepositorio {
       ..sort((a, b) => b.creada.compareTo(a.creada));
   }
 
+  /// Inicio: las publicaciones de todos, las sigas o no, de la más nueva a
+  /// la más antigua. Las privadas solo las ve su autor.
+  Future<List<Publicacion>> inicio() async {
+    bool visible(Publicacion p) =>
+        p.autor.id == DatosPruebaService.yoId || !p.privada;
+    return _datos.publicaciones.where(visible).toList()
+      ..sort((a, b) => b.creada.compareTo(a.creada));
+  }
+
+  Future<Publicacion> alternarMeGusta(String id) => _cambiar(
+    id,
+    (p) => p.copyWith(
+      meGustaMio: !p.meGustaMio,
+      meGusta: p.meGusta + (p.meGustaMio ? -1 : 1),
+    ),
+  );
+
   Future<Publicacion> publicacion(String id) async =>
       _datos.publicaciones.firstWhere(
         (p) => p.id == id,
