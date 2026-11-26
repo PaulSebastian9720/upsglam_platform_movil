@@ -9,6 +9,22 @@ abstract final class Validadores {
   static String? claveObligatoria(String? valor) =>
       (valor ?? '').isEmpty ? 'Escribe tu contraseña' : null;
 
+  static const minimoClave = 8;
+
+  /// Al crear la cuenta la contraseña debe ser segura; se avisa lo primero
+  /// que falte.
+  static String? claveNueva(String? valor) {
+    final clave = valor ?? '';
+    if (clave.length < minimoClave) return 'Mínimo $minimoClave caracteres';
+    if (!clave.contains(RegExp('[A-Z]'))) return 'Falta una mayúscula';
+    if (!clave.contains(RegExp('[a-z]'))) return 'Falta una minúscula';
+    if (!clave.contains(RegExp('[0-9]'))) return 'Falta un número';
+    if (!clave.contains(RegExp(r'[^A-Za-z0-9]'))) {
+      return 'Falta un carácter especial';
+    }
+    return null;
+  }
+
   static final _usuario = RegExp(r'^[a-zA-Z0-9._]{3,20}$');
   static const maximoDescripcion = 150;
   static const maximoTextoPublicacion = 500;

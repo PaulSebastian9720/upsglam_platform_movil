@@ -8,7 +8,7 @@ import '../../componentes/campo_texto.dart';
 import '../../rutas/rutas.dart';
 import '../../tema/app_theme.dart';
 import '../../utilidades/validadores.dart';
-import 'componentes/portada_acceso.dart';
+import '../../componentes/portada_acceso.dart';
 import 'login_controller.dart';
 
 class LoginPage extends StatelessWidget {

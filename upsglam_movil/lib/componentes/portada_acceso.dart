@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../tema/app_theme.dart';
+import '../tema/app_theme.dart';
+import 'app_icono.dart';
+import 'boton_redondo.dart';
 
 /// Foto del campus con los filtros, el logo montado sobre su borde y el nombre.
 class PortadaAcceso extends StatelessWidget {
-  const PortadaAcceso({super.key});
+  const PortadaAcceso({super.key, this.alVolver});
+
+  /// Con él aparece la flecha para regresar, sobre la foto.
+  final VoidCallback? alVolver;
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +66,15 @@ class PortadaAcceso extends StatelessWidget {
               ),
             ),
           ),
+          if (alVolver != null)
+            SafeArea(
+              minimum: const EdgeInsets.all(AppEspacio.base),
+              child: BotonRedondo(
+                icono: Iconos.atras,
+                descripcion: 'Volver a iniciar sesión',
+                alPulsar: alVolver,
+              ),
+            ),
         ],
       ),
     );
