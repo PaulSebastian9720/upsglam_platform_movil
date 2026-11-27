@@ -16,7 +16,7 @@ class RegistroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
-    create: (_) => RegistroController(),
+    create: (_) => RegistroController(context.read()),
     child: const _RegistroVista(),
   );
 }
@@ -29,21 +29,53 @@ class _RegistroVista extends StatefulWidget {
 }
 
 class _RegistroVistaState extends State<_RegistroVista> {
+  final _formulario = GlobalKey<FormState>();
+  final _nombre = TextEditingController();
   final _correo = TextEditingController();
   final _usuario = TextEditingController();
+
+  /// El último usuario que el servidor dijo que ya existe.
+  String? _ocupado;
   final _clave = TextEditingController();
+  final _confirmacion = TextEditingController();
 
   @override
   void dispose() {
+    _nombre.dispose();
     _correo.dispose();
     _usuario.dispose();
     _clave.dispose();
+    _confirmacion.dispose();
     super.dispose();
   }
 
+  String? _validarUsuario(String? valor) =>
+      Validadores.usuario(valor) ??
+      (_ocupado != null && (valor ?? '').trim().toLowerCase() == _ocupado
+          ? Validadores.usuarioOcupado
+          : null);
+
   Future<void> _crear() async {
-    final pasa = await context.read<RegistroController>().crear();
-    if (pasa && mounted) context.go(Rutas.inicio);
+    FocusScope.of(context).unfocus();
+    if (!_formulario.currentState!.validate()) return;
+    final resultado = await context.read<RegistroController>().crear(
+      usuario: _usuario.text,
+    );
+    if (!mounted) return;
+    switch (resultado) {
+      case ResultadoRegistro.creada:
+        context.go(Rutas.inicio);
+      case ResultadoRegistro.usuarioOcupado:
+        // El error aparece bajo el campo Usuario, sin mover nada.
+        _ocupado = _usuario.text.trim().toLowerCase();
+        _formulario.currentState!.validate();
+      case ResultadoRegistro.fallo:
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('No se pudo crear la cuenta')),
+        );
+      case null:
+        break;
+    }
   }
 
   @override
@@ -80,41 +112,68 @@ class _RegistroVistaState extends State<_RegistroVista> {
                             ),
                             const SizedBox(height: AppEspacio.l),
                             AutofillGroup(
-                              child: Column(
-                                children: [
-                                  CampoTexto(
-                                    etiqueta: 'Correo',
-                                    pista: 'nombre@correo.com',
-                                    controlador: _correo,
-                                    validador: Validadores.correo,
-                                    teclado: TextInputType.emailAddress,
-                                    autocompletar: const [AutofillHints.email],
-                                  ),
-                                  const SizedBox(height: AppEspacio.s),
-                                  CampoTexto(
-                                    etiqueta: 'Usuario',
-                                    pista: 'Así te verán los demás',
-                                    controlador: _usuario,
-                                    validador: Validadores.usuario,
-                                    autocompletar: const [
-                                      AutofillHints.newUsername,
-                                    ],
-                                  ),
-                                  const SizedBox(height: AppEspacio.s),
-                                  CampoTexto(
-                                    etiqueta: 'Contraseña',
-                                    pista:
-                                        'Mínimo ${Validadores.minimoClave} caracteres',
-                                    controlador: _clave,
-                                    validador: Validadores.claveNueva,
-                                    esClave: true,
-                                    accion: TextInputAction.done,
-                                    autocompletar: const [
-                                      AutofillHints.newPassword,
-                                    ],
-                                    alEnviar: _crear,
-                                  ),
-                                ],
+                              child: Form(
+                                key: _formulario,
+                                child: Column(
+                                  children: [
+                                    CampoTexto(
+                                      etiqueta: 'Nombre completo',
+                                      pista: 'Cómo te llamas',
+                                      controlador: _nombre,
+                                      validador: Validadores.nombre,
+                                      autocompletar: const [AutofillHints.name],
+                                    ),
+                                    const SizedBox(height: AppEspacio.s),
+                                    CampoTexto(
+                                      etiqueta: 'Correo',
+                                      pista: 'nombre@correo.com',
+                                      controlador: _correo,
+                                      validador: Validadores.correo,
+                                      teclado: TextInputType.emailAddress,
+                                      autocompletar: const [
+                                        AutofillHints.email,
+                                      ],
+                                    ),
+                                    const SizedBox(height: AppEspacio.s),
+                                    CampoTexto(
+                                      etiqueta: 'Usuario',
+                                      pista: 'Así te verán los demás',
+                                      controlador: _usuario,
+                                      validador: _validarUsuario,
+                                      autocompletar: const [
+                                        AutofillHints.newUsername,
+                                      ],
+                                    ),
+                                    const SizedBox(height: AppEspacio.s),
+                                    CampoTexto(
+                                      etiqueta: 'Contraseña',
+                                      pista:
+                                          'Mínimo ${Validadores.minimoClave} caracteres',
+                                      controlador: _clave,
+                                      validador: Validadores.claveNueva,
+                                      esClave: true,
+                                      accion: TextInputAction.next,
+                                      autocompletar: const [
+                                        AutofillHints.newPassword,
+                                      ],
+                                    ),
+                                    const SizedBox(height: AppEspacio.s),
+                                    CampoTexto(
+                                      etiqueta: 'Confirmar contraseña',
+                                      pista: 'Vuelve a escribirla',
+                                      controlador: _confirmacion,
+                                      validador: Validadores.confirmacion(
+                                        () => _clave.text,
+                                      ),
+                                      esClave: true,
+                                      accion: TextInputAction.done,
+                                      autocompletar: const [
+                                        AutofillHints.newPassword,
+                                      ],
+                                      alEnviar: _crear,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             const SizedBox(height: AppEspacio.s),
