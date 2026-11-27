@@ -114,7 +114,7 @@ class _Pestana extends StatelessWidget {
             child: Center(
               child: AppIcono(
                 activa ? iconoActivo : icono,
-                tamano: 28,
+                tamano: AppMedida.iconoMenu,
                 color: activa ? esquema.onSurface : esquema.onSurfaceVariant,
               ),
             ),

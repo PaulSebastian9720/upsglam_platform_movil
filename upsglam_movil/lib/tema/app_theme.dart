@@ -42,19 +42,22 @@ abstract final class AppMedida {
   static const portada = 192.0;
   static const logoPortada = 84.0;
   static const borde = 5.0; // anillo que separa del fondo
-  static const barra = 72.0;
-  static const barraAncho = 292.0;
-  static const bola = 80.0; // cámara del menú
-  static const logoBola = 55.0;
+  static const barra = 54.0;
+  static const barraAncho = 250.0;
+  static const bola = 64.0; // cámara del menú
+  static const logoBola = 42.0;
+  static const iconoMenu = 24.0;
   static const logoInicio = 34.0;
   static const agarraderaAncho = 40.0; // barra para arrastrar una hoja
   static const agarraderaAlto = 4.0;
   static const zoomMaximo = 4.0;
   static const zoomDobleToque = 2.0;
   static const cerrarZoom = 120.0; // cuánto bajar la foto para cerrarla
-  static const lineasComentario = 5; // el campo crece hasta aquí
-  static const disparo = 90.0; // tomar foto
-  static const control = 60.0; // galería, filtros y girar
+  static const lineasComentario = 5;
+  static const miniaturaPublicarAncho = 124.0;
+  static const miniaturaPublicarAlto = 190.0; // el campo crece hasta aquí
+  static const disparo = 72.0; // tomar foto
+  static const control = 50.0; // galería, filtros y girar
   static const rueda = 64.0;
   static const bordeRueda = 3.0;
   static const iconoAlerta = 40.0;
@@ -190,6 +193,20 @@ abstract final class AppTheme {
       filled: true,
       fillColor: AppColors.campo,
       hintStyle: _texto(15, 21).copyWith(color: AppColors.texto2),
+      // Etiqueta flotante: dentro de la caja y, al tocarla, arriba en el
+      // borde, amarilla mientras se escribe y roja si hay error.
+      labelStyle: _texto(15, 21).copyWith(color: AppColors.texto2),
+      floatingLabelBehavior: FloatingLabelBehavior.auto,
+      floatingLabelStyle: WidgetStateTextStyle.resolveWith((estado) {
+        final base = _texto(14, 18, FontWeight.w600);
+        if (estado.contains(WidgetState.error)) {
+          return base.copyWith(color: AppColors.rojoTexto);
+        }
+        if (estado.contains(WidgetState.focused)) {
+          return base.copyWith(color: AppColors.amarillo);
+        }
+        return base.copyWith(color: AppColors.texto2);
+      }),
       helperStyle: _texto(13, 16, FontWeight.w600),
       errorStyle: _texto(
         13,

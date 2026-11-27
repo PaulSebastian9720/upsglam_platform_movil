@@ -36,7 +36,7 @@ class BotonDisparo extends StatelessWidget {
           ),
           child: ocupado
               ? Padding(
-                  padding: const EdgeInsets.all(AppEspacio.l),
+                  padding: const EdgeInsets.all(AppEspacio.base),
                   child: CircularProgressIndicator(color: fondo),
                 )
               : null,
