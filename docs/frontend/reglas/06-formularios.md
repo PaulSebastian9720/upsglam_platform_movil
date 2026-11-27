@@ -13,12 +13,17 @@
 | Campo | Regla | Mensaje |
 |---|---|---|
 | Correo | Obligatorio, formato correcto, sin espacios, en minúsculas | Escribe un correo válido |
+| Nombre completo | Obligatorio, 2 a 60 caracteres; se puede editar | Escribe tu nombre completo |
 | Usuario | 3 a 20; letras, números, punto y guion bajo | Usa de 3 a 20 letras, números, punto o _ |
+| | Único, sin importar mayúsculas (lo confirma el servidor al crear la cuenta) | Ese usuario ya existe |
+| | **No se puede cambiar** después de crear la cuenta | En Editar perfil se muestra sin poder editarse |
+| Correo (perfil) | **No se puede cambiar** | En Editar perfil se muestra sin poder editarse |
 | Contraseña (crear) | Mínimo 8 | Mínimo 8 caracteres |
 | | Una mayúscula | Falta una mayúscula |
 | | Una minúscula | Falta una minúscula |
 | | Un número | Falta un número |
 | | Un carácter especial | Falta un carácter especial |
+| Confirmar contraseña (crear) | Igual a la contraseña | Las contraseñas no coinciden |
 | Contraseña (entrar) | Solo obligatoria | Escribe tu contraseña |
 | Descripción | Hasta 150 | Máximo 150 caracteres |
 | Texto de publicación | Opcional, varias líneas, hasta 500 | Máximo 500 caracteres |

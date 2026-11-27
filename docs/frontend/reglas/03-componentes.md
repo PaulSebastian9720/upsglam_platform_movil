@@ -8,7 +8,7 @@ Se extrae un componente cuando se usa en **dos o más páginas**. Si es de una s
 | AppAlerta | Todas las alertas | tipo de alerta |
 | BotonPrincipal | Acción amarilla | texto, acción, cargando |
 | BotonSecundario | Acción con borde | texto, icono, acción, cargando |
-| CampoTexto | Todos los campos | etiqueta, validador, tipo, líneas |
+| CampoTexto | Todos los campos, con etiqueta flotante: dentro de la caja y sube al borde al tocarla | etiqueta, validador, tipo, líneas |
 | AppIcono | Todos los iconos | nombre, tamaño, color, descripción |
 | ImagenApp | Todas las fotos | origen, marco |
 | VisorImagen | Zoom en ventana nueva: solo la foto de perfil | imagen |
