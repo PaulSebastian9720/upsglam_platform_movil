@@ -299,6 +299,8 @@ class DatosPruebaService {
   final Map<String, Perfil> perfiles = {
     'u1': Perfil(
       id: 'u1',
+      nombre: 'Andrea Luzuriaga',
+      correo: 'andre.luz@correo.com',
       usuario: 'andre.luz',
       avatar: _img('avatar_1'),
       descripcion:
@@ -309,6 +311,7 @@ class DatosPruebaService {
     ),
     'u2': Perfil(
       id: 'u2',
+      nombre: 'Daniel Vega',
       usuario: 'dani.vega',
       avatar: _img('avatar_3'),
       descripcion: 'Animales, viajes y bastante filtro UPS.',
@@ -319,6 +322,7 @@ class DatosPruebaService {
     ),
     'u3': Perfil(
       id: 'u3',
+      nombre: 'Sofía Mora',
       usuario: 'sofi.mora',
       avatar: _img('avatar_2'),
       descripcion: 'Arquitectura y luz.',
@@ -328,6 +332,7 @@ class DatosPruebaService {
     ),
     'u4': Perfil(
       id: 'u4',
+      nombre: 'Nicolás Paz',
       usuario: 'nico.paz',
       avatar: _img('avatar_4'),
       meGusta: 12,
@@ -336,6 +341,7 @@ class DatosPruebaService {
     ),
     'u5': Perfil(
       id: 'u5',
+      nombre: 'Valentina Ríos',
       usuario: 'valen.rios',
       avatar: _img('avatar_5'),
       meGusta: 33,
@@ -344,6 +350,7 @@ class DatosPruebaService {
     ),
     'u6': Perfil(
       id: 'u6',
+      nombre: 'María León',
       usuario: 'maru.leon',
       avatar: _img('p_sunflower'),
       meGusta: 5,
@@ -351,6 +358,7 @@ class DatosPruebaService {
     ),
     'u7': Perfil(
       id: 'u7',
+      nombre: 'Tomás Arce',
       usuario: 'tomas.arce',
       avatar: _img('p_car'),
       meGusta: 51,

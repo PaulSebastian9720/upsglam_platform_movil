@@ -27,15 +27,24 @@ class PerfilRepositorio {
     );
   }
 
+  /// Solo cambian el nombre y la descripción; usuario y correo son fijos.
   Future<Perfil> actualizar({
-    required String usuario,
+    required String nombre,
     required String descripcion,
   }) async {
     final nuevo = _datos.perfiles[miId]!.copyWith(
-      usuario: usuario,
+      nombre: nombre,
       descripcion: descripcion,
     );
     _datos.perfiles[miId] = nuevo;
     return nuevo;
+  }
+
+  /// El usuario no se puede repetir, sin importar mayúsculas.
+  Future<bool> usuarioDisponible(String usuario) async {
+    final buscado = usuario.trim().toLowerCase();
+    return _datos.perfiles.values.every(
+      (p) => p.usuario.toLowerCase() != buscado,
+    );
   }
 }

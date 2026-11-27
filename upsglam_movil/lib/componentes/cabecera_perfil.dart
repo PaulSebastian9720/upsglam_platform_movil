@@ -85,8 +85,14 @@ class CabeceraPerfil extends StatelessWidget {
             ),
           ],
         ),
-        if (perfil.descripcion.isNotEmpty) ...[
+        if (perfil.nombre.isNotEmpty) ...[
           const SizedBox(height: AppEspacio.m),
+          Text(perfil.nombre, style: tema.textTheme.titleMedium),
+        ],
+        if (perfil.descripcion.isNotEmpty) ...[
+          SizedBox(
+            height: perfil.nombre.isEmpty ? AppEspacio.m : AppEspacio.xs,
+          ),
           Text(perfil.descripcion, style: tema.textTheme.bodyMedium),
         ],
       ],

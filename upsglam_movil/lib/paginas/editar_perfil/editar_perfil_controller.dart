@@ -42,7 +42,7 @@ class EditarPerfilController extends ChangeNotifier {
 
   /// Verdadero si se guardó. Un segundo toque mientras guarda no hace nada.
   Future<bool> guardar({
-    required String usuario,
+    required String nombre,
     required String descripcion,
   }) async {
     if (_guardando) return false;
@@ -51,7 +51,7 @@ class EditarPerfilController extends ChangeNotifier {
     var guardado = true;
     try {
       _perfil = await _perfiles.actualizar(
-        usuario: usuario.trim(),
+        nombre: nombre.trim(),
         descripcion: descripcion.trim(),
       );
     } catch (_) {
@@ -61,8 +61,6 @@ class EditarPerfilController extends ChangeNotifier {
     _avisar();
     return guardado;
   }
-
-  // Pendiente de pasar a utilidades/validadores.dart.
 
   void _avisar() {
     if (!_cerrado) notifyListeners();

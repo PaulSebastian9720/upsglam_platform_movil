@@ -86,18 +86,23 @@ class _Formulario extends StatefulWidget {
 
 class _FormularioState extends State<_Formulario> {
   final _formulario = GlobalKey<FormState>();
+  late final _nombre = TextEditingController(text: widget.perfil.nombre);
+  // Usuario y correo solo se muestran: no se pueden cambiar.
   late final _usuario = TextEditingController(text: widget.perfil.usuario);
+  late final _correo = TextEditingController(text: widget.perfil.correo ?? '');
   late final _descripcion = TextEditingController(
     text: widget.perfil.descripcion,
   );
-  final _focoUsuario = FocusNode();
+  final _focoNombre = FocusNode();
   final _focoDescripcion = FocusNode();
 
   @override
   void dispose() {
+    _nombre.dispose();
     _usuario.dispose();
+    _correo.dispose();
     _descripcion.dispose();
-    _focoUsuario.dispose();
+    _focoNombre.dispose();
     _focoDescripcion.dispose();
     super.dispose();
   }
@@ -107,14 +112,14 @@ class _FormularioState extends State<_Formulario> {
     if (controlador.guardando) return;
     FocusScope.of(context).unfocus();
     if (!_formulario.currentState!.validate()) {
-      final primero = Validadores.usuario(_usuario.text) != null
-          ? _focoUsuario
+      final primero = Validadores.nombre(_nombre.text) != null
+          ? _focoNombre
           : _focoDescripcion;
       primero.requestFocus();
       return;
     }
     final guardado = await controlador.guardar(
-      usuario: _usuario.text,
+      nombre: _nombre.text,
       descripcion: _descripcion.text,
     );
     if (!mounted) return;
@@ -155,11 +160,24 @@ class _FormularioState extends State<_Formulario> {
                     ),
                     const SizedBox(height: AppEspacio.l),
                     CampoTexto(
+                      etiqueta: 'Nombre completo',
+                      pista: 'Cómo te llamas',
+                      controlador: _nombre,
+                      foco: _focoNombre,
+                      validador: Validadores.nombre,
+                      autocompletar: const [AutofillHints.name],
+                    ),
+                    const SizedBox(height: AppEspacio.s),
+                    CampoTexto(
                       etiqueta: 'Usuario',
                       controlador: _usuario,
-                      foco: _focoUsuario,
-                      validador: Validadores.usuario,
-                      autocompletar: const [AutofillHints.username],
+                      soloLectura: true,
+                    ),
+                    const SizedBox(height: AppEspacio.s),
+                    CampoTexto(
+                      etiqueta: 'Correo',
+                      controlador: _correo,
+                      soloLectura: true,
                     ),
                     const SizedBox(height: AppEspacio.s),
                     CampoTexto(

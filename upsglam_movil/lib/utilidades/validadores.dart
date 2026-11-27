@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 abstract final class Validadores {
   static final _correo = RegExp(r'^[\w.+-]+@[\w-]+(\.[\w-]+)+$');
 
@@ -24,6 +26,24 @@ abstract final class Validadores {
     }
     return null;
   }
+
+  static const maximoNombre = 60;
+
+  /// Nombre completo: obligatorio, hasta 60 caracteres.
+  static String? nombre(String? valor) {
+    final nombre = (valor ?? '').trim();
+    if (nombre.length < 2) return 'Escribe tu nombre completo';
+    return _maximo(nombre, maximoNombre);
+  }
+
+  /// La segunda contraseña debe ser igual a la primera.
+  static FormFieldValidator<String> confirmacion(String Function() original) =>
+      (valor) {
+        if ((valor ?? '').isEmpty) return 'Vuelve a escribir tu contraseña';
+        return valor == original() ? null : 'Las contraseñas no coinciden';
+      };
+
+  static const usuarioOcupado = 'Ese usuario ya existe';
 
   static final _usuario = RegExp(r'^[a-zA-Z0-9._]{3,20}$');
   static const maximoDescripcion = 150;
