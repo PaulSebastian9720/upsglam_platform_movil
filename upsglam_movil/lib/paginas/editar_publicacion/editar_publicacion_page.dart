@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -54,27 +53,24 @@ class _EditarPublicacionVista extends StatelessWidget {
         child: EditorCarga(),
       );
     }
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light,
-      child: Scaffold(
-        // El teclado tapa la parte de abajo y la página se desplaza.
-        resizeToAvoidBottomInset: false,
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const Padding(
-                padding: EdgeInsets.fromLTRB(
-                  AppEspacio.base,
-                  AppEspacio.base,
-                  AppEspacio.base,
-                  0,
-                ),
-                child: EncabezadoPagina(titulo: 'Editar publicación'),
+    return Scaffold(
+      // El teclado tapa la parte de abajo y la página se desplaza.
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const Padding(
+              padding: EdgeInsets.fromLTRB(
+                AppEspacio.base,
+                AppEspacio.base,
+                AppEspacio.base,
+                0,
               ),
-              Expanded(child: contenido),
-            ],
-          ),
+              child: EncabezadoPagina(titulo: 'Editar publicación'),
+            ),
+            Expanded(child: contenido),
+          ],
         ),
       ),
     );
