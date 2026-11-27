@@ -21,6 +21,7 @@ enum Iconos {
   alerta,
   alertaArchivo('alerta_archivo'),
   ajustes,
+  tema,
   publicaciones,
   publica,
   privada,

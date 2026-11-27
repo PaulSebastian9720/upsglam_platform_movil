@@ -10,11 +10,15 @@ class FilaOpcion extends StatelessWidget {
     required this.icono,
     required this.texto,
     required this.alPulsar,
+    this.valor,
   });
 
   final Iconos icono;
   final String texto;
   final VoidCallback alPulsar;
+
+  /// Lo elegido ahora, a la derecha; por ejemplo, el tema.
+  final String? valor;
 
   @override
   Widget build(BuildContext context) => ListTile(
@@ -26,5 +30,8 @@ class FilaOpcion extends StatelessWidget {
     ),
     leading: AppIcono(icono),
     title: Text(texto, style: Theme.of(context).textTheme.titleMedium),
+    trailing: valor == null
+        ? null
+        : Text(valor!, style: Theme.of(context).textTheme.bodySmall),
   );
 }

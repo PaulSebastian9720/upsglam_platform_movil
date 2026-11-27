@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import 'package:upsglam_movil/componentes/app_icono.dart';
 import 'package:upsglam_movil/componentes/encabezado_pagina.dart';
 import 'package:upsglam_movil/rutas/rutas.dart';
 import 'package:upsglam_movil/tema/app_theme.dart';
 import 'package:upsglam_movil/paginas/configuracion/componentes/fila_opcion.dart';
+import 'package:upsglam_movil/paginas/configuracion/componentes/hoja_tema.dart';
+import 'package:upsglam_movil/tema/tema_controller.dart';
 
 class ConfiguracionPage extends StatelessWidget {
   const ConfiguracionPage({super.key});
@@ -13,6 +16,7 @@ class ConfiguracionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
+    final modo = context.watch<TemaController>();
     return Scaffold(
       body: SafeArea(
         minimum: const EdgeInsets.all(AppEspacio.base),
@@ -33,6 +37,18 @@ class ConfiguracionPage extends StatelessWidget {
                     icono: Iconos.publicaciones,
                     texto: 'Mis publicaciones',
                     alPulsar: () => context.push(Rutas.misPublicaciones),
+                  ),
+                  FilaOpcion(
+                    icono: Iconos.tema,
+                    texto: 'Tema',
+                    valor: HojaTema.nombres[modo.modo],
+                    alPulsar: () async {
+                      final elegido = await HojaTema.mostrar(
+                        context,
+                        modo.modo,
+                      );
+                      if (elegido != null) await modo.elegir(elegido);
+                    },
                   ),
                 ],
               ),
