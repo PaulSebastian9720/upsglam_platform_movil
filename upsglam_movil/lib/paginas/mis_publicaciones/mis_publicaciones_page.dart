@@ -12,7 +12,6 @@ import 'package:upsglam_movil/rutas/rutas.dart';
 import 'package:upsglam_movil/tema/app_theme.dart';
 import 'package:upsglam_movil/paginas/mis_publicaciones/componentes/acciones_celda.dart';
 import 'package:upsglam_movil/paginas/mis_publicaciones/componentes/cuadricula_carga.dart';
-import 'package:upsglam_movil/paginas/mis_publicaciones/componentes/leyenda_privacidad.dart';
 import 'package:upsglam_movil/paginas/mis_publicaciones/mis_publicaciones_controller.dart';
 
 class MisPublicacionesPage extends StatelessWidget {
@@ -64,7 +63,6 @@ class _MisPublicacionesVista extends StatelessWidget {
             alPulsar: (p) => _editar(context, p),
             encima: (p) => AccionesCelda(
               publicacion: p,
-              alEditar: () => _editar(context, p),
               alCambiarPrivacidad: () => controlador.alternarPrivacidad(p),
             ),
           ),
@@ -85,14 +83,7 @@ class _MisPublicacionesVista extends StatelessWidget {
           children: [
             const Padding(
               padding: EdgeInsets.all(AppEspacio.base),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  EncabezadoPagina(titulo: 'Mis publicaciones'),
-                  SizedBox(height: AppEspacio.m),
-                  LeyendaPrivacidad(),
-                ],
-              ),
+              child: EncabezadoPagina(titulo: 'Mis publicaciones'),
             ),
             Expanded(child: contenido),
           ],

@@ -26,15 +26,18 @@ class BotonCelda extends StatelessWidget {
       onPressed: alPulsar,
       isSelected: activo,
       padding: EdgeInsets.zero,
+      // Se ve más pequeño, pero se sigue tocando en un área de 48.
       style: IconButton.styleFrom(
-        fixedSize: const Size.square(AppMedida.toque),
-        minimumSize: const Size.square(AppMedida.toque),
+        fixedSize: const Size.square(AppMedida.botonCelda),
+        minimumSize: const Size.square(AppMedida.botonCelda),
+        tapTargetSize: MaterialTapTargetSize.padded,
         backgroundColor: activo
             ? tema.colorScheme.primary
             : tema.scaffoldBackgroundColor,
       ),
       icon: AppIcono(
         icono,
+        tamano: AppMedida.iconoCelda,
         color: activo ? tema.colorScheme.onPrimary : tema.colorScheme.onSurface,
       ),
     );
