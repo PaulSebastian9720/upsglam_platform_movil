@@ -15,6 +15,7 @@ class PortadaAcceso extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
+    final marca = tema.extension<AppMarca>()!;
     return SizedBox(
       height: AppMedida.portada + AppMedida.logoPortada / 2,
       child: Stack(
@@ -34,7 +35,7 @@ class PortadaAcceso extends StatelessWidget {
               height: AppMedida.logoPortada,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: tema.colorScheme.primary,
+                color: marca.fondoLogo,
                 borderRadius: BorderRadius.circular(AppRadio.hoja),
                 boxShadow: [
                   BoxShadow(
@@ -44,8 +45,8 @@ class PortadaAcceso extends StatelessWidget {
                 ],
               ),
               child: SvgPicture.asset(
-                'assets/logo/logo_amarillo.svg',
-                width: 62,
+                marca.logoSobreFondoLogo,
+                width: AppMedida.logoEnPortada,
                 excludeFromSemantics: true,
               ),
             ),

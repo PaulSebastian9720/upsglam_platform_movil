@@ -62,7 +62,7 @@ class _InicioVista extends StatelessWidget {
                       ),
                     ),
                     SvgPicture.asset(
-                      'assets/logo/logo_negro.svg',
+                      tema.extension<AppMarca>()!.logoSobrePagina,
                       width: AppMedida.logoInicio,
                       semanticsLabel: 'UPSGlam',
                     ),

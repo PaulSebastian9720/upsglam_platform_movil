@@ -133,6 +133,7 @@ class _Bola extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
+    final marca = tema.extension<AppMarca>()!;
     return Semantics(
       button: true,
       label: 'Cámara',
@@ -144,7 +145,7 @@ class _Bola extends StatelessWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: tema.colorScheme.primary,
+            color: marca.fondoLogo,
             boxShadow: [
               BoxShadow(
                 color: tema.scaffoldBackgroundColor,
@@ -153,7 +154,7 @@ class _Bola extends StatelessWidget {
             ],
           ),
           child: SvgPicture.asset(
-            'assets/logo/logo_amarillo.svg',
+            marca.logoSobreFondoLogo,
             width: AppMedida.logoBola,
             excludeFromSemantics: true,
           ),

@@ -244,10 +244,13 @@ class _EtiquetaFiltro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
-    final letra = tema.textTheme.labelMedium!;
+    final marca = tema.extension<AppMarca>()!;
+    final letra = tema.textTheme.labelMedium!.copyWith(
+      color: marca.textoEtiqueta,
+    );
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: tema.scaffoldBackgroundColor,
+        color: marca.fondoEtiqueta,
         borderRadius: BorderRadius.circular(AppRadio.base),
       ),
       child: Padding(
