@@ -28,6 +28,13 @@ uv run python consulta_gpu.py
 ```
 Muestra las características de la GPU y prueba un kernel.
 
+## Ejecutar la API
+```bash
+.venv/bin/python src/main.py
+```
+Documentación interactiva en http://localhost:8000/docs. Con la API en ejecución,
+`pruebas/prueba_api.py` la prueba completa.
+
 ## Validar los kernels
 ```bash
 .venv/bin/python pruebas/validacion.py

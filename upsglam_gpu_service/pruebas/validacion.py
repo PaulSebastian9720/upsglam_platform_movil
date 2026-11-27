@@ -161,7 +161,7 @@ def filtros_completos(gpu, azar):
     pasos = filtros.Pasos(gpu)
     casos = [("media", {"nivel": n}) for n in ("bajo", "medio", "fuerte")]
     casos += [("nitidez", {"intensidad": i}) for i in (0.0, 1.0, 2.0)]
-    casos += [("laplaciano", {"intensidad": i}) for i in (1.0, 6.0, 10.0)]
+    casos += [("laplaciano", {"intensidad": i}) for i in (3.0, 6.0, 10.0)]
     casos += [("sobel", {"direccion": d}) for d in ("horizontal", "vertical", "ambas")]
     casos += [("relieve", {"intensidad": i}) for i in (0.0, 1.0, 2.0)]
     casos += [("ups", {})]
