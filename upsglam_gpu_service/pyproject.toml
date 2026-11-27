@@ -1,7 +1,24 @@
 [project]
 name = "upsglam-gpu-service"
 version = "0.1.0"
-description = "Add your description here"
+description = "Servicio REST de filtros de imagen con PyCUDA para UPSGlam"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "fastapi==0.165.0",
+    "numpy==2.5.5",
+    "nvidia-cuda-nvrtc-cu12==12.9.86",
+    "pillow==13.0.0",
+    "pycuda==2026.1",
+    "python-multipart==0.0.34",
+    "uvicorn==0.54.0",
+]
+
+[tool.uv]
+package = false
+
+# Cabeceras de CUDA 12.9 para compilar PyCUDA fuera de Docker (ver README).
+[dependency-groups]
+dev = [
+    "nvidia-cuda-runtime-cu12==12.9.79",
+]
