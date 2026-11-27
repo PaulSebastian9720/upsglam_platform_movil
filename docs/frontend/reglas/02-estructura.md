@@ -51,7 +51,7 @@ assets/  logo/ iconos/ iconos_aplicacion/ imagenes/filtros/ imagenes/login/ fuen
 | Comentarios | `/publicacion/:id/comentarios`, hoja sobre Inicio o Ver publicación | comentarios | No |
 | Cámara y Filtros | `/camara` | camara | No |
 | Aplicando, Media, UPS | `/editar` | editar | No |
-| Publicar | `/publicar` | publicar | No |
+| Publicar | `/publicar`, recibe la foto con su filtro desde Editar o Historial | publicar | No |
 | Perfil | `/perfil` | perfil | Sí |
 | Historial (pestaña) | Pestaña dentro de `/perfil`, sin ruta propia | perfil | Sí |
 | Historial, lista o falló | `/perfil/historial/:id` | historial_detalle | No |

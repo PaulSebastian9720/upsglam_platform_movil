@@ -6,7 +6,7 @@
 - Dos pestañas: Inicio y Perfil. La cámara **no** es pestaña: se abre encima, a pantalla completa y sin menú.
 - Cada pestaña conserva su posición y sus datos.
 - Tocar la pestaña activa sube al inicio de la lista.
-- Barra de 72, bola de 80 que sobresale, fondo `campo`, sin textos. Cada botón con descripción para lectores de pantalla.
+- Barra de 54 de alto y 250 de ancho, iconos de 24, bola de 64 con logo de 42 que sobresale, fondo `campo`, sin textos. Cada botón con descripción para lectores de pantalla.
 - La bola usa `logo_amarillo.svg`.
 
 ## Bugs que hay que evitar

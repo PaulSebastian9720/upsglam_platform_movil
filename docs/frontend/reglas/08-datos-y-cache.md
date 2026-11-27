@@ -3,7 +3,7 @@
 ## Carga dinámica
 - Se muestra primero lo guardado y después se actualiza con la red; el repositorio es el único que decide ([patrón oficial](https://docs.flutter.dev/app-architecture/design-patterns/offline-first)).
 - Las listas se construyen a medida que se ven, con constructores perezosos ([fuente](https://docs.flutter.dev/cookbook/lists/long-lists)).
-- Deslizar hacia abajo actualiza. Volver a una pantalla **no** recarga si el dato sigue vigente.
+- **No** se usa "deslizar hacia abajo para actualizar". Las pantallas se recargan solas al volver de otra que pudo cambiar sus datos, o cuando el repositorio avisa un cambio (publicar, editar, eliminar).
 - Los cambios propios (me gusta, comentar) se ven al instante y se deshacen si el servidor falla.
 
 ## Paginación
@@ -57,9 +57,11 @@ Viven en `lib/modelos/`, un archivo por modelo. Fechas en ISO 8601 UTC; ids como
   "creado": "" } }
 ```
 ```json
-{ "perfil": { "id": "", "usuario": "", "descripcion": "", "avatarUrl": null,
+{ "perfil": { "id": "", "usuario": "", "nombre": "", "correo": "solo el propio", "descripcion": "", "avatarUrl": null,
   "publicaciones": 0, "meGusta": 0, "seguidores": 0, "loSigo": false } }
 ```
+En el perfil, `usuario` es único y no se cambia; `correo` solo viene en el perfil propio y tampoco se cambia; `nombre` (completo) y `descripcion` sí se editan.
+
 `imagenClave` es la ruta en Supabase Storage. Una URL firmada cambia; la clave no, y con ella se guarda la imagen. Las métricas de GPU se quedan en el backend.
 
 ## Qué se guarda en el teléfono
