@@ -69,7 +69,9 @@ abstract final class AppMedida {
   static const miniatura = 64.0; // historial
   static const celdaAlto = 150.0; // cuadrícula de perfil, 3 columnas
   static const separacionCelda = 2.0;
-  static const insignia = 26.0; // círculo sobre una foto de la cuadrícula
+  static const insignia = 26.0;
+  static const botonCelda = 38.0; // editar y privacidad sobre cada foto
+  static const iconoCelda = 20.0; // círculo sobre una foto de la cuadrícula
   static const proporcionPublicacion = 5 / 6; // ancho entre alto
   static const pestana = 48.0;
   static const lineaPestana = 3.0;
@@ -177,9 +179,9 @@ abstract final class AppTheme {
     ),
     extensions: const [AppEstados.oscuro],
     textTheme: TextTheme(
-      headlineLarge: _titulo(30, 34), // Login y Crear cuenta
-      headlineMedium: _titulo(26, 30), // Inicio y Perfil
-      headlineSmall: _titulo(24, 30), // pantallas con flecha
+      headlineLarge: _titulo(26, 30), // Login y Crear cuenta
+      headlineMedium: _titulo(22, 28), // Inicio y Perfil
+      headlineSmall: _titulo(20, 26), // pantallas con flecha
       titleLarge: _titulo(20, 26), // hojas, alertas y cifras
       titleMedium: _texto(15, 21, FontWeight.w600), // nombres y opciones
       bodyLarge: _texto(15, 21), // campos y texto de publicación
