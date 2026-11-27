@@ -18,10 +18,10 @@ Ante una contradicción entre fuentes, el orden de prioridad es el siguiente:
 
 ## 2. Entorno de ejecución
 
-| Equipo | GPU | Capacidad de cómputo | Uso |
-|---|---|---|---|
-| PC de desarrollo (Manjaro) | GeForce MX230, 4 GB | 6.1 | Desarrollo y validación |
-| PC de demostración (Windows, Docker Desktop) | RTX 5050 | 12.0 | Entrega final |
+| GPU | Memoria | Capacidad de cómputo |
+|---|---|---|
+| GeForce MX230 | 4 GB | 6.1 |
+| GeForce RTX 5050 Laptop | 8 GB | 12.0 |
 
 Los kernels se compilan en tiempo de ejecución con NVRTC 12.9 (paquete
 `nvidia-cuda-nvrtc-cu12`) y se cargan con `pycuda.driver.module_from_buffer`. No se emplea
