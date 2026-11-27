@@ -69,6 +69,8 @@ class _VisorImagenState extends State<VisorImagen>
   ImageProvider get _origen {
     if (widget.archivo) return FileImage(File(widget.ruta));
     if (widget.ruta.startsWith('assets/')) return AssetImage(widget.ruta);
+    // Publicación hecha en este teléfono, mientras no hay servidor.
+    if (widget.ruta.startsWith('/')) return FileImage(File(widget.ruta));
     return NetworkImage(widget.ruta);
   }
 

@@ -7,6 +7,7 @@ import 'package:upsglam_movil/repositorios/seguidos_repositorio.dart';
 
 class InicioController extends ChangeNotifier {
   InicioController(this._publicaciones, this._perfil, this._seguidos) {
+    _publicaciones.cambios.addListener(cargar);
     cargar();
   }
 
@@ -100,6 +101,7 @@ class InicioController extends ChangeNotifier {
 
   @override
   void dispose() {
+    _publicaciones.cambios.removeListener(cargar);
     _viva = false;
     super.dispose();
   }

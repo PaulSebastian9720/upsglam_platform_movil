@@ -83,7 +83,8 @@ class _EditarVista extends StatelessWidget {
                       ),
                       child: BotonPrincipal(
                         texto: 'Publicar',
-                        alPulsar: () => context.push(Rutas.publicar),
+                        alPulsar: () =>
+                            context.push(Rutas.publicar, extra: editar.foto),
                       ),
                     ),
                   ],

@@ -12,6 +12,7 @@ import 'package:upsglam_movil/componentes/imagen_app.dart';
 import 'package:upsglam_movil/componentes/rueda_filtro.dart';
 import 'package:upsglam_movil/modelos/filtro.dart';
 import 'package:upsglam_movil/modelos/procesamiento.dart';
+import 'package:upsglam_movil/modelos/foto.dart';
 import 'package:upsglam_movil/rutas/rutas.dart';
 import 'package:upsglam_movil/tema/app_theme.dart';
 import 'package:upsglam_movil/utilidades/formatos.dart';
@@ -202,7 +203,10 @@ class _Cuerpo extends StatelessWidget {
               Expanded(
                 child: BotonPrincipal(
                   texto: 'Publicar',
-                  alPulsar: () => context.push(Rutas.publicar),
+                  alPulsar: () => context.push(
+                    Rutas.publicar,
+                    extra: Foto(ruta: p.resultado!, filtro: p.filtro),
+                  ),
                 ),
               ),
             ],

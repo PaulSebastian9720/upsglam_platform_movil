@@ -123,7 +123,13 @@ GoRouter crearRouter() {
         redirect: (_, estado) => estado.extra is Foto ? null : Rutas.inicio,
         builder: (_, estado) => EditarPage(foto: estado.extra! as Foto),
       ),
-      sobre(Rutas.publicar, const PublicarPage()),
+      GoRoute(
+        path: Rutas.publicar,
+        parentNavigatorKey: raiz,
+        // Sin foto no hay nada que publicar.
+        redirect: (_, estado) => estado.extra is Foto ? null : Rutas.inicio,
+        builder: (_, estado) => PublicarPage(foto: estado.extra! as Foto),
+      ),
       sobre(Rutas.configuracion, const ConfiguracionPage(), [
         sobre('perfil', const EditarPerfilPage()),
         sobre('publicaciones', const MisPublicacionesPage()),

@@ -7,6 +7,7 @@ import 'package:upsglam_movil/repositorios/publicaciones_repositorio.dart';
 
 class PerfilController extends ChangeNotifier {
   PerfilController(this._perfiles, this._publicaciones) {
+    _publicaciones.cambios.addListener(cargar);
     cargar();
   }
 
@@ -66,6 +67,7 @@ class PerfilController extends ChangeNotifier {
 
   @override
   void dispose() {
+    _publicaciones.cambios.removeListener(cargar);
     _viva = false;
     super.dispose();
   }

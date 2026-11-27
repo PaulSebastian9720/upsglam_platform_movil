@@ -23,6 +23,8 @@ class ImagenApp extends StatelessWidget {
   ImageProvider _origen() {
     if (_archivo) return FileImage(File(ruta));
     if (ruta.startsWith('assets/')) return AssetImage(ruta);
+    // Publicación hecha en este teléfono, mientras no hay servidor.
+    if (ruta.startsWith('/')) return FileImage(File(ruta));
     return NetworkImage(ruta);
   }
 
