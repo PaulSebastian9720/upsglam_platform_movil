@@ -83,10 +83,14 @@ class CamaraController extends ChangeNotifier {
     _cambiar(() => _ocupada = false);
   }
 
-  Future<void> alternarFlash() async {
-    if (!puedeFlash) return;
+  /// Falso si esta cámara no tiene flash: así la página lo puede avisar en
+  /// vez de no hacer nada.
+  Future<bool> alternarFlash() async {
+    if (!puedeFlash) return true;
     final nuevo = !_flash;
-    if (await _fotos.ponerFlash(nuevo)) _cambiar(() => _flash = nuevo);
+    final hecho = await _fotos.ponerFlash(nuevo);
+    if (hecho) _cambiar(() => _flash = nuevo);
+    return hecho;
   }
 
   Future<Foto?> tomar() async {

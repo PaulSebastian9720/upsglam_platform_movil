@@ -94,6 +94,16 @@ class _CamaraVistaState extends State<_CamaraVista> {
     if (mounted) await _camara.abrir();
   }
 
+  Future<void> _alternarFlash() async {
+    final hecho = await _camara.alternarFlash();
+    if (hecho || !mounted) return;
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        const SnackBar(content: Text('Esta cámara no tiene flash')),
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     final camara = context.watch<CamaraController>();
@@ -157,7 +167,7 @@ class _CamaraVistaState extends State<_CamaraVista> {
       BotonRedondo(
         icono: camara.flash ? Iconos.flash : Iconos.flashApagado,
         descripcion: camara.flash ? 'Flash encendido' : 'Flash apagado',
-        alPulsar: camara.puedeFlash ? camara.alternarFlash : null,
+        alPulsar: camara.puedeFlash ? _alternarFlash : null,
       ),
     ],
   );

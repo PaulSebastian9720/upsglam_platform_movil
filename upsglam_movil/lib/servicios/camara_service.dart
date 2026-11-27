@@ -83,7 +83,9 @@ class CamaraService {
         encendido ? FlashMode.always : FlashMode.off,
       );
       return true;
-    } on CameraException {
+    } catch (_) {
+      // Sin flash o sin permiso para usarlo: CameraException o
+      // PlatformException según el teléfono.
       return false;
     }
   }
