@@ -49,6 +49,9 @@ class MotorGpu:
         self.contexto.pop()
         self.contexto.detach()
 
+    def memoria_libre(self):
+        return cuda.mem_get_info()[0]
+
     def info(self):
         libre, total = cuda.mem_get_info()
         driver = cuda.get_driver_version()

@@ -43,7 +43,7 @@ class Rango:
 PARAMETROS = {
     "media": {"nivel": Opcion(("bajo", "medio", "fuerte"), "medio")},
     "nitidez": {"intensidad": Rango(0.0, 2.0, 1.0)},
-    "laplaciano": {"intensidad": Rango(1.0, 10.0, 6.0)},
+    "laplaciano": {"intensidad": Rango(3.0, 10.0, 6.0)},
     "sobel": {"direccion": Opcion(("horizontal", "vertical", "ambas"), "ambas")},
     "relieve": {"intensidad": Rango(0.0, 2.0, 1.0)},
     "ups": {},
@@ -100,9 +100,12 @@ def nitidez(p, imagen, medidas, intensidad):
     return p.a_8bits(p.convolucion_rgb(imagen, [mezclar(NITIDEZ, intensidad)], medidas))
 
 
+# La intensidad va dentro de la máscara: como |c·L| = c·|L| con c > 0, multiplicar los
+# coeficientes equivale a multiplicar el resultado, y el factor queda en la GPU.
 def laplaciano(p, imagen, medidas, intensidad):
-    bordes = p.convolucion_gris(p.a_gris(imagen), [GAUSSIANO, LAPLACIANO], medidas)
-    return p.a_8bits(p.valor_absoluto(bordes, intensidad))
+    mascaras = [GAUSSIANO, LAPLACIANO * np.float32(intensidad)]
+    bordes = p.convolucion_gris(p.a_gris(imagen), mascaras, medidas)
+    return p.a_8bits(p.valor_absoluto(bordes))
 
 
 def sobel(p, imagen, medidas, direccion):

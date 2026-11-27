@@ -27,3 +27,7 @@ DIR_RESULTADOS = Path(os.environ.get(
 
 # Bloques 2D de BLOQUE x BLOQUE hilos, un hilo por píxel.
 BLOQUE = _entero("BLOQUE", 16)
+
+# Dirección y puerto de la API.
+HOST = os.environ.get("HOST", "0.0.0.0")
+PUERTO = _entero("PUERTO", 8000)
