@@ -16,7 +16,7 @@ Están en `upsglam_movil/assets/` y, completos, en [docs/frontend/assets](../ass
 | Acceso | ver_clave, ocultar_clave |
 | Alertas | alerta, alerta_archivo, alerta_tamano, alerta_espera |
 
-`filtros` conserva sus colores. `flash` y `ocultar_clave` son el otro estado de un icono ya aprobado. Todo icono que se toca lleva descripción.
+`filtros` conserva sus colores. `publica` (ojo: todos la ven) y `privada` (candado: solo tú) son pareja: se entienden juntos. `flash` y `ocultar_clave` son el otro estado de un icono ya aprobado. Todo icono que se toca lleva descripción.
 
 ## Logo
 | Archivo | Uso |
