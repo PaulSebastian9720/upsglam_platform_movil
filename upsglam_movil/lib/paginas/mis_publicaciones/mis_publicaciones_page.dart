@@ -57,28 +57,24 @@ class _MisPublicacionesVista extends StatelessWidget {
     } else if (publicaciones.isEmpty) {
       contenido = const EstadoVacio(mensaje: 'Aún no tienes publicaciones');
     } else {
-      contenido = RefreshIndicator(
-        onRefresh: controlador.recargar,
-        child: CustomScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          slivers: [
-            CuadriculaPublicaciones(
-              publicaciones: publicaciones,
-              alPulsar: (p) => _editar(context, p),
-              encima: (p) => AccionesCelda(
-                publicacion: p,
-                alEditar: () => _editar(context, p),
-                alCambiarPrivacidad: () => controlador.alternarPrivacidad(p),
-              ),
+      contenido = CustomScrollView(
+        slivers: [
+          CuadriculaPublicaciones(
+            publicaciones: publicaciones,
+            alPulsar: (p) => _editar(context, p),
+            encima: (p) => AccionesCelda(
+              publicacion: p,
+              alEditar: () => _editar(context, p),
+              alCambiarPrivacidad: () => controlador.alternarPrivacidad(p),
             ),
-            SliverSafeArea(
-              top: false,
-              sliver: const SliverToBoxAdapter(
-                child: SizedBox(height: AppEspacio.base),
-              ),
+          ),
+          SliverSafeArea(
+            top: false,
+            sliver: const SliverToBoxAdapter(
+              child: SizedBox(height: AppEspacio.base),
             ),
-          ],
-        ),
+          ),
+        ],
       );
     }
     return Scaffold(

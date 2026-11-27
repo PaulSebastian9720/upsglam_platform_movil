@@ -83,48 +83,44 @@ class _OtroPerfilVistaState extends State<_OtroPerfilVista> {
       );
     }
     if (perfil == null) return PerfilCargando(conBoton: !control.esMio);
-    return RefreshIndicator(
-      onRefresh: control.cargar,
-      child: CustomScrollView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        slivers: [
-          SliverPadding(
-            padding: const EdgeInsets.all(AppEspacio.base),
-            sliver: SliverToBoxAdapter(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  CabeceraPerfil(perfil: perfil, mostrarUsuario: false),
-                  if (!control.esMio) ...[
-                    const SizedBox(height: AppEspacio.base),
-                    perfil.loSigo
-                        ? BotonSecundario(
-                            texto: 'Dejar de seguir',
-                            alPulsar: control.alternarSeguir,
-                          )
-                        : BotonPrincipal(
-                            texto: 'Seguir',
-                            alPulsar: control.alternarSeguir,
-                          ),
-                  ],
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: const EdgeInsets.all(AppEspacio.base),
+          sliver: SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                CabeceraPerfil(perfil: perfil, mostrarUsuario: false),
+                if (!control.esMio) ...[
+                  const SizedBox(height: AppEspacio.base),
+                  perfil.loSigo
+                      ? BotonSecundario(
+                          texto: 'Dejar de seguir',
+                          alPulsar: control.alternarSeguir,
+                        )
+                      : BotonPrincipal(
+                          texto: 'Seguir',
+                          alPulsar: control.alternarSeguir,
+                        ),
                 ],
-              ),
+              ],
             ),
           ),
-          if (control.publicaciones.isEmpty)
-            const SliverToBoxAdapter(
-              child: EstadoVacio(mensaje: 'Aún no hay publicaciones'),
-            )
-          else
-            CuadriculaPublicaciones(
-              publicaciones: control.publicaciones,
-              alPulsar: _abrir,
-            ),
-          SliverToBoxAdapter(
-            child: SizedBox(height: MediaQuery.paddingOf(context).bottom),
+        ),
+        if (control.publicaciones.isEmpty)
+          const SliverToBoxAdapter(
+            child: EstadoVacio(mensaje: 'Aún no hay publicaciones'),
+          )
+        else
+          CuadriculaPublicaciones(
+            publicaciones: control.publicaciones,
+            alPulsar: _abrir,
           ),
-        ],
-      ),
+        SliverToBoxAdapter(
+          child: SizedBox(height: MediaQuery.paddingOf(context).bottom),
+        ),
+      ],
     );
   }
 }

@@ -85,20 +85,17 @@ class _PublicacionVistaState extends State<_PublicacionVista> {
         children: [const TarjetaPublicacion.cargando(), fin],
       );
     }
-    return RefreshIndicator(
-      onRefresh: control.cargar,
-      child: ListView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        children: [
-          TarjetaPublicacion(
-            publicacion: p,
-            alPulsarAutor: () => _verAutor(p.autor.id),
-            alPulsarMeGusta: control.alternarMeGusta,
-            alPulsarComentarios: _verComentarios,
-          ),
-          fin,
-        ],
-      ),
+    // Sin deslizar para actualizar: se recarga sola al volver de comentarios.
+    return ListView(
+      children: [
+        TarjetaPublicacion(
+          publicacion: p,
+          alPulsarAutor: () => _verAutor(p.autor.id),
+          alPulsarMeGusta: control.alternarMeGusta,
+          alPulsarComentarios: _verComentarios,
+        ),
+        fin,
+      ],
     );
   }
 }
