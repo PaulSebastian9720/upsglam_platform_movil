@@ -11,7 +11,7 @@ Están en `upsglam_movil/assets/` y, completos, en [docs/frontend/assets](../ass
 | Publicación | me_gusta, me_gusta_activo, comentario, mas, filtros |
 | Cámara | camara, galeria, girar, flash, flash_apagado, filtros, adelante |
 | Navegación | atras, cerrar, flecha |
-| Acciones | guardar, enviar, editar, eliminar, ajustes |
+| Acciones | guardar, enviar, editar, eliminar, ajustes, tema |
 | Perfil | publicaciones, publica, privada |
 | Acceso | ver_clave, ocultar_clave |
 | Alertas | alerta, alerta_archivo, alerta_tamano, alerta_espera |
@@ -23,8 +23,10 @@ Están en `upsglam_movil/assets/` y, completos, en [docs/frontend/assets](../ass
 |---|---|
 | logo_negro.svg | Sobre el fondo de la app |
 | logo_amarillo.svg | Bola del menú y login |
+| logo_azul.svg | Tema claro: suelto sobre el fondo de la página (Inicio) |
+| logo_blanco.svg | Tema claro: sobre azul, en la bola del menú y el cuadro del login |
 
-Los dos llevan el borde del color de su fondo: no mezclarlos. No deformar ni cambiar colores.
+Cada logo lleva el borde del color de su fondo: no mezclarlos. Cuál se usa lo decide el tema (`AppMarca` en `app_theme.dart`), nunca la página. No deformar ni cambiar colores.
 
 ## Imágenes
 Estándar de Flutter: el archivo base sin carpeta y sus variantes en `2.0x/` y `3.0x/`; se declara solo la carpeta base ([fuente](https://docs.flutter.dev/ui/assets/assets-and-images)). Formato WebP.
