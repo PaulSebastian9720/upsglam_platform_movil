@@ -254,8 +254,9 @@ de copia CPU→GPU y GPU→CPU, y estado. Los tiempos se miden con eventos CUDA.
 
 ## 6. Límites y errores
 
-No se redimensiona la imagen: cada fotografía se procesa con la resolución de la cámara que la
-tomó, siempre que esté dentro de los límites siguientes, definidos en `src/config.py`.
+El servicio no redimensiona la imagen. La aplicación móvil reduce el lado mayor a 2048 px
+antes de enviarla; el servicio acepta cualquier imagen dentro de los límites siguientes,
+definidos en `src/config.py`, hasta `MAX_LADO`.
 
 | Variable | Valor por defecto | Respuesta al excederlo |
 |---|---|---|

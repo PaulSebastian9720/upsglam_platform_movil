@@ -9,9 +9,10 @@ def _entero(nombre, defecto):
     return int(os.environ.get(nombre, str(defecto)))
 
 
-# Límites de la foto. No se fuerza ningún tamaño: cada foto se procesa con el que trae de
-# su cámara. Por debajo de MIN_LADO la máscara de 21x21 cubriría casi toda la imagen; 50
-# megapíxeles cubren el modo de 50 MP de los teléfonos y caben en los 4 GB de la MX230.
+# Límites de la foto. El servicio no redimensiona: la app reduce el lado mayor a 2048 px y
+# aquí se acepta hasta MAX_LADO. Por debajo de MIN_LADO la máscara de 21x21 cubriría casi
+# toda la imagen; 50 megapíxeles cubren el modo de 50 MP de los teléfonos y caben en los
+# 4 GB de la MX230.
 MAX_MB = _entero("MAX_MB", 25)
 MIN_LADO = _entero("MIN_LADO", 64)
 MAX_LADO = _entero("MAX_LADO", 12000)
