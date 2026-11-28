@@ -1,37 +1,30 @@
 # Cámara
 
-`paginas/camara` → `FotosRepositorio` → `CamaraService`, `GaleriaService` e `ImagenService`. Nadie más usa la cámara ni la galería.
+La cámara y la galería se usan solo a través de esta cadena: `paginas/camara` → `FotosRepositorio` → `CamaraService`, `GaleriaService` e `ImagenService`.
 
 | Pieza | Regla |
 |---|---|
-| Encuadre | El visor va en un cuadro 3:4 a todo el ancho, con una barra arriba (cerrar y flash) y otra abajo (galería, disparo y girar). Muestra el cuadro **entero** del sensor: lo que se ve es exactamente lo que se envía, sin recortes ni cambios de encuadre después. Si una cámara no da 3:4, el visor toma su forma dentro del cuadro |
-| Fondo | Siempre oscuro, con cualquier tema |
-| Filtro | No aparece en la cámara. Se elige **después** de la foto, en Editar, y empieza en Original |
-| Foto | Queda en un archivo temporal ya optimizado; se borra al volver a la cámara |
-| Galería | Selector del sistema, sin permiso de fotos. El tipo se comprueba por el contenido: JPG, PNG, WEBP o HEIC; si no, alerta `archivoNoValido` |
-| Permiso | Solo cámara, al abrirla. Nunca micrófono |
-| Negado / bloqueado | "Permitir" / "Abrir ajustes". La galería sigue disponible |
-| Flash | Apagado o encendido; solo en la cámara trasera |
-| Orden | Abrir, cerrar, girar y disparar van en una fila: no se pisan |
-| Segundo plano, galería y Editar | La cámara se suelta y se recupera al volver |
-| Orientación | La app va en vertical |
+| Encuadre | El visor ocupa un cuadro 3:4 a todo el ancho, con una barra superior (cerrar y flash) y otra inferior (galería, disparo y girar). Muestra el cuadro completo del sensor: lo que se ve es lo que se envía, sin recortes ni cambios de encuadre posteriores. Si una cámara no entrega 3:4, el visor adopta su proporción dentro del cuadro |
+| Fondo | Siempre oscuro, sin importar el tema elegido |
+| Filtro | No aparece en la cámara. Se elige después de tomar la foto, en Editar, y empieza en Original |
+| Foto | Se guarda en un archivo temporal ya optimizado, que se borra al volver a la cámara |
+| Galería | Selector del sistema, sin permiso de fotos. El tipo se comprueba por el contenido del archivo (JPG, PNG, WEBP o HEIC); en otro caso se muestra la alerta `archivoNoValido` |
+| Permiso | Solo cámara, solicitado al abrirla. Nunca micrófono |
+| Permiso negado o bloqueado | Se ofrece "Permitir" o "Abrir ajustes", según el caso. La galería sigue disponible |
+| Flash | Apagado o encendido, solo en la cámara trasera. Si la cámara no tiene flash, se avisa con un mensaje breve |
+| Orden de operaciones | Abrir, cerrar, girar y disparar se ejecutan en cola, sin superponerse. Un doble toque al disparar toma una sola foto |
+| Segundo plano, galería y Editar | La cámara se libera y se recupera al volver |
+| Orientación | La aplicación funciona solo en vertical |
 
-`camera_android_camerax` está fijado en 0.7.1+2 (CameraX 1.5.3): con 0.7.2 (CameraX 1.6.0) la app se cerró una vez al girar la cámara en el emulador. Antes de subirlo, repetir el giro muchas veces en un teléfono.
+`camera_android_camerax` está fijado en la versión 0.7.1+2 (CameraX 1.5.3), porque con 0.7.2 (CameraX 1.6.0) la aplicación se cerró al girar la cámara en el emulador. La actualización queda sujeta a verificación en un dispositivo físico.
 
 ## Optimización
-Justo después de tomar o elegir la foto, en Android y en iOS, `ImagenService` la convierte una sola vez:
-- El lado mayor queda en **2560 px** como máximo, con la misma proporción. Si es más pequeña, no se agranda.
-- Se guarda en **WEBP con calidad 85**, que pesa un 25–30 % menos que un JPG de igual calidad. Las HEIC del iPhone también salen en WEBP: nunca se envía HEIC.
-- Esa es la foto que se ve en Editar y Publicar y la que se envía. La copia original se borra.
+Inmediatamente después de tomar o elegir la foto, en Android y en iOS, `ImagenService` la convierte una sola vez:
+- El lado mayor se limita a 2560 px, conservando la proporción. Las fotos más pequeñas no se amplían.
+- Se guarda en WEBP con calidad 85, que pesa entre un 25 y un 30 % menos que un JPG de calidad equivalente. Las fotos HEIC del iPhone también se convierten a WEBP; la aplicación nunca envía HEIC.
+- Esa es la foto que se muestra en Editar y Publicar y la que se envía. La copia original se borra.
 
-Por qué: menos datos por la red, menos espacio en el almacenamiento y menos trabajo para los filtros, sin pérdida visible. En un teléfono de 1080 px de ancho, 2560 px se ve nítida sin zoom y hasta 1,8× con zoom.
+Esta conversión reduce los datos enviados por la red, el espacio ocupado en el almacenamiento y el tiempo de procesamiento de los filtros, sin pérdida visible de calidad. En una pantalla de 1080 px de ancho, una foto de 2560 px se ve nítida sin zoom y hasta un zoom de 1,8×.
 
-Biblioteca: `flutter_image_compress`. Genera WEBP en Android con el codificador del sistema y en iOS con SDWebImageWebPCoder (más lento, pero funciona). Si no puede convertir, la galería muestra `archivoNoValido` y la cámara pasa a fallo.
+La conversión usa la biblioteca `flutter_image_compress`, que genera WEBP en Android con el codificador del sistema y en iOS con SDWebImageWebPCoder, más lento pero funcional. Si la conversión falla, la galería muestra la alerta `archivoNoValido` y la cámara pasa al estado de fallo.
 
-## Para revisar
-- [ ] Lo que se ve en el cuadro es lo mismo que sale en Editar, sin bordes de más.
-- [ ] Una foto de la galería en HEIC (iPhone) llega como WEBP.
-- [ ] Doble toque al disparar toma una sola foto.
-- [ ] Girar muchas veces seguidas no cierra la app.
-- [ ] Ir al inicio del teléfono y volver muestra el visor.
-- [ ] Negar el permiso, y concederlo luego en ajustes, la abre sin reiniciar.

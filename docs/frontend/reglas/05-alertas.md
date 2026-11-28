@@ -1,10 +1,10 @@
 # Alertas
 
-Un componente: **AppAlerta**. Nadie más abre diálogos.
+Todas las alertas se muestran con el componente `AppAlerta`. Ninguna otra parte de la aplicación abre diálogos.
 
-- Un solo mensaje, sin subtítulo. Icono **en rojo** (`rojoTexto`), fondo `superficie`, radio 20, velo detrás.
-- Dos botones: acción y Cancelar. La acción es amarilla, salvo la destructiva, que es **roja**.
-- Se elige por tipo, no por texto. Los textos viven solo en el componente.
+- Cada alerta tiene un solo mensaje, sin subtítulo, con el icono en rojo (`rojoTexto`), fondo `superficie`, radio 20 y velo detrás.
+- Tiene dos botones: la acción y Cancelar. La acción es amarilla, salvo cuando es destructiva, que es roja.
+- La alerta se elige por tipo, no por texto. Los textos se definen solo dentro del componente.
 
 | Tipo | Mensaje | Icono | Acción |
 |---|---|---|---|
@@ -12,11 +12,13 @@ Un componente: **AppAlerta**. Nadie más abre diálogos.
 | fotoMuyGrande | La foto es muy grande | alerta_tamano | Elegir otra |
 | servidorOcupado | Hay mucha gente aplicando filtros | alerta_espera | Reintentar |
 | filtrosNoDisponibles | Los filtros no están disponibles | alerta | Reintentar |
-| sinConexion (previsto) | No hay conexión | alerta | Reintentar |
+| sinConexion (no implementado) | No hay conexión | alerta | Reintentar |
 | eliminarPublicacion | ¿Eliminar esta publicación? | eliminar | Eliminar |
 
 ## De error a alerta
-La conversión se hace **en un solo lugar**, `servicios/api`, con códigos del backend, nunca leyendo textos. Códigos HTTP **propuestos, por acordar con el backend**:
+La conversión de errores en alertas se hace en un único lugar, `servicios/api`, a partir de los códigos de respuesta del backend y nunca de sus textos. El servicio de API no está implementado.
+
+Códigos HTTP (pendiente de definición con el backend):
 
 | Respuesta | Tipo |
 |---|---|
@@ -25,16 +27,17 @@ La conversión se hace **en un solo lugar**, `servicios/api`, con códigos del b
 | 429 | servidorOcupado |
 | 503 | filtrosNoDisponibles |
 | Sin red o tiempo agotado | sinConexion |
-| 401 | Ninguna: se maneja en [sesión](07-sesion-y-token.md) |
+| 401 | Ninguna; se gestiona en la [sesión](07-sesion-y-token.md) |
 | 400 o 422 de un campo | Error bajo el campo |
 
 ## Cuándo no usar alerta
-- Dato mal escrito: error bajo el campo.
-- Filtro que falló en el historial: se muestra en la rueda.
-- Confirmación de algo que salió bien: aviso breve, sin botones.
+- Dato mal escrito: se muestra el error bajo el campo.
+- Filtro que falló en el historial: se indica en la rueda del filtro.
+- Confirmación de una acción exitosa: se muestra un aviso breve, sin botones.
 
-## Para revisar
-- [ ] Nunca hay dos alertas a la vez.
-- [ ] Tras esperar una respuesta, se comprueba que la pantalla siga abierta.
-- [ ] Reintentar no duplica la solicitud.
-- [ ] La alerta de filtros no pierde la foto ni los ajustes.
+## Comportamiento requerido
+- No se muestran dos alertas al mismo tiempo.
+- Después de esperar una respuesta, se comprueba que la pantalla siga abierta antes de mostrar la alerta.
+- Reintentar no duplica la solicitud.
+- La alerta de filtros conserva la foto y los ajustes elegidos.
+

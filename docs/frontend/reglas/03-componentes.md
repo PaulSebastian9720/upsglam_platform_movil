@@ -1,6 +1,6 @@
 # Componentes
 
-Se extrae un componente cuando se usa en **dos o más páginas**. Si es de una sola, va en la carpeta de esa página.
+Un elemento se convierte en componente cuando se usa en dos o más páginas. Si lo usa una sola página, se ubica en la carpeta de esa página.
 
 | Componente | Para qué | Recibe |
 |---|---|---|
@@ -8,7 +8,7 @@ Se extrae un componente cuando se usa en **dos o más páginas**. Si es de una s
 | AppAlerta | Todas las alertas | tipo de alerta |
 | BotonPrincipal | Acción amarilla | texto, acción, cargando |
 | BotonSecundario | Acción con borde | texto, icono, acción, cargando |
-| CampoTexto | Todos los campos, con etiqueta flotante: dentro de la caja y sube al borde al tocarla | etiqueta, validador, tipo, líneas |
+| CampoTexto | Todos los campos, con etiqueta flotante: aparece dentro del campo y sube al borde al enfocarlo | etiqueta, validador, tipo, líneas |
 | AppIcono | Todos los iconos | nombre, tamaño, color, descripción |
 | ImagenApp | Todas las fotos | origen, marco |
 | VisorImagen | Zoom en ventana nueva: solo la foto de perfil | imagen |
@@ -16,22 +16,22 @@ Se extrae un componente cuando se usa en **dos o más páginas**. Si es de una s
 | AvatarUsuario | Foto de perfil | imagen, tamaño |
 | TarjetaPublicacion | Publicación en Inicio y Ver publicación | publicación, acciones |
 | RuedaFiltro | Filtros en editar e historial | filtro, seleccionada, cargando, falló |
-| ListaPaginada | Toda lista o cuadrícula con páginas | controlador, elemento |
-| HojaApp | Hojas inferiores (comentarios) | título, contenido |
+| ListaPaginada (no implementado) | Toda lista o cuadrícula con páginas | controlador, elemento |
+| HojaApp (no implementado) | Hojas inferiores; por ahora los comentarios usan una hoja propia | título, contenido |
 | EncabezadoPagina | Flecha y título | título, acción |
 | BotonRedondo | Icono sobre una foto | icono, descripción, acción |
 | SelectorFiltro | Fila de ruedas, en editar | filtro elegido, acción |
 | EstadoVacio | Sin datos o error con reintento | mensaje, acción |
 
 ## Botones
-- Alto 46, radio 10, padding 16, ancho completo o a mitades con separación 12.
-- Amarillo: una sola acción por pantalla. El resto, con borde.
-- Destructivo: rojo, y siempre pide confirmación.
-- Al pulsar se deshabilita y muestra carga hasta terminar. El tamaño no cambia.
-- Texto: verbo y, si hace falta, objeto. "Guardar cambios", no "Aceptar".
+- Alto 46, radio 10 y margen interno 16. Ocupan todo el ancho o la mitad, con separación de 12.
+- El botón amarillo se usa para una sola acción por pantalla; el resto lleva borde.
+- Las acciones destructivas usan botón rojo y siempre piden confirmación.
+- Al pulsarlo, el botón se deshabilita y muestra un indicador de carga hasta terminar, sin cambiar de tamaño.
+- El texto es un verbo seguido del objeto cuando hace falta: "Guardar cambios", no "Aceptar".
 
 ## RuedaFiltro
-64 dp, círculo. Seleccionada: borde amarillo de 3. Cargando: imagen oscurecida y aro girando **solo en ella**; las demás se bloquean. Falló: icono de alerta en rojo. "Original" siempre es la primera.
+Círculo de 64 dp. La rueda seleccionada lleva un borde amarillo de 3. Mientras se aplica un filtro, solo esa rueda muestra la imagen oscurecida y un indicador circular, y las demás quedan bloqueadas. Si el filtro falla, muestra un icono de alerta en rojo. "Original" es siempre la primera.
 
 | Filtro | Control |
 |---|---|
@@ -40,9 +40,10 @@ Se extrae un componente cuando se usa en **dos o más páginas**. Si es de una s
 | Sobel | Tres opciones: Horizontal, Vertical, Ambas |
 
 ## Estados
-- **Carga:** bloques grises con la forma final, para que nada salte. Nunca pantalla en blanco.
+- **Carga:** bloques grises con la forma final del contenido, para que nada cambie de posición. No se muestra una pantalla en blanco.
 - **Vacío y error:** `EstadoVacio`, con una acción.
-- **Recarga:** se mantiene lo que había mientras llega lo nuevo.
+- **Recarga:** el contenido anterior se mantiene mientras llega el nuevo.
 
-## Prohibido
-Copiar un componente para cambiarle un detalle (se le agrega un parámetro), y texto o datos fijos dentro de un componente.
+## Restricciones
+- No se copia un componente para cambiar un detalle; en su lugar se le agrega un parámetro.
+- Los componentes no contienen textos ni datos fijos.

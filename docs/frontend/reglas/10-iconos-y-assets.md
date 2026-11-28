@@ -1,9 +1,9 @@
 # Iconos y assets
 
-Están en `upsglam_movil/assets/` y, completos, en [docs/frontend/assets](../assets). Créditos: [CREDITOS.md](../assets/CREDITOS.md).
+Los recursos están en `upsglam_movil/assets/`. Las licencias y créditos se encuentran en [CREDITOS.md](../assets/CREDITOS.md).
 
 ## Iconos permitidos
-**Solo estos.** Prohibidos `Icons.*`, `cupertino_icons`, emojis y dibujos nuevos. Uno nuevo se aprueba antes y se agrega aquí. Son SVG blancos de 24; el color lo pone `AppIcono` desde el tema.
+Solo se usan los iconos de esta tabla. No se usan `Icons.*`, `cupertino_icons`, emojis ni dibujos propios. Un icono nuevo requiere aprobación previa y se registra aquí. Los iconos son SVG blancos de 24 y `AppIcono` les aplica el color del tema.
 
 | Dónde | Archivos en `assets/iconos` |
 |---|---|
@@ -16,20 +16,20 @@ Están en `upsglam_movil/assets/` y, completos, en [docs/frontend/assets](../ass
 | Acceso | ver_clave, ocultar_clave |
 | Alertas | alerta, alerta_archivo, alerta_tamano, alerta_espera |
 
-`filtros` conserva sus colores. `publica` (ojo: todos la ven) y `privada` (candado: solo tú) son pareja: se entienden juntos. `flash` y `ocultar_clave` son el otro estado de un icono ya aprobado. Todo icono que se toca lleva descripción.
+`filtros` conserva sus colores originales. `publica` (un ojo: visible para todos) y `privada` (un candado: visible solo para el autor) se usan como pareja. `flash` y `ocultar_clave` representan el segundo estado de un icono ya aprobado. Todo icono que responde al toque lleva una descripción para lectores de pantalla.
 
 ## Logo
 | Archivo | Uso |
 |---|---|
-| logo_negro.svg | Sobre el fondo de la app |
-| logo_amarillo.svg | Bola del menú y login |
+| logo_negro.svg | Tema oscuro: sobre el fondo de la aplicación |
+| logo_amarillo.svg | Tema oscuro: bola del menú y login |
 | logo_azul.svg | Tema claro: suelto sobre el fondo de la página (Inicio) |
 | logo_blanco.svg | Tema claro: sobre azul, en la bola del menú y el cuadro del login |
 
-Cada logo lleva el borde del color de su fondo: no mezclarlos. Cuál se usa lo decide el tema (`AppMarca` en `app_theme.dart`), nunca la página. No deformar ni cambiar colores.
+Cada logo lleva un borde del color de su fondo, por lo que no son intercambiables. El logo que corresponde lo decide el tema (`AppMarca` en `app_theme.dart`), nunca la página. Los logos no se deforman ni se les cambia el color.
 
 ## Imágenes
-Estándar de Flutter: el archivo base sin carpeta y sus variantes en `2.0x/` y `3.0x/`; se declara solo la carpeta base ([fuente](https://docs.flutter.dev/ui/assets/assets-and-images)). Formato WebP.
+Siguen el estándar de Flutter: el archivo base en la carpeta y sus variantes en `2.0x/` y `3.0x/`; en `pubspec.yaml` se declara solo la carpeta base ([fuente](https://docs.flutter.dev/ui/assets/assets-and-images)). El formato es WebP.
 
 | Carpeta | Contenido | Tamaño base |
 |---|---|---|
@@ -37,7 +37,7 @@ Estándar de Flutter: el archivo base sin carpeta y sus variantes en `2.0x/` y `
 | | media_bajo, media_medio, media_fuerte | 106 × 72 |
 | imagenes/login | portada (original, Sobel, Relieve y UPS) | 390 × 192 |
 
-Todas parten del mismo retrato de perro (`avatar_4`). Son muestras del efecto, calculadas fuera de la app; el resultado real siempre viene del servidor.
+Todas parten del mismo retrato (`avatar_4`). Son muestras del efecto calculadas fuera de la aplicación; el resultado real lo genera siempre el servidor.
 
 | Filtro | Muestra | Operación |
 |---|---|---|
@@ -48,12 +48,12 @@ Todas parten del mismo retrato de perro (`avatar_4`). Son muestras del efecto, c
 | Relieve | Color, efecto 3D | Convolución `-2 -1 0 / -1 1 1 / 0 1 2` por canal |
 | UPS | Azul y amarillo | Color y bordes |
 
-Declaradas en `pubspec.yaml`: `assets/logo/`, `assets/iconos/`, `assets/imagenes/filtros/`, `assets/imagenes/login/`, y las fuentes.
+En `pubspec.yaml` se declaran `assets/logo/`, `assets/iconos/`, `assets/imagenes/filtros/`, `assets/imagenes/login/` y las fuentes.
 
-## Icono de la app y carga
-**Ya instalados** en `android/` e `ios/`. Originales en `assets/iconos_aplicacion/` ([copia](../assets/iconos_aplicacion)); no se declaran en `pubspec.yaml`, para que no pesen en la app.
-- **Android:** adaptable y vectorial (fondo amarillo, logo en la zona segura de 66 de 108 dp), **monocromo vectorial** para iconos temáticos de Android 13+, y PNG clásico por densidad ([fuente](https://developer.android.com/develop/ui/views/launch/icon_design_adaptive)).
-- **iOS:** los 15 PNG que declara Flutter, cuadrados y sin transparencia, e imagen de carga. La versión oscura y la tintada (blanco y negro) de iOS 18 están creadas, sin conectar.
-- **Carga en Android:** fondo `#101114` con el logo; en Android 12+ el icono de 288 dp cabe en un círculo de 192 ([fuente](https://developer.android.com/develop/ui/views/launch/splash-screen)). Antes de Android 12, `launch_background`, como indica [Flutter](https://docs.flutter.dev/platform-integration/android/splash-screen).
-- Fondo de la carga, de la ventana y de la app son el mismo, para que no parpadee.
-- Si cambia el logo se regeneran todos; no se edita uno suelto.
+## Icono de la aplicación y pantalla de carga
+Están instalados en `android/` e `ios/`. Los originales están en `assets/iconos_aplicacion/` y no se declaran en `pubspec.yaml`, para no aumentar el tamaño de la aplicación.
+- **Android:** icono adaptable y vectorial (fondo amarillo y logo dentro de la zona segura de 66 de 108 dp), versión monocroma vectorial para los iconos temáticos de Android 13+ y PNG por densidad ([fuente](https://developer.android.com/develop/ui/views/launch/icon_design_adaptive)).
+- **iOS:** los 15 PNG que declara Flutter, cuadrados y sin transparencia, y la imagen de carga. Las versiones oscura y tintada de iOS 18 están creadas, pero no están conectadas (no implementado).
+- **Carga en Android:** fondo `#101114` con el logo; en Android 12+ el icono de 288 dp cabe en un círculo de 192 ([fuente](https://developer.android.com/develop/ui/views/launch/splash-screen)). En versiones anteriores a Android 12 se usa `launch_background`, como indica [Flutter](https://docs.flutter.dev/platform-integration/android/splash-screen).
+- La pantalla de carga, la ventana y la aplicación comparten el mismo fondo, para evitar un parpadeo al abrir.
+- Si cambia el logo, se regeneran todos los iconos; no se edita uno por separado.

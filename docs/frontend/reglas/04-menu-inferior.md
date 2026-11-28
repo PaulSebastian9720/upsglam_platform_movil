@@ -1,22 +1,21 @@
 # Menú inferior
 
-**Uno solo, global, en la raíz de la navegación.** Se usa `StatefulShellRoute.indexedStack` de go_router, con una rama por pestaña y `goBranch` para cambiar
-([fuente](https://pub.dev/documentation/go_router/latest/topics/Configuration-topic.html)).
+La aplicación tiene un único menú inferior, global y ubicado en la raíz de la navegación. Se implementa con `StatefulShellRoute.indexedStack` de go_router, con una rama por pestaña, y el cambio de pestaña se hace con `goBranch` ([fuente](https://pub.dev/documentation/go_router/latest/topics/Configuration-topic.html)).
 
-- Dos pestañas: Inicio y Perfil. La cámara **no** es pestaña: se abre encima, a pantalla completa y sin menú.
+- Tiene dos pestañas: Inicio y Perfil. La cámara no es una pestaña: se abre a pantalla completa, por encima del resto y sin menú.
 - Cada pestaña conserva su posición y sus datos.
-- Tocar la pestaña activa sube al inicio de la lista.
-- Barra de 54 de alto y 250 de ancho, iconos de 24, bola de 64 con logo de 42 que sobresale, fondo `campo`, sin textos. Cada botón con descripción para lectores de pantalla.
-- La bola usa `logo_amarillo.svg`.
+- Al tocar la pestaña activa, la lista vuelve al inicio.
+- La barra mide 54 de alto y 250 de ancho, con iconos de 24. La bola central mide 64, lleva un logo de 42 y sobresale de la barra. El fondo es `campo` y no hay textos. Cada botón tiene una descripción para lectores de pantalla.
+- La bola usa `logo_amarillo.svg` en el tema oscuro y `logo_blanco.svg` en el claro.
 
-## Bugs que hay que evitar
-| Bug | Regla | Cómo se prueba |
-|---|---|---|
-| La parte que sobresale no responde | El área del menú mide el alto **total** (barra más bola). Flutter no entrega toques fuera de los límites del padre | Tocar el borde superior de la bola |
-| Tapa el último elemento | Toda lista termina con espacio igual al alto total más el margen del sistema | Llegar al final de Inicio y de Perfil |
-| Se monta en los botones del sistema | Respetar el área segura inferior | Probar con gestos y con tres botones |
-| Salta al abrir el teclado | Se oculta con el teclado visible | Abrir comentarios y escribir |
-| Se pierde el scroll al cambiar de pestaña | Una rama por pestaña, sin recrearla | Bajar en Inicio, ir a Perfil y volver |
-| Se abre la cámara dos veces | Se ignora el segundo toque mientras navega | Doble toque rápido en la bola |
-| Atrás cierra la app desde Perfil | Atrás en Perfil vuelve a Inicio; en Inicio, sale | Gesto atrás en ambas |
-| Parpadea entre páginas | Ninguna página dibuja su propio menú | Buscar BarraPrincipal: solo en rutas |
+## Comportamiento requerido
+| Situación | Regla |
+|---|---|
+| Toques en la parte de la bola que sobresale | El área del menú mide el alto total (barra y bola), porque Flutter no entrega toques fuera de los límites del widget padre |
+| Último elemento de una lista | Toda lista termina con un espacio igual al alto total del menú más el margen inferior del sistema |
+| Botones de navegación del sistema | El menú respeta el área segura inferior |
+| Teclado visible | El menú se oculta mientras el teclado está abierto |
+| Cambio de pestaña | Cada pestaña es una rama que no se vuelve a crear, por lo que conserva el desplazamiento |
+| Doble toque en la bola | Se ignora el segundo toque mientras la navegación está en curso |
+| Gesto atrás | En Perfil vuelve a Inicio; en Inicio cierra la aplicación |
+| Transición entre páginas | Ninguna página dibuja su propio menú; `BarraPrincipal` solo se usa en las rutas |

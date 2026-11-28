@@ -1,33 +1,35 @@
 # Sesión y token
 
-**En un minuto:** el token lo crea y renueva Supabase. Se guarda cifrado en el teléfono. Solo `SesionService` lo lee. Solo `ApiService` lo envía. Nadie más lo toca.
+**Estado:** no implementado. La aplicación funciona con datos de prueba en memoria; este documento define cómo se integrará con Supabase Auth.
 
-| Necesito… | Uso |
+Supabase crea y renueva el token. El token se guarda cifrado en el teléfono, solo `SesionService` lo lee y solo `ApiService` lo envía.
+
+| Necesidad | Responsable |
 |---|---|
-| Saber si hay sesión o quién es | `SesionService` (`lib/servicios/sesion/`) |
-| Iniciar sesión, crear cuenta, salir | `SesionService` |
-| Llamar al backend | Un repositorio; él usa `ApiService` (`lib/servicios/api/`) |
-| El token a mano | No lo necesitas |
-| Reaccionar a entrar o salir | Las rutas ya redirigen solas |
+| Consultar si hay sesión o quién es el usuario | `SesionService` (`lib/servicios/sesion/`) |
+| Iniciar sesión, crear cuenta y cerrar sesión | `SesionService` |
+| Llamar al backend | Un repositorio, que usa `ApiService` (`lib/servicios/api/`) |
+| Acceder al token directamente | No está permitido fuera de los dos servicios |
+| Reaccionar al inicio o cierre de sesión | Las rutas redirigen automáticamente |
 
-## Dónde está
-- `supabase_flutter` guarda la sesión por defecto en Shared Preferences y permite cambiarlo con una clase propia de `LocalStorage` ([fuente](https://pub.dev/packages/supabase_flutter)).
-- La guía de Flutter advierte no guardar tokens en Shared Preferences, porque no cifra ([fuente](https://docs.flutter.dev/app-architecture/design-patterns/key-value-data)).
-- **Regla:** se guarda con `flutter_secure_storage`, en `lib/servicios/sesion/`, usando ese `LocalStorage`.
+## Almacenamiento
+- `supabase_flutter` guarda la sesión por defecto en Shared Preferences y permite reemplazarlo con una implementación propia de `LocalStorage` ([fuente](https://pub.dev/packages/supabase_flutter)).
+- La guía de Flutter desaconseja guardar tokens en Shared Preferences porque no cifra los datos ([fuente](https://docs.flutter.dev/app-architecture/design-patterns/key-value-data)).
+- Por eso la sesión se guarda con `flutter_secure_storage`, en `lib/servicios/sesion/`, mediante esa implementación de `LocalStorage`.
 
 ## Flujo
-1. **Arranque:** se inicializa Supabase con el token guardado. La sesión puede venir caducada: se comprueba y se espera la renovación antes de mostrar Inicio.
-2. **Rutas:** sin sesión, a `/login`; con sesión, fuera de login y registro. Se escucha `onAuthStateChange`.
-3. **Petición:** `ApiService` agrega `Authorization: Bearer`.
-4. **401:** renovar una vez y repetir una vez. Si vuelve a fallar, cerrar sesión.
-5. **Salir:** se borra el token, **todo el caché** y el estado de los repositorios, y se va a login.
+1. **Arranque:** Supabase se inicializa con el token guardado. Como la sesión puede haber caducado, se comprueba y se espera la renovación antes de mostrar Inicio.
+2. **Rutas:** sin sesión, se redirige a `/login`; con sesión, se sale de login y registro. Los cambios se detectan con `onAuthStateChange`.
+3. **Petición:** `ApiService` agrega la cabecera `Authorization: Bearer`.
+4. **Respuesta 401:** se renueva el token una vez y se repite la petición una vez. Si vuelve a fallar, se cierra la sesión.
+5. **Cierre de sesión:** se borran el token, todo el caché y el estado de los repositorios, y se navega a login.
 
-## Prohibido
-- Guardar la contraseña, o el token en Shared Preferences, en el caché, en modelos o en registros.
-- Poner en la APK la clave `service_role` u otro secreto. La clave pública (anon) sí puede ir.
-- Que una página o un controlador importe Supabase.
+## Restricciones
+- No se guarda la contraseña. El token no se guarda en Shared Preferences, en el caché, en modelos ni en registros.
+- La aplicación no incluye la clave `service_role` ni ningún otro secreto. La clave pública (anon) sí puede incluirse.
+- Ninguna página ni controlador importa Supabase.
 
 ## Direcciones del entorno
-Se definen al construir la APK con `--dart-define` ([fuente](https://dart.dev/guides/environment-declarations)) y se leen solo en `lib/config/`: API, URL de Supabase y clave pública.
+La dirección de la API, la URL de Supabase y la clave pública se definen al compilar la aplicación con `--dart-define` ([fuente](https://dart.dev/guides/environment-declarations)) y se leen únicamente en `lib/config/`.
 
-> **Por confirmar con el docente:** el PDF pide en la app "Configuración de la URL de la API para facilitar la ejecución en distintos entornos". El equipo decidió hacerlo al construir la APK.
+**Pendiente de definición:** el enunciado pide "Configuración de la URL de la API para facilitar la ejecución en distintos entornos". El equipo optó por definirla al compilar; falta confirmarlo con el docente.

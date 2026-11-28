@@ -1,17 +1,19 @@
 # Datos, paginación y caché
 
+**Estado:** la carga dinámica está implementada sobre datos de prueba en memoria. La paginación, la conexión con el backend y el caché en el teléfono no están implementados.
+
 ## Carga dinámica
-- Se muestra primero lo guardado y después se actualiza con la red; el repositorio es el único que decide ([patrón oficial](https://docs.flutter.dev/app-architecture/design-patterns/offline-first)).
-- Las listas se construyen a medida que se ven, con constructores perezosos ([fuente](https://docs.flutter.dev/cookbook/lists/long-lists)).
-- **No** se usa "deslizar hacia abajo para actualizar". Las pantallas se recargan solas al volver de otra que pudo cambiar sus datos, o cuando el repositorio avisa un cambio (publicar, editar, eliminar).
-- Los cambios propios (me gusta, comentar) se ven al instante y se deshacen si el servidor falla.
+- Primero se muestra lo guardado y después se actualiza con la red. El repositorio es el único que decide de dónde salen los datos ([patrón oficial](https://docs.flutter.dev/app-architecture/design-patterns/offline-first)).
+- Las listas se construyen a medida que se muestran, con constructores perezosos ([fuente](https://docs.flutter.dev/cookbook/lists/long-lists)).
+- No se usa el gesto de deslizar hacia abajo para actualizar. Las pantallas se recargan al volver de otra que pudo cambiar sus datos, o cuando el repositorio notifica un cambio (publicar, editar o eliminar).
+- Los cambios propios, como dar me gusta o comentar, se reflejan de inmediato y se revierten si el servidor responde con error.
 
 ## Paginación
-**Por cursor, no por número de página:** si alguien publica mientras bajas, no se repite ni se salta nada. Orden: fecha y luego id, descendente.
+La paginación es por cursor y no por número de página, para que una publicación nueva no provoque elementos repetidos ni omitidos mientras se recorre la lista. El orden es por fecha y luego por id, de forma descendente.
 
-Petición: `GET /publicaciones?limite=10&cursor=<cursor>`. La primera va sin cursor.
+Petición: `GET /publicaciones?limite=10&cursor=<cursor>`. La primera petición se envía sin cursor.
 
-Respuesta, **igual para todas las listas**:
+Todas las listas usan la misma forma de respuesta:
 ```json
 {
   "elementos": [],
@@ -19,25 +21,27 @@ Respuesta, **igual para todas las listas**:
   "hayMas": true
 }
 ```
-El cursor es opaco: la app lo guarda y lo devuelve, nunca lo interpreta. Rutas y campos son **propuesta, por acordar con el backend**.
+El cursor es opaco: la aplicación lo guarda y lo devuelve sin interpretarlo.
+
+**Pendiente de definición:** las rutas y los campos deben acordarse con el backend.
 
 | Lista | Ruta | Límite | Al final |
 |---|---|---|---|
-| Inicio | `/publicaciones` | 10 | Carga más a 3 elementos del final |
+| Inicio | `/publicaciones` | 10 | Pide la siguiente página a 3 elementos del final |
 | Publicaciones de un usuario | `/usuarios/{id}/publicaciones` | 18 | Cuadrícula de 3 |
 | Comentarios | `/publicaciones/{id}/comentarios` | 20 | Más antiguos arriba |
-| Historial | `/historial` | 15 | Solo el propio |
-| Seguidores (solo los propios) | `/usuarios/{id}/seguidores` | 20 | |
+| Historial | `/historial` | 15 | Solo el del usuario |
+| Seguidores | `/usuarios/{id}/seguidores` | 20 | Solo los del usuario |
 
-**Reglas de la lista**
-- No se pide una página si ya hay una pedida o si `hayMas` es falso.
-- Se descartan repetidos por id.
-- Si falla, se conserva lo cargado y se ofrece reintentar esa página.
-- Actualizar reemplaza la primera página y limpia los cursores.
-- Biblioteca: `infinite_scroll_pagination` ([fuente](https://pub.dev/documentation/infinite_scroll_pagination/latest/)), que no impone una estrategia y por tanto admite cursores. El componente propio es `ListaPaginada`; ninguna página la usa directo.
+**Reglas de las listas**
+- No se pide una página si ya hay otra en curso o si `hayMas` es falso.
+- Los elementos repetidos se descartan por id.
+- Si una página falla, se conserva lo cargado y se ofrece reintentar esa página.
+- Actualizar reemplaza la primera página y descarta los cursores.
+- Se usará la biblioteca `infinite_scroll_pagination` ([fuente](https://pub.dev/documentation/infinite_scroll_pagination/latest/)), que no impone una estrategia y admite cursores. Las páginas la usan a través del componente `ListaPaginada`, nunca directamente.
 
 ## Esquemas
-Viven en `lib/modelos/`, un archivo por modelo. Fechas en ISO 8601 UTC; ids como texto.
+Los modelos están en `lib/modelos/`, uno por archivo. Las fechas van en ISO 8601 UTC y los ids como texto.
 
 ```json
 { "publicacion": {
@@ -60,11 +64,13 @@ Viven en `lib/modelos/`, un archivo por modelo. Fechas en ISO 8601 UTC; ids como
 { "perfil": { "id": "", "usuario": "", "nombre": "", "correo": "solo el propio", "descripcion": "", "avatarUrl": null,
   "publicaciones": 0, "meGusta": 0, "seguidores": 0, "loSigo": false } }
 ```
-En el perfil, `usuario` es único y no se cambia; `correo` solo viene en el perfil propio y tampoco se cambia; `nombre` (completo) y `descripcion` sí se editan.
+En el perfil, `usuario` es único y no se puede cambiar. `correo` solo se incluye en el perfil propio y tampoco se puede cambiar. `nombre` (completo) y `descripcion` son editables.
 
-`imagenClave` es la ruta en Supabase Storage. Una URL firmada cambia; la clave no, y con ella se guarda la imagen. Las métricas de GPU se quedan en el backend.
+`imagenClave` es la ruta del archivo en Supabase Storage. A diferencia de una URL firmada, la clave no cambia, por lo que se usa para guardar la imagen en caché. Las métricas de GPU no se envían a la aplicación.
 
-## Qué se guarda en el teléfono
+## Caché en el teléfono
+No implementado.
+
 | Dato | Dónde | Vigencia |
 |---|---|---|
 | Sesión y token | Almacenamiento seguro ([07](07-sesion-y-token.md)) | La de Supabase |
@@ -74,9 +80,9 @@ En el perfil, `usuario` es único y no se cambia; `correo` solo viene en el perf
 | Primera página de publicaciones propias | Disco | 10 min |
 | Historial, primera página | Disco | 2 min; nunca si hay algo en "aplicando" |
 | Páginas siguientes y otros perfiles | Memoria | Mientras viva la pantalla |
-| Comentarios | Memoria | Nunca a disco: son en vivo |
+| Comentarios | Memoria | No se guardan en disco porque se actualizan en tiempo real |
 
-Vencido no significa borrado: se muestra y se actualiza. Las vigencias son propuesta del proyecto.
+Un dato vencido no se borra: se muestra y se actualiza. Las vigencias están pendientes de definición.
 
 **Bibliotecas**
 | Para | Usar | Por qué |
@@ -84,11 +90,7 @@ Vencido no significa borrado: se muestra y se actualiza. Las vigencias son propu
 | Imágenes | `cached_network_image` | Disco y memoria; `cacheKey` para usar la clave y `memCacheWidth` para no decodificar de más ([API](https://pub.dev/documentation/cached_network_image/latest/cached_network_image/CachedNetworkImage-class.html)) |
 | Datos en JSON | `hive_ce` | Clave y valor, ligera ([pub.dev](https://pub.dev/documentation/hive_ce/2.23.3/)) |
 | Preferencias sueltas | `shared_preferences` | Solo ajustes simples, nunca tokens |
-| Relaciones o consultas | No hace falta | Si crece, `drift` o `sqflite` |
+| Relaciones o consultas | No se requiere | Si el proyecto crece, `drift` o `sqflite` |
 
-Todo pasa por `servicios/cache/`. Cada entrada guarda fecha y versión del esquema; si la versión cambia, se descarta. Las claves llevan el id del usuario y **al salir se borra todo**.
+Todo el acceso al caché pasa por `servicios/cache/`. Cada entrada guarda su fecha y la versión del esquema; si la versión cambia, la entrada se descarta. Las claves incluyen el id del usuario y al cerrar sesión se borra todo el caché.
 
-## Para revisar
-- [ ] Ir a Perfil y volver a Inicio no lanza una petición.
-- [ ] Sin conexión se ve la última primera página.
-- [ ] Entrar con otro usuario no muestra nada del anterior.
