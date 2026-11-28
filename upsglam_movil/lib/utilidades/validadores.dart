@@ -32,7 +32,7 @@ abstract final class Validadores {
   /// Nombre completo: obligatorio, hasta 60 caracteres.
   static String? nombre(String? valor) {
     final nombre = (valor ?? '').trim();
-    if (nombre.length < 2) return 'Escribe tu nombre completo';
+    if (nombre.length < 3) return 'Escribe tu nombre completo';
     return _maximo(nombre, maximoNombre);
   }
 
