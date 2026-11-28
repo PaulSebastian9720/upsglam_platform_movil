@@ -254,7 +254,7 @@ de copia CPU→GPU y GPU→CPU, y estado. Los tiempos se miden con eventos CUDA.
 
 ## 6. Límites y errores
 
-El servicio no redimensiona la imagen. La aplicación móvil reduce el lado mayor a 2048 px
+El servicio no redimensiona la imagen. La aplicación móvil reduce el lado mayor a 2560 px
 antes de enviarla; el servicio acepta cualquier imagen dentro de los límites siguientes,
 definidos en `src/config.py`, hasta `MAX_LADO`.
 

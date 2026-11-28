@@ -9,7 +9,7 @@ def _entero(nombre, defecto):
     return int(os.environ.get(nombre, str(defecto)))
 
 
-# Límites de la foto. El servicio no redimensiona: la app reduce el lado mayor a 2048 px y
+# Límites de la foto. El servicio no redimensiona: la app reduce el lado mayor a 2560 px y
 # aquí se acepta hasta MAX_LADO. Por debajo de MIN_LADO la máscara de 21x21 cubriría casi
 # toda la imagen; 50 megapíxeles cubren el modo de 50 MP de los teléfonos y caben en los
 # 4 GB de la MX230.
