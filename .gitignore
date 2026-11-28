@@ -1,0 +1,4 @@
+# Credenciales: nunca se versionan. Las plantillas .env.example sí.
+.env
+.env.*
+!.env.example
