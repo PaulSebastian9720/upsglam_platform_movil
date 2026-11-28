@@ -1,0 +1,6 @@
+.venv
+pruebas
+__pycache__
+*.pyc
+uv.lock
+consulta_gpu.py

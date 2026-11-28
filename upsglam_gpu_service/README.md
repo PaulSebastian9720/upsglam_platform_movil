@@ -1,43 +1,87 @@
-# Servicio de filtros en GPU
+# UPSGlam GPU Service
 
-Python 3.12 con `uv`, PyCUDA y CUDA 12.9.
+Servicio REST que aplica los filtros de imagen de UPSGlam en la GPU con PyCUDA. Recibe
+una foto, el filtro y sus parámetros, y devuelve las métricas de ejecución junto con
+la imagen procesada. Lo consume el backend de UPSGlam.
 
-## Por qué CUDA 12 dentro del proyecto
-La GPU de desarrollo es una GeForce MX230 (Pascal, capacidad 6.1). CUDA 13 ya no
-genera código para Pascal y el controlador 575 admite hasta CUDA 12.9. Por eso el
-CUDA 12.9 viene como paquetes de Python dentro del entorno, sin tocar el del sistema:
+Filtros: media, nitidez, Laplaciano, Sobel, relieve y UPS.
 
-- `nvidia-cuda-runtime-cu12`: cabeceras (`cuda.h`) para compilar PyCUDA.
-- `nvidia-cuda-nvrtc-cu12`: NVRTC, que compila los kernels a PTX mientras corre.
-  El paquete no trae `nvcc`, así que no se usa `SourceModule`: se compila con
-  NVRTC y se carga con `pycuda.driver.module_from_buffer`.
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![CUDA](https://img.shields.io/badge/CUDA-12.9-76B900?logo=nvidia&logoColor=white)
+![PyCUDA](https://img.shields.io/badge/PyCUDA-2026.1-76B900?logo=nvidia&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.165-009688?logo=fastapi&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-2.5-013243?logo=numpy&logoColor=white)
+![Pillow](https://img.shields.io/badge/Pillow-13.0-3776AB?logo=python&logoColor=white)
+![uv](https://img.shields.io/badge/uv-gestor-DE5FE9?logo=uv&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-NVIDIA_Container_Toolkit-2496ED?logo=docker&logoColor=white)
 
-## Preparar el entorno
-PyCUDA se compila al instalarse y debe usar las cabeceras de CUDA 12.9, no las
-del sistema:
+## Requisitos
+
+- GPU NVIDIA con controlador compatible con CUDA 12.9.
+- Python 3.12 y [uv](https://docs.astral.sh/uv/).
+- Para Docker: NVIDIA Container Toolkit (en Windows, Docker Desktop con WSL 2).
+
+## Instalación
 
 ```bash
 uv sync --no-install-package pycuda
+```
+```bash
 export CUDA_ROOT="$(uv run python -c 'import site;print(site.getsitepackages()[0])')/nvidia/cuda_runtime"
+```
+```bash
 CUDA_INC_DIR="$CUDA_ROOT/include" uv sync --reinstall-package pycuda
 ```
 
-## Comprobar la GPU
+Para comprobar que la GPU responde:
+
 ```bash
 uv run python consulta_gpu.py
 ```
-Muestra las características de la GPU y prueba un kernel.
 
-## Ejecutar la API
+## Levantar el servicio
+
 ```bash
 .venv/bin/python src/main.py
 ```
-Documentación interactiva en http://localhost:8000/docs. Con la API en ejecución,
-`pruebas/prueba_api.py` la prueba completa.
 
-## Validar los kernels
+La API queda en http://localhost:8000 y su documentación interactiva en
+http://localhost:8000/docs.
+
+## Levantar con Docker
+
+```bash
+docker build -t upsglam-gpu:0.1 .
+```
+```bash
+docker run --rm --gpus all -p 8000:8000 upsglam-gpu:0.1
+```
+
+El `Dockerfile` tiene activa la imagen base de Ubuntu 24.04 y, comentada, la de
+Ubuntu 22.04. Para cambiar de base se intercambian las dos líneas `FROM`.
+
+## Pruebas
+
+Validación de los kernels y de los seis filtros contra una referencia en NumPy:
+
 ```bash
 .venv/bin/python pruebas/validacion.py
 ```
-Compara cada kernel y los seis filtros con NumPy. Las reglas del servicio están en
+
+Prueba de la API completa (filtros, tipos de imagen y errores), con el servicio en
+ejecución:
+
+```bash
+.venv/bin/python pruebas/prueba_api.py
+```
+
+Para probar otra dirección, como el contenedor en otro puerto, se pasa como argumento:
+
+```bash
+.venv/bin/python pruebas/prueba_api.py http://localhost:8001
+```
+
+## Documentación
+
+Contrato REST, filtros, parámetros, límites y errores en
 [docs/backend/servicio-gpu.md](../docs/backend/servicio-gpu.md).
