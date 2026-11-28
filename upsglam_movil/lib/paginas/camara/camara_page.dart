@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +16,6 @@ import 'package:upsglam_movil/tema/app_theme.dart';
 import 'package:upsglam_movil/paginas/camara/camara_controller.dart';
 import 'package:upsglam_movil/paginas/camara/componentes/boton_disparo.dart';
 import 'package:upsglam_movil/paginas/camara/componentes/control_camara.dart';
-import 'package:upsglam_movil/paginas/camara/componentes/rejilla_camara.dart';
 import 'package:upsglam_movil/paginas/camara/componentes/visor_camara.dart';
 
 class CamaraPage extends StatelessWidget {
@@ -107,33 +108,53 @@ class _CamaraVistaState extends State<_CamaraVista> {
   @override
   Widget build(BuildContext context) {
     final camara = context.watch<CamaraController>();
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light,
-      child: Scaffold(
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            _fondo(camara),
-            SafeArea(
-              minimum: const EdgeInsets.all(AppEspacio.base),
-              child: Column(
-                children: [_arriba(camara), const Spacer(), _abajo(camara)],
-              ),
+    // Siempre oscura, con cualquier tema: el negro no compite con la foto.
+    return Theme(
+      data: AppTheme.oscuro,
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: Scaffold(
+          body: SafeArea(
+            child: LayoutBuilder(
+              builder: (context, caja) {
+                // El cuadro va a lo ancho; en pantallas bajas cede alto para
+                // que la barra de abajo quepa entera.
+                final alto = min(
+                  caja.maxWidth / AppMedida.formaFoto,
+                  caja.maxHeight - _altoArriba - _altoAbajo,
+                );
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: _altoArriba,
+                      child: _margen(_arriba(camara)),
+                    ),
+                    SizedBox(
+                      height: alto,
+                      width: double.infinity,
+                      child: _fondo(camara),
+                    ),
+                    Expanded(child: Center(child: _margen(_abajo(camara)))),
+                  ],
+                );
+              },
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 
+  static const _altoArriba = AppMedida.toque + 2 * AppEspacio.s;
+  static const _altoAbajo = AppMedida.disparo + 2 * AppEspacio.base;
+
+  Widget _margen(Widget fila) => Padding(
+    padding: const EdgeInsets.symmetric(horizontal: AppEspacio.base),
+    child: fila,
+  );
+
   Widget _fondo(CamaraController camara) => switch (camara.estado) {
-    EstadoCamara.lista => Stack(
-      fit: StackFit.expand,
-      children: [
-        VisorCamara(control: camara.visor),
-        const RejillaCamara(),
-      ],
-    ),
+    EstadoCamara.lista => Center(child: VisorCamara(control: camara.visor)),
     EstadoCamara.cerrada || EstadoCamara.abriendo => const SizedBox.shrink(),
     EstadoCamara.sinPermiso => EstadoVacio(
       mensaje: 'Permite usar la cámara para tomar fotos',

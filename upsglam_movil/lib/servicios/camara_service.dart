@@ -33,7 +33,8 @@ class CamaraService {
           (c) => c.lensDirection == lado,
           orElse: () => _camaras.first,
         ),
-        ResolutionPreset.veryHigh,
+        ResolutionPreset
+            .max, // el sensor entero: 3:4 en casi todos los teléfonos
         enableAudio: false,
       );
       _control = control;

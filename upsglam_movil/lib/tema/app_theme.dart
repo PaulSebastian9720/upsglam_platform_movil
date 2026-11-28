@@ -121,6 +121,7 @@ abstract final class AppMedida {
   static const miniaturaPublicarAncho = 124.0;
   static const miniaturaPublicarAlto = 190.0; // el campo crece hasta aquí
   static const disparo = 72.0; // tomar foto
+  static const formaFoto = 3 / 4; // cuadro de la cámara: ancho / alto
   static const control = 50.0; // galería, filtros y girar
   static const rueda = 64.0;
   static const bordeRueda = 3.0;
