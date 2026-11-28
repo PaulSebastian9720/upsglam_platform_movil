@@ -1,0 +1,8 @@
+# Claves reales: nunca a git. La plantilla es .env.example.
+.env
+.env.*
+!.env.example
+
+# Archivos locales de la Supabase CLI
+.temp/
+.branches/
