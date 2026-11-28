@@ -43,6 +43,7 @@ dependencies:
   # Fija CameraX 1.5.3: con 1.6.0 la app se cerró al girar la cámara.
   camera_android_camerax: 0.7.1+2
   shared_preferences: ^2.5.6
+  flutter_image_compress: ^2.5.1
 
 dev_dependencies:
   flutter_test:

@@ -31,7 +31,7 @@ class PublicacionesRepositorio {
     if (!ruta.startsWith('assets/')) {
       final original = File(ruta);
       imagen = (await original.copy(
-        '${original.parent.path}/upsglam_publicacion_$id.jpg',
+        '${original.parent.path}/upsglam_publicacion_$id.webp',
       )).path;
     }
     final nueva = Publicacion(

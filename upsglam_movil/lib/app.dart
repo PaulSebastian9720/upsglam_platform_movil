@@ -12,6 +12,7 @@ import 'package:upsglam_movil/rutas/app_router.dart';
 import 'package:upsglam_movil/servicios/camara_service.dart';
 import 'package:upsglam_movil/servicios/datos_prueba_service.dart';
 import 'package:upsglam_movil/servicios/galeria_service.dart';
+import 'package:upsglam_movil/servicios/imagen_service.dart';
 import 'package:upsglam_movil/repositorios/preferencias_repositorio.dart';
 import 'package:upsglam_movil/servicios/preferencias_service.dart';
 import 'package:upsglam_movil/tema/app_theme.dart';
@@ -47,7 +48,12 @@ class _UpsGlamAppState extends State<UpsGlamApp> {
     providers: [
       Provider<FotosRepositorio>(
         create: (_) =>
-            widget.fotos ?? FotosRepositorio(CamaraService(), GaleriaService()),
+            widget.fotos ??
+            FotosRepositorio(
+              CamaraService(),
+              GaleriaService(),
+              ImagenService(),
+            ),
       ),
       Provider(create: (_) => PerfilRepositorio(_datos)),
       Provider(create: (_) => PublicacionesRepositorio(_datos)),
