@@ -52,6 +52,9 @@ Son pesos fijos, no variables: así `FontWeight` basta. Están recortadas a cara
 | labelMedium | Figtree 600 | 14 / 18 | Etiquetas y estados |
 | labelSmall | Figtree 600 | 13 / 16 | Ruedas de filtro, error de campo |
 
+## Tema claro y oscuro
+Hay dos paletas en `app_theme.dart` (`AppPaleta.oscura` y `AppPaleta.clara`) y un solo constructor de tema, así nada se duplica. El oscuro es el de siempre. En el claro el amarillo sigue en botones y menú, y el texto destacado (enlaces, campo activo) pasa a azul, porque el amarillo no se lee sobre blanco. La bola del menú, el cuadro del login y la etiqueta del filtro sobre las fotos pasan a azul con blanco, y en Inicio se usa el logo azul. Se elige en Configuración, en la fila Tema, que abre una hoja desde abajo con Oscuro, Claro y Sistema; la elección se guarda en el teléfono y se lee antes de abrir la app.
+
 ## Medidas
 | Token | Valor | Uso |
 |---|---|---|

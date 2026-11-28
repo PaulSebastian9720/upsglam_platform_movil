@@ -9,7 +9,7 @@ lib/
   main.dart              arranque
   app.dart               MaterialApp, tema y proveedores
   config/                direcciones y claves públicas del entorno
-  tema/                  app_theme.dart, único
+  tema/                  app_theme.dart (único lugar de colores y medidas) y tema_controller.dart (modo elegido)
   rutas/                 navegación
   modelos/               un archivo por modelo: perfil, autor, publicacion, comentario, procesamiento, filtro, foto
   servicios/             un archivo por servicio: camara, galeria (luego sesion, api, cache)
