@@ -13,7 +13,7 @@
 | Campo | Regla | Mensaje |
 |---|---|---|
 | Correo | Obligatorio, formato correcto, sin espacios, en minúsculas | Escribe un correo válido |
-| Nombre completo | Obligatorio, 2 a 60 caracteres; se puede editar | Escribe tu nombre completo |
+| Nombre completo | Obligatorio, 3 a 60 caracteres sin contar espacios al inicio ni al final; se puede editar | Escribe tu nombre completo |
 | Usuario | 3 a 20; letras, números, punto y guion bajo | Usa de 3 a 20 letras, números, punto o _ |
 | | Único, sin importar mayúsculas (lo confirma el servidor al crear la cuenta) | Ese usuario ya existe |
 | | **No se puede cambiar** después de crear la cuenta | En Editar perfil se muestra sin poder editarse |

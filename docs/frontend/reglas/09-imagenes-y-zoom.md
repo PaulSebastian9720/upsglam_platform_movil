@@ -8,14 +8,15 @@ Todas las fotos pasan por `ImagenApp`. El hueco se reserva **antes** de cargar, 
 | Publicación | Todo el ancho, 5:6 (390 × 468) | Rectas |
 | Cuadrícula de perfil | 3 columnas, 129 × 150, separación 2 | Rectas |
 | Portada de login | Todo el ancho, 390 × 192 | Rectas |
-| Edición y cámara | Todo el ancho, hasta el panel | Rectas |
+| Cámara | Todo el ancho, 3:4, entre la barra de arriba y la de abajo; sin recorte | Rectas |
+| Edición | Todo el ancho, hasta el panel | Rectas |
 | Historial | 64 × 64 | Rectas |
 | Publicar, miniatura | 124 × 190 | Rectas |
 | Nivel de Media | 106 × 72 | 10 |
 | Rueda de filtro | 64 | Círculo |
 | Avatar | 36 feed, 38 comentarios, 54 listas, 88 perfil, 132 editar | Círculo |
 
-El recorte es solo visual: el archivo enviado y el resultado conservan su tamaño.
+El recorte es solo visual: el archivo enviado y el resultado conservan su tamaño. La foto que se envía ya sale optimizada de la cámara o la galería (WEBP, lado mayor de 2560 px): ver [11-camara](11-camara.md#optimización).
 
 ## Zoom
 **En la misma foto** (publicaciones en Inicio y Ver publicación, Editar e Historial): `ZoomEnSitio`.
